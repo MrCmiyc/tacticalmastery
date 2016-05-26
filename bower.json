@@ -1,0 +1,22 @@
+{
+  "name": "tacticalmastery.com",
+  "authors": [
+    "Anthony Bertolo <anthonybertolo@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "es6",
+    "globals"
+  ],
+  "license": "Commercial",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

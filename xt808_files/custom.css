@@ -1,0 +1,478 @@
+.kdialogTitle {display:none !important;} 
+body {
+	background-color: #f1f4f8;
+}
+
+body.xtdsn {
+	background: #fff url("../images/Flashlight-2-v1.jpg") top center no-repeat fixed;
+}
+
+body.xtdsn2 {
+	background: #fff url("../images/Flashlight-3-v2.jpg") top center no-repeat fixed;
+}
+
+.wbg {
+	background-color: #fff;	
+}
+
+.wrap {
+	padding:10px;
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+.w960 {
+	max-width:960px;
+	padding:20px 29px;
+}
+
+.orderheading h3 {
+	font-size:27px;
+	line-height:37px;	
+}
+
+.leftcol, .rightcol {
+	background:#fff;
+	padding:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-top:30px;
+	border-bottom:3px solid #E2E2E2;
+	border-radius: 5px;
+}
+
+.radio.quantity {
+	padding:3px 0;	
+}
+
+input.field, select.field {
+	margin-bottom:15px;
+	height:38px;
+    -webkit-box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+	border:1px #ccc solid;
+}
+
+.form-group input.field, .form-group input.field {
+	margin-bottom:0;	
+}
+
+input#name, input#email, input#phone {
+    background-repeat: no-repeat;
+	background-position: 96%;	
+}
+
+input#name {
+	background-image: url(../images/name.png);
+}
+
+input#email {
+	background-image: url(../images/email.png);
+}
+
+input#phone {
+	background-image: url(../images/phone.png);
+}
+
+.m0 {
+	margin:0;	
+}
+
+.mt10 {
+	margin-top:10px;	
+}
+
+.mt20 {
+	margin-top:20px;	
+}
+
+.mt30 {
+	margin-top:30px;	
+}
+
+.mb10 {
+	margin-bottom:10px;	
+}
+
+.mb20 {
+	margin-bottom:20px;	
+}
+
+.mb30 {
+	margin-bottom:30px;	
+}
+
+.p0 {
+	padding:0;	
+}
+
+.p0.zip, .p0.shipping_zip, .p0.cvc {
+	padding-left:20px;
+}
+
+.p0.expirymonth {
+	padding-right:10px;
+}
+
+.p0.expiryyear {
+	padding-left:10px;	
+}
+
+#step3 {
+	padding-top:3px;	
+}
+
+.same_as_billing label {
+	font-weight:700;
+}
+
+#step4 .p0 {
+	margin-bottom:20px;
+}
+
+p.note {
+	font-size:16px;
+	margin-bottom:20px;
+}
+
+.lrm30 {
+	margin-left:10px;
+	margin-right:10px;	
+}
+
+.upsell {
+	border:1px #ccc solid;	
+}
+
+#topsteps {
+	background:#f2f8ec;
+	border:1px #D9D9D9 solid;
+	border-radius:5px;
+}
+
+.topsteps {
+	font-family:'Oswald', sans-serif;
+	font-size:18px;
+	line-height:40px;
+	color:#CEDAC0;
+}
+
+.centerstep {
+	background:#bddaa2;
+	color:#58763C;
+}
+
+h1.wait {
+	font-family:'Oswald', sans-serif;
+	font-size:37px;
+	line-height:47px;
+	padding:0 20px;
+}
+
+.red {
+	color:#F01818;	
+}
+
+.upsells h2 {
+	font-size:31px;	
+}
+
+.upsells s {
+	font-size:18px;
+	display:block;
+	text-align:center;
+}
+
+.upsells h3 {
+	font-weight:bold;	
+}
+
+.upsells h3 i {
+	margin-right:10px;	
+}
+
+.mw650 {
+	max-width:650px;	
+}
+
+.graybar {
+	padding:10px;
+	background:#E8E8E8;
+	margin-left:20px;
+	margin-right:20px;
+	border-radius:5px;
+	font-weight:bold;
+	color:#515151;
+}
+
+.graybar i {
+	margin-right:10px;	
+}
+
+.order {
+	margin-left:20px;
+	margin-right:20px;	
+}
+
+.order .item, .order .price {
+	margin-bottom:5px;	
+}
+
+div.note {
+	margin:10px 20px;	
+}
+
+.notice {
+	margin:0 15px;	
+}
+
+.obama {
+	margin:0 20px;
+	font-size:20px;
+}
+
+#countdown {
+	margin-top:20px;	
+}
+
+.dsnvid {
+	box-shadow: 0px 0px 30px 5px #000;
+	margin-bottom:20px;
+}
+
+.circle {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.testimonials {
+	background:rgba(255,255,255,0.4);
+	border-radius:5px;
+	padding:10px 0;	
+}
+
+.toptitle {
+	margin: 20px 0 10px 0;
+}
+
+.yesbutton, .yesbutton:focus, .yesbutton.kform_submitBtn, .yesbutton.kform_submitBtn:focus {
+	background:#36CA1D;
+	color:#fff;
+	font-size:27px;
+	font-weight:bold;
+	padding:15px;
+	margin:10px 0;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0);
+	border:1px solid #E6E6E6;
+	white-space:normal;
+	height:auto;
+}
+
+.yesbutton:hover, .yesbutton.kform_submitBtn:hover {
+	background:#2ca618;
+	color:#fff;
+}
+
+body.xtdsn .yesbutton, body.xtdsn .yesbutton:focus, body.xtdsn2 .yesbutton, body.xtdsn2 .yesbutton:focus, body.tldsn .yesbutton, body.tldsn .yesbutton:focus, body.tldsn2 .yesbutton, body.tldsn2 .yesbutton:focus {
+	border:0;	
+}
+
+.yesbutton i {
+	margin-right:10px;
+}
+
+.orderbutton {
+	font-size:18px;
+	background:#60C003;
+	margin-bottom:27px;
+}
+
+.orderbutton:hover {
+	background:#4c9802;
+}
+
+.upsellbutton, .upsellbutton:focus {
+	font-size:18px;
+	background:#0BA800;
+	border:1px #0A9800 solid;
+	margin-bottom:30px;
+}
+
+.upsellbutton:hover {
+	background:#087f00;	
+}
+
+.bluebutton {
+	background:#0E8DC7;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.bluebutton:hover {
+	background:#0b72a1;	
+}
+
+.nothanks {
+	font-size:16px;	
+}
+
+.warranties {
+	padding:20px;
+}
+
+.warranty1yr, .warranty3yrs {
+	border:3px #D9D9D9 solid;
+	padding:15px;	
+}
+
+.warranty3yrs {
+	background:#fcf6c8;	
+}
+
+h5.yourwarranty {
+	font-size:16px;
+	color:#878787;	
+}
+
+.warranty hr {
+	margin:10px 0;	
+}
+
+ul.warrantylist {
+    padding: 0px;
+    list-style-type: none;
+}
+
+ul.warrantylist li {
+    font-size: 16px;
+    padding: 10px 10px;
+    padding-left: 25px;
+	position:relative;
+}
+
+ul.warrantylist li:before {
+	position:absolute;
+	left:0;
+	color:#00B225;
+    content: "\f00c";
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;	
+}
+
+.bluebar {
+	background:#27ABEB;
+	color:#fff;
+	font-size:21px;
+	line-height:45px;
+}
+
+h2.greentitle {
+	color:#009608;
+	font-size:27px;
+	font-weight:bold;	
+}
+
+hr {
+	border-color:#E6E6E6;	
+}
+
+#popup input#name, #popup input#email {
+	background-repeat: no-repeat;
+    background-position: 96%;
+	border:1px solid #ccc;
+	padding: 15px;
+    font-size: 16px;
+	margin-bottom:15px;
+	height:auto;
+}
+
+#popup input#name {
+	background-image: url(../images/name.png);
+}
+
+#popup input#email {
+	background-image: url(../images/email.png);
+}
+
+h3.popuptitle {
+	font-size:27px;
+	font-weight:bold;
+	font-family: 'Lato', sans-serif;
+}
+
+.modal-content {
+	padding:0 20px 20px 20px;
+}
+
+.popupbutton {
+	font-family: 'Lato', sans-serif;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+	border-bottom: 3px solid rgba(0,0,0,0.2);
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.modal-header .close {
+    margin-right: -20px;
+}
+
+.modal-dialog {
+	border:3px #000 solid;
+	border-radius:10px;
+}
+
+.popupdisclaimer {
+	color:#7d7d7d;
+	font-size:16px;	
+}
+
+@media (min-width: 768px) {
+	.modal-dialog {
+		width:720px;
+		margin-top:100px;
+	}
+}
+
+@media (max-width: 767px) {
+	h1.wait {
+		font-size:26px;
+		line-height:36px;
+		padding:0 10px;
+		margin-top:0;
+	}
+	
+	.w960.mt20 {
+		margin-top:0;
+		border:0;	
+	}
+	
+	.upsells h2 {
+		font-size:24px;
+		line-height:29px;
+		margin-top:0;	
+	}
+
+	.upsells img {
+		margin-top:0!important;	
+		margin-bottom:20px!important;
+	}
+	
+	.orderheading h3 {
+		font-size: 15px;
+	    line-height: 21px;
+	    font-weight: bold;
+	    margin-top: 10px;
+	    margin-bottom: 0;
+	}
+	.yesbutton, .yesbutton:focus {
+		font-size:17px;
+	}
+	
+}
+
+.kdialogWrap {z-index:999999}
