@@ -17,7 +17,7 @@
     <script>
         var disableOverRide = false; // Disable CS overRide
     </script>
-    <script src="./xt808_files/cs.js"></script>
+    <!-- <scr ipt src="./xt808_files/cs.js"></scr ipt> -->
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
@@ -61,7 +61,7 @@
     <style type="text/css">
         /* TODO:stop gap, include this in the lib */
         .btn_yes {
-            background: #36CA1D;
+            background: #33D107;
             color: #fff;
             font-weight: bold;
             padding: 15px;
@@ -70,23 +70,31 @@
             border: 1px solid #E6E6E6;
             white-space: normal;
             height: auto;
-            font-size: 17px;
+            font-size: 25px;
 
         }
-
+        .btn_yes span.subtext {
+            color: #279707;
+            font-size: 14px;
+            font-weight: normal;
+        }
         .btn_yes i {
             margin-right: 10px;
         }
 
         .btn_yes:hover {
-            background: #2ca618;
+            background: #279707;
             color: #fff;
+        }
+        .btn_yes:hover span.subtext {
+            color: #33D107;
+            font-size: 14px;;
         }
 
         .div_notyes_btn {
             background: #F00;
             color: #fff;
-            font-size: 27px;
+            font-size: 23px;
             font-weight: bold;
             padding: 15px;
             margin: 10px 0;
@@ -136,7 +144,7 @@
 
 
             <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup"><i
-                    class="fa fa-check"></i>YES! I WANT 75% OFF
+                    class="fa fa-shopping-cart"></i>Yes! I Want 75% Off XT808!<br><span class="subtext">Free Shipping valid till today.</span>
             </button>
 
             <div class="div_notyes_btn"><a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br><a
