@@ -1,8 +1,8 @@
 <?php
 session_start();
 ini_set('display_errors', '1');
-include_once "../common/HTTP.php";
-include_once "../common/Input.php";
+include_once "common/HTTP.php";
+include_once "common/Input.php";
 // We have the phone number, so we should save it somewhere so we can call on it later.
 $error = false;
 //var_dump($_SESSION);
