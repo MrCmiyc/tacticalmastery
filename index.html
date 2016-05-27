@@ -61,9 +61,29 @@
 
 	<style type="text/css">
 		/* TODO:stop gap, include this in the lib */
+		.btn_yes:hover {
+			background: #2ca618;
+			color: #fff;
+		}
 
-		.not_yes_btn {
+		.btn_yes {
 			background: #36CA1D;
+			color: #fff;
+			font-weight: bold;
+			padding: 15px;
+			margin: 10px 0;
+			box-shadow: inset 0 1px 0 rgba(255,255,255,0);
+			border: 1px solid #E6E6E6;
+			white-space: normal;
+			height: auto;
+			font-size: 17px;
+		}
+		.btn_yes i {
+			margin-right: 10px;
+		}
+
+		.div_notyes_btn {
+			background: #F00;
 			color: #fff;
 			font-size: 27px;
 			font-weight: bold;
@@ -75,10 +95,16 @@
 			height: auto;
 			border-radius: 4px;
 			vertical-align: middle;
+			text-align:center;
 		}
-		.not_yes_btn a {
+		.div_notyes_btn a {
 			color: #fff;
 		}
+		.div_notyes_btn:hover a {
+			color: #eee;
+			text-decoration: underline;
+		}
+
 	</style>
 
   </head>
@@ -95,9 +121,9 @@
             <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 28px 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_bkqeh1qm3k videoFoam=true autoPlay=true" style="height:100%;width:100%">&nbsp;</div></div></div>
 
 
-            <button type="button" class="btn btn-block yesbutton" data-toggle="modal" data-target="#popup"><i class="fa fa-check"></i>YES! I WANT 75% OFF</button>
+            <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup"><i class="fa fa-check"></i>YES! I WANT 75% OFF</button>
             
-            <div class="not_yes_btn" style="background:#F00;text-align:center;"><a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br><a href="tel://1-844-478-8240">(844) 478-8240</a></div>
+            <div class="div_notyes_btn"><a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br><a href="tel://1-844-478-8240">(844) 478-8240</a></div>
 
             <hr>
 
