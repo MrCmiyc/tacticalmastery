@@ -1,172 +1,193 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)https://primitivesurvivors.us/xt808/1/index -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link type="text/css" href="./xt808_files/kprofile.css" rel="stylesheet">
-<link type="text/css" href="./xt808_files/kform.css" rel="stylesheet">
-		
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>XT808 LED Flashlight</title>
-    <link rel="icon" type="image/png" href="https://primitivesurvivors.us/xt808/1/images/favicon.png">
-	<link href="./xt808_files/bootstrap.css" rel="stylesheet">
-	<link href="./xt808_files/font-awesome.min.css" rel="stylesheet">
-	<link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
-	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<script src="./xt808_files/jquery-1.11.2.min.js"></script>
-	<script src="./xt808_files/bootstrap.js"></script>
-	<script>
-		var disableOverRide = false; // Disable CS overRide
-		</script>
-	<script src="./xt808_files/cs.js"></script>
-	<!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><script src="../js/respond.min.js"></script><![endif]-->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link type="text/css" href="./xt808_files/kprofile.css" rel="stylesheet">
+    <link type="text/css" href="./xt808_files/kform.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="./xt808_files/css" rel="stylesheet" type="text/css">
+    <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
+    <script src="./xt808_files/jquery-1.11.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        var disableOverRide = false; // Disable CS overRide
+    </script>
+    <script src="./xt808_files/cs.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 
     <script>
-//Exit popup
-	$(document).ready(function() {
-    	$(document).mousemove(function(e) {
-        	if(e.pageY <= 5) {
-            	$("#popup").modal();
-        	}
-    	});
-		$(".fullName").change(function(){
-			consumerName = $(".fullName").val();
-			 tempArray= consumerName.split(" ");
+        //Exit popup
+        $(document).ready(function () {
+            $(document).mousemove(function (e) {
+                if (e.pageY <= 5) {
+                    $("#popup").modal();
+                }
+            });
+            $(".fullName").change(function () {
+                consumerName = $(".fullName").val();
+                tempArray = consumerName.split(" ");
 
-			  $(".firstName").val(tempArray[0]);
-			  $(".lastName").val(tempArray[1]);
-		});
-		$(".kform_submitBtn").click(function(){
-		    consumerName = $(".fullName").val();
-			tempArray= consumerName.split(" ");
+                $(".firstName").val(tempArray[0]);
+                $(".lastName").val(tempArray[1]);
+            });
+            $(".kform_submitBtn").click(function () {
+                consumerName = $(".fullName").val();
+                tempArray = consumerName.split(" ");
 
-			$(".firstName").val(tempArray[0]);
-			$(".lastName").val(tempArray[1]);
-			$(".kform").submit();
-		});
-		$("#submitButton").click(function(e) {
-			$(".kform").submit();
-		});
-		 $('.form-control').keypress(function(e){
-		        if(e.which == 13){
-		        	console.log("\n pressed enter");
-		          $(".kform").submit();
-		         }
-		   });
+                $(".firstName").val(tempArray[0]);
+                $(".lastName").val(tempArray[1]);
+                $(".kform").submit();
+            });
+            $("#submitButton").click(function (e) {
+                $(".kform").submit();
+            });
+            $('.form-control').keypress(function (e) {
+                if (e.which == 13) {
+                    console.log("\n pressed enter");
+                    $(".kform").submit();
+                }
+            });
 
-});
-	</script>
+        });
+    </script>
 
-	<style type="text/css">
-		/* TODO:stop gap, include this in the lib */
-		.btn_yes:hover {
-			background: #2ca618;
-			color: #fff;
-		}
+    <style type="text/css">
+        /* TODO:stop gap, include this in the lib */
+        .btn_yes {
+            background: #36CA1D;
+            color: #fff;
+            font-weight: bold;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0);
+            border: 1px solid #E6E6E6;
+            white-space: normal;
+            height: auto;
+            font-size: 17px;
 
-		.btn_yes {
-			background: #36CA1D;
-			color: #fff;
-			font-weight: bold;
-			padding: 15px;
-			margin: 10px 0;
-			box-shadow: inset 0 1px 0 rgba(255,255,255,0);
-			border: 1px solid #E6E6E6;
-			white-space: normal;
-			height: auto;
-			font-size: 17px;
-		}
-		.btn_yes i {
-			margin-right: 10px;
-		}
+        }
 
-		.div_notyes_btn {
-			background: #F00;
-			color: #fff;
-			font-size: 27px;
-			font-weight: bold;
-			padding: 15px;
-			margin: 10px 0;
-			box-shadow: inset 0 1px 0 rgba(255,255,255,0);
-			border: 1px solid #E6E6E6;
-			white-space: normal;
-			height: auto;
-			border-radius: 4px;
-			vertical-align: middle;
-			text-align:center;
-		}
-		.div_notyes_btn a {
-			color: #fff;
-		}
-		.div_notyes_btn:hover a {
-			color: #eee;
-			text-decoration: underline;
-		}
+        .btn_yes i {
+            margin-right: 10px;
+        }
 
-	</style>
+        .btn_yes:hover {
+            background: #2ca618;
+            color: #fff;
+        }
 
-  </head>
-  <script src="//cdn.optimizely.com/js/5976062002.js"></script>
-  <body class="wbg">	
-  <div class="container">
-<div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        .div_notyes_btn {
+            background: #F00;
+            color: #fff;
+            font-size: 27px;
+            font-weight: bold;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0);
+            border: 1px solid #E6E6E6;
+            white-space: normal;
+            height: auto;
+            border-radius: 4px;
+            vertical-align: middle;
+            text-align: center;
+        }
 
-        <h1 class="text-center toptitle">XT808 LED Flashlight Coupon Registration</h1>
+        .div_notyes_btn a {
+            color: #fff;
+        }
 
-        <img src="./xt808_files/featured-in.png" class="img-responsive center-block" alt="Featured in">
+        .div_notyes_btn:hover a {
+            color: #eee;
+            text-decoration: underline;
+        }
 
-            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 28px 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_bkqeh1qm3k videoFoam=true autoPlay=true" style="height:100%;width:100%">&nbsp;</div></div></div>
+        .pre_foot img {
+            width:100%;
+        }
 
 
-            <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup"><i class="fa fa-check"></i>YES! I WANT 75% OFF</button>
-            
-            <div class="div_notyes_btn"><a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br><a href="tel://1-844-478-8240">(844) 478-8240</a></div>
+    </style>
+
+</head>
+<script src="//cdn.optimizely.com/js/5976062002.js"></script>
+<body class="wbg">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+            <h1 class="text-center toptitle">XT808 LED Flashlight Coupon Registration</h1>
+
+            <img src="./xt808_files/featured-in.png" class="img-responsive center-block" alt="Featured in">
+
+            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_responsive_padding" style="padding:56.25% 0 28px 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_bkqeh1qm3k videoFoam=true autoPlay=true"
+                         style="height:100%;width:100%">&nbsp;</div>
+                </div>
+            </div>
+
+
+            <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup"><i
+                    class="fa fa-check"></i>YES! I WANT 75% OFF
+            </button>
+
+            <div class="div_notyes_btn"><a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br><a
+                    href="tel://1-844-478-8240">(844) 478-8240</a></div>
+
+            <div class="pre_foot">
+                <img src="images/index_foot.jpg">
+            </div>
 
             <hr>
 
-            <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477<br><a href="#">Privacy Statement</a> -&nbsp;<a href="#">Terms &amp; Conditions</a></p>
+            <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477<br><a href="#">Privacy
+                Statement</a> -&nbsp;<a href="#">Terms &amp; Conditions</a></p>
 
-      </div>
+        </div>
     </div>
 </div>
-
 
 <div id="popup" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3 class="text-center popuptitle">Enter Your Name and Email Below To INSTANTLY Recieve 75% Off The XT808 Flashlight...</h3>
-      </div>
-      <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="text-center popuptitle">Enter Your Name and Email Below To INSTANTLY Recieve 75% Off The
+                    XT808 Flashlight...</h3>
+            </div>
+            <div class="modal-body">
 
-        <form class="kform" action="core.php" method="GET">
-        	<input type="hidden" class="form-control firstName" id="name" name="firstName" placeholder="First Name">
-        	<input type="hidden" class="form-control lastName" id="name" name="lastName" placeholder="Last Name">
-        	<input type="text" class="form-control fullName" id="name" placeholder="Enter Your Full Name (First Last)">
+                <form class="kform" action="core.php" method="GET">
+                    <input type="hidden" class="form-control firstName" id="name" name="firstName"
+                           placeholder="First Name">
+                    <input type="hidden" class="form-control lastName" id="name" name="lastName"
+                           placeholder="Last Name">
+                    <input type="text" class="form-control fullName namebox" id="name"
+                           placeholder="Enter Your Full Name (First Last)">
 
-            <input type="text" class="form-control fullName" id="phone" name="phone" style="padding:15px;height:54px;font-size:16px" placeholder="Your Phone Number">
+                    <input type="text" class="form-control fullName" id="phone" name="phone"
+                           style="padding:15px;height:54px;font-size:16px" placeholder="Your Phone Number">
 
-            <button type="button" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn"><i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount</button>
-    </form>
-            <p class="text-center popupdisclaimer">* we will not spam, rent, or sell your information... *</p>
+                    <button type="button" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
+                        <i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount
+                    </button>
+                </form>
+                <p class="text-center popupdisclaimer">* we will not spam, rent, or sell your information... *</p>
 
-      </div>
+            </div>
+        </div>
+
     </div>
-
-  </div>
 </div>
 
-  
-
-
-
-
-
-
-
-<script type="application/javascript" id="ywa-1463951091782-984730" class="ywa-1000498534419" defer src="./xt808_files/sp.pl"></script></body></html>
+</body>
+</html>

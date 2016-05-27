@@ -63,7 +63,7 @@ input#name, input#email, input#phone {
     background-repeat: no-repeat;
 	background-position: 96%;	
 }
-
+/* replacing with fontawesome glyphs
 input#name {
 	background-image: url(../images/name.png);
 }
@@ -75,7 +75,7 @@ input#email {
 input#phone {
 	background-image: url(../images/phone.png);
 }
-
+*/
 .m0 {
 	margin:0;	
 }
@@ -390,7 +390,7 @@ hr {
 	margin-bottom:15px;
 	height:auto;
 }
-
+/* nope
 #popup input#name {
 	background-image: url(../images/name.png);
 }
@@ -398,7 +398,7 @@ hr {
 #popup input#email {
 	background-image: url(../images/email.png);
 }
-
+*/
 h3.popuptitle {
 	font-size:27px;
 	font-weight:bold;
