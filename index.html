@@ -12,7 +12,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="./xt808_files/css" rel="stylesheet" type="text/css">
     <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
-    <script src="./xt808_files/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
         var disableOverRide = false; // Disable CS overRide
@@ -22,41 +22,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 
-    <script>
-        //Exit popup
-        $(document).ready(function () {
-            $(document).mousemove(function (e) {
-                if (e.pageY <= 5) {
-                    $("#popup").modal();
-                }
-            });
-            $(".fullName").change(function () {
-                consumerName = $(".fullName").val();
-                tempArray = consumerName.split(" ");
-
-                $(".firstName").val(tempArray[0]);
-                $(".lastName").val(tempArray[1]);
-            });
-            $(".kform_submitBtn").click(function () {
-                consumerName = $(".fullName").val();
-                tempArray = consumerName.split(" ");
-
-                $(".firstName").val(tempArray[0]);
-                $(".lastName").val(tempArray[1]);
-                $(".kform").submit();
-            });
-            $("#submitButton").click(function (e) {
-                $(".kform").submit();
-            });
-            $('.form-control').keypress(function (e) {
-                if (e.which == 13) {
-                    console.log("\n pressed enter");
-                    $(".kform").submit();
-                }
-            });
-
-        });
-    </script>
 
     <style type="text/css">
         /* TODO:stop gap, include this in the lib */
