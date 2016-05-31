@@ -141,9 +141,7 @@ function SubmitSubmit(this_form) {
 				nameParts = getFirstLast($( this ).val());
 				afSetSet('f_firstName', nameParts[0]);
 				afSetSet('f_lastName', nameParts[1]);
-
 			}
-
 		}
 	});
 
