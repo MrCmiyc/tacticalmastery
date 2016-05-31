@@ -8,6 +8,7 @@
     <title>XT808 Flashlight - Save 75%</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
 
 	<script type="text/javascript">
 		$(function() 
@@ -25,77 +26,30 @@
 					});
 				});
 		}
-		
-		function getQueryVariable(variable) 
-		{
-			var query = window.location.search.substring(1);
-			var vars = query.split('&');
-			for (var i = 0; i < vars.length; i++) 
-			{
-				var pair = vars[i].split('=');
 				
-				if (decodeURIComponent(pair[0]) == variable) 
-				{
-					return decodeURIComponent(pair[1]);
-				}
-			}
-			
-			return "";
-		}	
-
-		function randString(x)
-		{
-			var s = "";
-			
-			while(s.length<x&&x>0)
-			{
-				var r = Math.random();
-				s+= (r<0.1?Math.floor(r*100):String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)));
-			}
-			
-			return s;
-		}
-		
-		function api(url,data,element)
-		{
-			var jqxhr = $.ajax(
-			{
-				type: 'GET',
-				url: url,
-				data: data,
-				contentType: "application/json",
-				success: function(e)
-				{
-					if(typeof e.result != "undefined")
-					{
-					}
-					element(e);
-				},
-				error: function(e)
-				{
-					console.log("error");
-				}
-			});
-		}
-
 		$(document).ready(function () 
 		{
-			var sFN = randString(10);
-			var sPN = "555-555-5555";
+			getSetSet("firstName");
+			getSetSet("phoneNumber","555-555-5555","phone");
 			
-			if(typeof(Storage) !== "undefined")
+			if(localStorage.getItem("orderId") == null)
 			{
-				console.log(localStorage);
+				var sFN = (localStorage.getItem("firstName") == "") ? randString(10) : localStorage.getItem("firstName");
+				var sPN = (localStorage.getItem("phoneNumber") == "") ? "555-555-5555" : localStorage.getItem("phoneNumber");
 				
-				sFN = localStorage.getItem("firstName");
-				if(sFN==null) sFN = getQueryVariable("firstName");
-
-				sPN = localStorage.getItem("phone");
-				if(sPN==null) sPN = getQueryVariable("phone");
-				
-				localStorage.setItem("firstName",sFN);
-				localStorage.setItem("phoneNumber",sPN);
+				api("https://staging.tacticalmastery.com/api/createlead/","firstName={0}&phoneNumber={1}".sprtf(sFN,sPN),function(e)
+				{
+					json = JSON.parse(e);
+					
+					if(typeof json.message.orderId != 'undefined') localStorage.setItem("orderId",json.message.orderId);
+				});
 			}
+			else
+			{
+				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(localStorage.getItem("orderId")),function(e)
+				{
+				});
+			}			
 		});
 		
 	</script>
@@ -161,12 +115,6 @@
       <div class="row">
         <form action="core.php" method="POST">
         <div class="col-lg-6">
-          <?php
-          if (isset($_SESSION['error'])) {
-            echo "<span style='color:red'>" . $_SESSION['error'] . "</span>";
-            unset($_SESSION['error']);
-          }
-          ?>
           <div class="panel-white">
           	<div class="coupon"><img src="images/coupon2.jpg"></div>
             <center><strong>YOUR FREE SHIPPING HAS BEEN APPLIED!</strong></center><br><br>
@@ -231,19 +179,19 @@
             <hr>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">First Name</label>
-              <input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo $customerData['firstName']; ?>">
+              <input type="text" class="form-control" name="firstName" placeholder="First Name" value="">
             </fieldset>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">Last Name</label>
-              <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="<?php echo $customerData['lastName']; ?>">
+              <input type="text" class="form-control" name="lastName" placeholder="Last Name" value="">
             </fieldset>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">Phone Number</label>
-              <input type="text" class="form-control" name="phone" placeholder="Phone Number" value="<?php echo $customerData['phone']; ?>">
+              <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number" value="">
             </fieldset>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" name="email" placeholder="E-Mail" value="<?php echo $customerData['email']; ?>">
+              <input type="email" class="form-control" name="email" placeholder="E-Mail" value="">
               <small class="text-muted">We'll never share your email with anyone else.</small>
             </fieldset>
           </div>
@@ -258,11 +206,11 @@
             <br><br>
             <fieldset class="form-group">
               <label>Street Address</label>
-              <input type="text" class="form-control" name="address" placeholder="Your Address" value="<?php echo $customerData['address']; ?>">
+              <input type="text" class="form-control" name="address" placeholder="Your Address" value="">
             </fieldset>
             <fieldset class="form-group">
               <label>City</label>
-              <input type="text" class="form-control" name="city" placeholder="Your City" value="<?php echo $customerData['city']; ?>">
+              <input type="text" class="form-control" name="city" placeholder="Your City" value="">
             </fieldset>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">State</label>
@@ -320,17 +268,10 @@
               	<option value="WI">Wisconsin</option>
               	<option value="WY">Wyoming</option>
               </select>
-              <?php
-              if (isset($customerData['state'])) {
-                ?>
-                <script>$("#state").val("<?php echo $customerData['state']; ?>");</script>
-                <?php
-              }
-              ?>
             </fieldset>
             <fieldset class="form-group">
               <label for="exampleInputEmail1">Zipcode</label>
-              <input type="text" class="form-control" name="zip" placeholder="Your Zipcode" value="<?php echo $customerData['zip']; ?>">
+              <input type="text" class="form-control" name="zip" placeholder="Your Zipcode" value="">
             </fieldset>
           </div>
           <br>
@@ -340,11 +281,11 @@
             <div class="row">
               <fieldset class="form-group col-lg-8">
                 <label for="exampleInputEmail1">Card Number</label>
-                <input type="text" class="form-control" name="cardNumber" placeholder="Your Card Number" value="<?php echo $customerData['cardNumber']; ?>">
+                <input type="text" class="form-control" name="cardNumber" placeholder="Your Card Number" value="">
               </fieldset>
               <fieldset class="form-group col-lg-4">
                 <label for="exampleInputEmail1">Card CVV</label>
-                <input type="text" class="form-control" name="cardCVV" placeholder="CVV (On Back)" value="<?php echo $customerData['cardCVV']; ?>">
+                <input type="text" class="form-control" name="cardCVV" placeholder="CVV (On Back)" value="">
               </fieldset>
             </div>
             <div class="row">
@@ -364,13 +305,6 @@
                   <option value="11">November</option>
                   <option value="12">December</option>
                 </select>
-                <?php
-                if (isset($customerData['expirationMonth'])) {
-                  ?>
-                  <script>$("#expirationMonth").val("<?php echo $customerData['expirationMonth']; ?>");</script>
-                  <?php
-                }
-                ?>
               </fieldset>
               <fieldset class="form-group col-lg-6">
                 <label for="exampleInputEmail1">Expiration Year</label>
@@ -387,13 +321,6 @@
                   <option value="2025">2025</option>
                   <option value="2026">2026</option>
                 </select>
-                <?php
-                if (isset($customerData['expirationYear'])) {
-                  ?>
-                  <script>$("#expirationYear").val("<?php echo $customerData['expirationYear']; ?>");</script>
-                  <?php
-                }
-                ?>
               </fieldset>
             </div>
           </div>
