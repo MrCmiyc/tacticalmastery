@@ -19,6 +19,7 @@ function api(url,data,element)
 		contentType: "application/json",
 		success: function(e)
 		{
+			console.log('api success');
 			if(typeof e.result != "undefined")
 			{
 			}
@@ -77,3 +78,42 @@ function getSetSet(field,value="",qsfield=false)
 	
 	$("input[name="+field+"]").val(sField);
 }
+
+
+/*  Page borne stuffs
+
+ */
+
+$(document).ready(function ()
+{
+	if (pageInfo != undefined) {
+		//check ap
+		if (pageInfo.autopopulate) {
+			$('.af').each(function() {
+				f_name = "f_" + $( this ).attr('name');
+				$( this ).val(getSetSet(f_name));
+			});
+		}
+		if (pageInfo.hasorderid) {
+			if(localStorage.getItem("orderId") == null)
+			{
+				var sFN = (localStorage.getItem("f_firstName") == "") ? randString(10) : localStorage.getItem("f_firstName");
+				var sPN = (localStorage.getItem("f_phoneNumber") == "") ? "555-555-5555" : localStorage.getItem("f_phoneNumber");
+
+				api("https://staging.tacticalmastery.com/api/createlead/","firstName={0}&phoneNumber={1}".sprtf(sFN,sPN),function(e)
+				{
+					json = JSON.parse(e);
+
+					if(typeof json.message.orderId != 'undefined') localStorage.setItem("orderId",json.message.orderId);
+				});
+			}
+			else
+			{
+				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(localStorage.getItem("orderId")),function(e)
+				{
+				});
+			}
+		}
+	}
+});
+
