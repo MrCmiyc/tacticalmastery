@@ -113,7 +113,7 @@
       <div class="txt-big" style="margin-bottom:20px; text-align:center; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight:800; letter-spacing: 5px;">TODAY, YOU QUALIFY FOR FREE SHIPPING! ORDER NOW!</div>
       
       <div class="row">
-        <form action="core.php" method="POST">
+        <form action="checkout.html" method="POST">
         <div class="col-lg-6">
           <div class="panel-white">
           	<div class="coupon"><img src="images/coupon2.jpg"></div>
@@ -168,13 +168,6 @@
                 </tr>
               </tbody>
             </table>
-            <?php
-            if (isset($_SESSION['customerData']['productId'])) {
-              ?>
-              <script>$("input[value='<?php echo $_SESSION['customerData']['productId']; ?>'").prop("checked",true);</script>
-              <?php
-            }
-            ?>
             <center><h4>Step #2: Contact Information</h4></center>
             <hr>
             <fieldset class="form-group">
