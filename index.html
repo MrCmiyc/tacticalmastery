@@ -24,6 +24,10 @@
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+    <script type="text/javascript">
+        var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
+    </script>
+
 
     <script>
 	
@@ -238,23 +242,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To<br><span>INSTANTLY Recieve 75% Off</span> The
+                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To <span>INSTANTLY Recieve 75% Off</span> The
                     XT808 Flashlight!</h3>
             </div>
             <div class="modal-body">
 
-                <form class="kform" action="https://staging.tacticalmastery.com/checkout.html" method="GET">
-                    <input type="hidden" class="form-control firstName" id="name" name="firstName"
+                <form class="kform af" action="https://staging.tacticalmastery.com/order1.php" method="GET" id="formLead" name="formLead">
+                    <input type="hidden" class="form-control firstName" id="fname" name="firstName"
                            placeholder="First Name">
-                    <input type="hidden" class="form-control lastName" id="name" name="lastName"
+                    <input type="hidden" class="form-control lastName" id="lname" name="lastName"
                            placeholder="Last Name">
-                    <input type="text" class="form-control fullName namebox" id="name"
+                    <input type="text" class="form-control fullName namebox af" id="name" name="fullName"
                            placeholder="Enter Your Full Name (First Last)">
 
-                    <input type="text" class="form-control fullName" id="phone" name="phone"
+                    <input type="text" class="form-control fullName af" id="phone" name="phone"
                            style="padding:15px;height:54px;font-size:16px" placeholder="Your Phone Number">
 
-                    <button type="button" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
+                    <button type="submit" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
                         <i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount
                     </button>
                 </form>

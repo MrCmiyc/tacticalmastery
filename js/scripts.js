@@ -79,19 +79,93 @@ function getSetSet(field,value="",qsfield=false)
 	$("input[name="+field+"]").val(sField);
 }
 
+function getFirstLast(instring) {
+	var parts = instring.split(' ');
+	var fn = parts[0];
+	parts.shift(); // parts is modified to remove first word
+	var ln = '';
+	if (parts instanceof Array) {
+		ln = parts.join(' ');
+	}
+	else {
+		ln = parts;
+	}
+	return [fn,ln];
+}
+
+
+function afGetGet(field,qsfield=false)
+{
+	var returnThis;
+
+	if(typeof(Storage) !== "undefined")
+	{
+		console.log("1");
+		returnThis = localStorage.getItem(field);
+	}
+	if (returnThis == undefined) {
+		console.log("2");
+		if(qsfield) {
+			console.log("3");
+
+			returnThis = getQueryVariable(qsfield);
+			if (returnThis) localStorage.setItem(field,sField);
+		} else {
+			console.log("4");
+			returnThis = '';
+		}
+	}
+	return returnThis;
+
+
+}
+
+function afSetSet(field,value)
+{
+
+	if(typeof(Storage) !== "undefined")
+	{
+		localStorage.setItem(field,value);
+	}
+}
+
 
 /*  Page borne stuffs
 
  */
+function SubmitSubmit(this_form) {
+
+
+	console.log("sumbitted: "+$(this_form).attr('name'));
+	$( this_form).find('input.af').each(function(){
+		if ($(this).val() != "") {
+			f_name = "f_" + $( this ).attr('name');
+			console.log("set:"+f_name+"|"+$( this ).val());
+			afSetSet(f_name, $( this ).val());
+			if (f_name == 'f_fullName') {
+				nameParts = getFirstLast($( this ).val());
+				afSetSet('f_firstName', nameParts[0]);
+				afSetSet('f_lastName', nameParts[1]);
+
+			}
+
+		}
+	});
+
+	return false;
+
+}
 
 $(document).ready(function ()
 {
 	if (pageInfo != undefined) {
 		//check ap
 		if (pageInfo.autopopulate) {
-			$('.af').each(function() {
+			$('input.af').each(function() {
+				console.log("moo");
 				f_name = "f_" + $( this ).attr('name');
-				$( this ).val(getSetSet(f_name));
+				console.log("populating:"+f_name+"|")
+				$( this ).val(afGetGet(f_name,$( this ).attr('name')));
 			});
 		}
 		if (pageInfo.hasorderid) {
@@ -114,6 +188,16 @@ $(document).ready(function ()
 				});
 			}
 		}
+
+		// trap our forms the same way. We loop the forms and trap their submits
+		$('form.af').each(function() {
+			console.log("found form1");
+			$( this ).submit(function (event) {
+				event.preventDefault();
+				return SubmitSubmit(this);
+			});
+		});
+
 	}
 });
 
