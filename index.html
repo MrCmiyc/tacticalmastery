@@ -14,6 +14,9 @@
     <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="js/scripts.js"></script>
+
     <script>
         var disableOverRide = false; // Disable CS overRide
     </script>
@@ -21,7 +24,90 @@
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+    <script type="text/javascript">
+        var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
+    </script>
 
+
+    <script>
+
+		//Exit popup
+        $(document).ready(function ()
+		{
+			var bModal = true;
+
+			$(document).mousemove(function (e)
+			{
+                if (e.pageY <= 5 && bModal)
+				{
+                    $("#popup").modal();
+                }
+            });
+
+            $(".fullName").change(function ()
+			{
+                consumerName = $(".fullName").val();
+                tempArray = consumerName.split(" ");
+
+                $(".firstName").val(tempArray[0]);
+                $(".lastName").val(tempArray[1]);
+            });
+
+            $(".kform_submitBtn").click(function ()
+			{
+                consumerName = $(".fullName").val();
+                tempArray = consumerName.split(" ");
+
+                $(".firstName").val(tempArray[0]);
+                $(".lastName").val(tempArray[1]);
+                $(".kform").submit();
+            });
+
+            $("#submitButton").click(function (e)
+			{
+                $(".kform").submit();
+            });
+
+            $('.form-control').keypress(function (e)
+			{
+                if (e.which == 13)
+				{
+                    console.log("\n pressed enter");
+                    $(".kform").submit();
+                }
+            });
+
+			$('#terms').click(function(e)
+			{
+				bModal = false;
+
+				api("terms.html",null,function(e)
+				{
+					$("#termsModal").html(e);
+				});
+
+				$("#popupTerms").modal();
+			});
+
+			$('#privacy').click(function(e)
+			{
+				bModal = false;
+
+				api("privacy.html",null,function(e)
+				{
+					$("#termsModal").html(e);
+				});
+
+				$("#popupTerms").modal();
+			});
+
+			$('#popupTerms').on('hidden.bs.modal', function (e)
+			{
+				bModal = true;
+			});
+        });
+
+    </script>
 
     <style type="text/css">
         /* TODO:stop gap, include this in the lib */
@@ -89,8 +175,21 @@
     </style>
 
 </head>
+
 <script src="//cdn.optimizely.com/js/5976062002.js"></script>
+
 <body class="wbg">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K7K7HF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K7K7HF');</script>
+<!-- End Google Tag Manager -->
+
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -99,14 +198,7 @@
 
             <img src="./xt808_files/featured-in.png" class="img-responsive center-block" alt="Featured in">
 
-            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-            <div class="wistia_responsive_padding" style="padding:56.25% 0 28px 0;position:relative;">
-                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <div class="wistia_embed wistia_async_bkqeh1qm3k videoFoam=true autoPlay=true"
-                         style="height:100%;width:100%">&nbsp;</div>
-                </div>
-            </div>
-
+            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_rc30nimscw videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
 
             <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup"><i
                     class="fa fa-shopping-cart"></i>Yes! I Want 75% Off XT808!<br><span class="subtext">Free Shipping valid till today.</span>
@@ -121,10 +213,26 @@
 
             <hr>
 
-            <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477<br><a href="#">Privacy
-                Statement</a> -&nbsp;<a href="#">Terms &amp; Conditions</a></p>
+            <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477
+			<br>
+			<a id="privacy" href="#">Privacy Statement</a> -&nbsp;<a id="terms" href="#">Terms &amp; Conditions</a></p>
 
         </div>
+    </div>
+</div>
+
+<div id="popupTerms" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+				<div id="termsModal"></div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -134,23 +242,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To<br><span>INSTANTLY Recieve 75% Off</span> The
+                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To <span>INSTANTLY Recieve 75% Off</span> The
                     XT808 Flashlight!</h3>
             </div>
             <div class="modal-body">
 
-                <form class="kform" action="core.php" method="GET">
-                    <input type="hidden" class="form-control firstName" id="name" name="firstName"
+                <form class="kform af" action="https://staging.tacticalmastery.com/order1.php" method="GET" id="formLead" name="formLead">
+                    <input type="hidden" class="form-control firstName" id="fname" name="firstName"
                            placeholder="First Name">
-                    <input type="hidden" class="form-control lastName" id="name" name="lastName"
+                    <input type="hidden" class="form-control lastName" id="lname" name="lastName"
                            placeholder="Last Name">
-                    <input type="text" class="form-control fullName namebox" id="name"
+                    <input type="text" class="form-control fullName namebox af" id="name" name="fullName"
                            placeholder="Enter Your Full Name (First Last)">
 
-                    <input type="text" class="form-control fullName" id="phone" name="phone"
+                    <input type="text" class="form-control fullName af" id="phone" name="phone"
                            style="padding:15px;height:54px;font-size:16px" placeholder="Your Phone Number">
 
-                    <button type="button" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
+                    <button type="submit" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
                         <i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount
                     </button>
                 </form>
@@ -161,6 +269,16 @@
 
     </div>
 </div>
+
+<!-- credexis -->
+<script>
+(function(e,c,a,g,f){function d(){var b=c.createElement("script");b.async=!0;
+b.src="//radar.cedexis.com/1/20927/radar.js";c.body.appendChild(b)}
+(function(){for(var b=[/\bMSIE (5|6)/i],a=b.length;a--;)if(b[a]
+.test(navigator.userAgent))return!1;return!0})()
+&&("complete"!==c.readyState?(a=e[a])?a(f,d,!1):(a=e[g])&&a("on"+f,d):d())})
+(window,document,"addEventListener","attachEvent","load");
+</script>
 
 </body>
 </html>

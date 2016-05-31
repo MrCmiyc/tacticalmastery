@@ -10,6 +10,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style1.css" rel="stylesheet">
 
+	<script type="text/javascript">
+		var pageInfo = {type:'orderform', autopopulate:true, hasorderid:true};
+	</script>
   </head>
   <body>
 
@@ -138,20 +141,20 @@
 							<h2>Step #2: Contact Information</h2>
 							<hr>
 							<fieldset class="form-group">
-								<label for="exampleInputEmail1">First Name</label>
-								<input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo $customerData['firstName']; ?>">
+								<label for="firstName">First Name</label>
+								<input type="text" class="form-control af" id=f_fn" name="firstName" placeholder="First Name" value="">
 							</fieldset>
 							<fieldset class="form-group">
 								<label for="exampleInputEmail1">Last Name</label>
-								<input type="text" class="form-control" name="lastName" placeholder="Last Name" value="<?php echo $customerData['lastName']; ?>">
+								<input type="text" class="form-control af" name="lastName" placeholder="Last Name" value="">
 							</fieldset>
 							<fieldset class="form-group">
 								<label for="exampleInputEmail1">Phone Number</label>
-								<input type="text" class="form-control" name="phone" placeholder="Phone Number" value="<?php echo $customerData['phone']; ?>">
+								<input type="text" class="form-control af" name="phone" placeholder="Phone Number" value="">
 							</fieldset>
 							<fieldset class="form-group">
 								<label for="exampleInputEmail1">Email</label>
-								<input type="email" class="form-control" name="email" placeholder="E-Mail" value="<?php echo $customerData['email']; ?>">
+								<input type="email" class="form-control af" name="email" placeholder="E-Mail" value="">
 								<small class="text-muted">We'll never share your email with anyone else.</small>
 							</fieldset>
 						</div></div>
