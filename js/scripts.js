@@ -100,18 +100,14 @@ function afGetGet(field,qsfield=false)
 
 	if(typeof(Storage) !== "undefined")
 	{
-		console.log("1");
 		returnThis = localStorage.getItem(field);
 	}
 	if (returnThis == undefined) {
-		console.log("2");
 		if(qsfield) {
-			console.log("3");
 
 			returnThis = getQueryVariable(qsfield);
 			if (returnThis) localStorage.setItem(field,sField);
 		} else {
-			console.log("4");
 			returnThis = '';
 		}
 	}
@@ -136,11 +132,10 @@ function afSetSet(field,value)
 function SubmitSubmit(this_form) {
 
 
-	console.log("sumbitted: "+$(this_form).attr('name'));
+	//console.log("sumbitted: "+$(this_form).attr('name'));
 	$( this_form).find('input.af').each(function(){
 		if ($(this).val() != "") {
 			f_name = "f_" + $( this ).attr('name');
-			console.log("set:"+f_name+"|"+$( this ).val());
 			afSetSet(f_name, $( this ).val());
 			if (f_name == 'f_fullName') {
 				nameParts = getFirstLast($( this ).val());
@@ -152,7 +147,7 @@ function SubmitSubmit(this_form) {
 		}
 	});
 
-	return false;
+	return true;
 
 }
 
@@ -162,9 +157,8 @@ $(document).ready(function ()
 		//check ap
 		if (pageInfo.autopopulate) {
 			$('input.af').each(function() {
-				console.log("moo");
 				f_name = "f_" + $( this ).attr('name');
-				console.log("populating:"+f_name+"|")
+				//console.log("populating:"+f_name+"|")
 				$( this ).val(afGetGet(f_name,$( this ).attr('name')));
 			});
 		}
@@ -191,9 +185,9 @@ $(document).ready(function ()
 
 		// trap our forms the same way. We loop the forms and trap their submits
 		$('form.af').each(function() {
-			console.log("found form1");
 			$( this ).submit(function (event) {
 				event.preventDefault();
+				this.submit();
 				return SubmitSubmit(this);
 			});
 		});
