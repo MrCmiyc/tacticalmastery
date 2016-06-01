@@ -107,6 +107,7 @@ function afGetGet(field,qsfield=false)
 
 			qParam = getQueryVariable(qsfield);
 			if (qParam) {
+				//TODO: this is buggy, no check for local storage, lets just define our own getter setter method for ls, then gracefully fall back to a cookie
 				localStorage.setItem(field,qParam);
 				returnThis = qParam;
 			}
@@ -135,7 +136,7 @@ function afSetSet(field,value)
 function SubmitSubmit(this_form) {
 
 
-	//console.log("sumbitted: "+$(this_form).attr('name'));
+	console.log("sumbitted: "+$(this_form).attr('name'));
 	$( this_form).find('input.af').each(function(){
 		if ($(this).val() != "") {
 			f_name = "f_" + $( this ).attr('name');
@@ -166,19 +167,26 @@ $(document).ready(function ()
 		if (pageInfo.hasorderid) {
 			if(localStorage.getItem("orderId") == null)
 			{
-				var sFN = (localStorage.getItem("f_firstName") == "") ? randString(10) : localStorage.getItem("f_firstName");
-				var sPN = (localStorage.getItem("f_phoneNumber") == "") ? "555-555-5555" : localStorage.getItem("f_phoneNumber");
-
-				api("https://staging.tacticalmastery.com/api/createlead/","firstName={0}&phoneNumber={1}".sprtf(sFN,sPN),function(e)
+				paramString = '';
+				$.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
+					ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
+					f_val = afGetGet(ls_name, f_name);
+					if (f_val) {
+						console.log(".");
+						if (paramString != '') paramString += '&';
+						paramString +=f_name + "=" + f_val;
+					}
+				});
+				api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
 				{
 					json = JSON.parse(e);
 
-					if(typeof json.message.orderId != 'undefined') localStorage.setItem("orderId",json.message.orderId);
+					if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
 				});
 			}
 			else
 			{
-				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(localStorage.getItem("orderId")),function(e)
+				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(afGetGet("orderId")),function(e)
 				{
 				});
 			}
@@ -186,9 +194,11 @@ $(document).ready(function ()
 
 		// trap our forms the same way. We loop the forms and trap their submits
 		$('form.af').each(function() {
+			//alert('found a form');
 			$( this ).submit(function (event) {
-				event.preventDefault();
-				this.submit();
+				//alert('form submitted');
+				if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
+				//this.submit();
 				return SubmitSubmit(this);
 			});
 		});
