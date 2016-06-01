@@ -102,15 +102,18 @@ function afGetGet(field,qsfield=false)
 	{
 		returnThis = localStorage.getItem(field);
 	}
-	if (returnThis == undefined) {
+	//if (returnThis == undefined) {
 		if(qsfield) {
 
-			returnThis = getQueryVariable(qsfield);
-			if (returnThis) localStorage.setItem(field,sField);
-		} else {
-			returnThis = '';
+			qParam = getQueryVariable(qsfield);
+			if (qParam) {
+				localStorage.setItem(field,qParam);
+				returnThis = qParam;
+			}
+		//} else {
+		//	returnThis = '';
 		}
-	}
+	//}
 	return returnThis;
 
 

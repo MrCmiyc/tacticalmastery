@@ -320,13 +320,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <?php
-                        if (isset($customerData['expirationMonth'])) {
-                            ?>
-                            <script>$("#expirationMonth").val("");</script>
-                            <?php
-                        }
-                        ?>
+
                     </fieldset>
                     <fieldset class="form-group col-lg-6">
                         <label for="exampleInputEmail1">Expiration Year</label>
@@ -343,13 +337,6 @@
                             <option value="2025">2025</option>
                             <option value="2026">2026</option>
                         </select>
-                        <?php
-                        if (isset($customerData['expirationYear'])) {
-                            ?>
-                            <script>$("#expirationYear").val("");</script>
-                            <?php
-                        }
-                        ?>
                     </fieldset>
                 </div>
             </div>
