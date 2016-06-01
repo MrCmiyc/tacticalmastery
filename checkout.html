@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/creditcardjs-v0.10.13.min.css">
     <link href="css/style1.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,8 +20,6 @@
     <script type="text/javascript">
         var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true};
     </script>
-    <script src="js/validator.min.js"></script>
-    <script src="js/scripts.js"></script>
 
 </head>
 <body>
@@ -83,7 +82,7 @@
             </h2>
         </div>
     </div>
-    <form data-toggle="validator" role="form" class="af" method="post">
+    <form data-toggle="validator" role="form" class="af" method="get">
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -291,53 +290,72 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-					<span class="text-center center-block">
-					<img src="images/credit-only.png">
-						</span>
-                    <fieldset class="form-group col-lg-8">
-                        <label for="exampleInputEmail1">Card Number</label>
-                        <input type="text" class="form-control" name="cardNumber" placeholder="Your Card Number"
-                               value="">
-                    </fieldset>
-                    <fieldset class="form-group col-lg-4">
-                        <label for="exampleInputEmail1">Card CVV</label>
-                        <input type="text" class="form-control" name="cardCVV" placeholder="CVV (On Back)"
-                               value="">
-                    </fieldset>
-                    <fieldset class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Expiration Month</label>
-                        <select name="expirationMonth" id="expirationMonth" class="form-control">
-                            <option value="01">January</option>
-                            <option value="02">February</option>
-                            <option value="03">March</option>
-                            <option value="04">April</option>
-                            <option value="05">May</option>
-                            <option value="06">June</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
+                    <div class="ccjs-card">
+                        <label class="ccjs-number">
+                            Card Number
+                            <input name="card-number" class="ccjs-number" placeholder="•••• •••• •••• ••••">
+                        </label>
 
-                    </fieldset>
-                    <fieldset class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Expiration Year</label>
-                        <select name="expirationYear" id="expirationYear" class="form-control">
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
+                        <label class="ccjs-csc">
+                            Security Code
+                            <input name="csc" class="ccjs-csc" placeholder="•••">
+                        </label>
+
+                        <button type="button" class="ccjs-csc-help">?</button>
+
+                        <label class="ccjs-name">
+                            Name on Card
+                            <input name="name" class="ccjs-name">
+                        </label>
+
+                        <fieldset class="ccjs-expiration">
+                            <legend>Expiration</legend>
+                            <select name="month" class="ccjs-month">
+                                <option selected disabled>MM</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+
+                            <select name="year" class="ccjs-year">
+                                <option selected disabled>YY</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                            </select>
+                        </fieldset>
+
+                        <select name="card-type" class="ccjs-hidden-card-type">
+                            <option value="amex" class="ccjs-amex">American Express</option>
+                            <option value="discover" class="ccjs-discover">Discover</option>
+                            <option value="mastercard" class="ccjs-mastercard">MasterCard</option>
+                            <option value="visa" class="ccjs-visa">Visa</option>
+                            <option value="diners-club" class="ccjs-diners-club">Diners Club</option>
+                            <option value="jcb" class="ccjs-jcb">JCB</option>
+                            <!--<option value="laser" class="laser">Laser</option>-->
+                            <!--<option value="maestro" class="maestro">Maestro</option>-->
+                            <!--<option value="unionpay" class="unionpay">UnionPay</option>-->
+                            <!--<option value="visa-electron" class="visa-electron">Visa Electron</option>-->
+                            <!--<option value="dankort" class="dankort">Dankort</option>-->
                         </select>
-                    </fieldset>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-success btn-lg btn-block">YES! Ship my XT808 NOW!</button>
@@ -353,6 +371,9 @@
     </div>
 </div>
 
+<script src="js/creditcardjs-v0.10.13.min.js"></script>
+<script src="js/validator.min.js"></script>
+<script src="js/scripts.js"></script>
 
 <!-- credexis -->
 <script>
@@ -363,6 +384,5 @@
         &&("complete"!==c.readyState?(a=e[a])?a(f,d,!1):(a=e[g])&&a("on"+f,d):d())})
     (window,document,"addEventListener","attachEvent","load");
 </script>
-
 </body>
 </html>

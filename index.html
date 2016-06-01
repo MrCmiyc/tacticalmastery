@@ -44,12 +44,11 @@
             });
 
             $(".fullName").change(function ()
-			{
-                consumerName = $(".fullName").val();
-                tempArray = consumerName.split(" ");
-
-                $(".firstName").val(tempArray[0]);
-                $(".lastName").val(tempArray[1]);
+			{   //console.log($(this).val());
+                consumerName = getFirstLast($(".fullName").val());
+                //tempArray = consumerName.split(" ");
+                $(".firstName").val(consumerName[0]);
+                $(".lastName").val(consumerName[1]);
             });
 
             $(".kform_submitBtn").click(function ()
