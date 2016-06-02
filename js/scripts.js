@@ -1,3 +1,16 @@
+//let's define a helper to encode fields spaces to pluses
+String.prototype.plusEncode = function() 
+{
+    return encodeURIComponent(this).replace(/\%20/gm,"+");
+}
+
+//let's define a helper to decode fields pluses to spaces
+String.prototype.plusDecode = function() 
+{
+    return decodeURIComponent(this.replace(/\+/gm,"%20"));
+}
+
+//let's define a helper to mimic printf
 String.prototype.sprtf = function()
 {
     var args, pattern;
@@ -9,6 +22,7 @@ String.prototype.sprtf = function()
     });
 };
 
+//let's define a function to help us perform AJAX requests
 function api(url,data,element)
 {
 	var jqxhr = $.ajax(
@@ -32,6 +46,7 @@ function api(url,data,element)
 	});
 }
 
+//let's define a function to help absorb query string params
 function getQueryVariable(variable) 
 {
 	var query = window.location.search.substring(1);
@@ -49,6 +64,7 @@ function getQueryVariable(variable)
 	return "";
 }	
 
+//let's define a function to help us create random strings
 function randString(x)
 {
 	var s = "";
@@ -64,19 +80,22 @@ function randString(x)
 
 function getSetSet(field,value="",qsfield=false)
 {
-	var sField = value;
+	var sValue = value;
 	
 	if(!qsfield) qsfield = field;
 				
 	if(typeof(Storage) !== "undefined")
 	{
-		sField = localStorage.getItem(field);
-		if(sField==null) sField = getQueryVariable(qsfield);
+		sValue = localStorage.getItem(field);
 		
-		localStorage.setItem(field,sField);
+		if(sValue==null) 
+		{
+			sValue = getQueryVariable(qsfield);
+			localStorage.setItem(field,sValue);
+		}
 	}
 	
-	$("input[name="+field+"]").val(sField);
+	return sValue;
 }
 
 function getFirstLast(instring) {
@@ -116,8 +135,6 @@ function afGetGet(field,qsfield=false)
 		}
 	//}
 	return returnThis;
-
-
 }
 
 function afSetSet(field,value)
@@ -129,38 +146,23 @@ function afSetSet(field,value)
 	}
 }
 
-
-/*  Page borne stuffs
-
- */
-function SubmitSubmit(this_form) {
-
-
-	console.log("sumbitted: "+$(this_form).attr('name'));
-	$( this_form).find('input.af').each(function(){
-		if ($(this).val() != "") {
-			f_name = "f_" + $( this ).attr('name');
-			afSetSet(f_name, $( this ).val());
-			if (f_name == 'f_fullName') {
-				nameParts = getFirstLast($( this ).val());
-				afSetSet('f_firstName', nameParts[0]);
-				afSetSet('f_lastName', nameParts[1]);
-			}
-		}
-	});
-
-	return true;
-
-}
-
 $(document).ready(function ()
 {
+	//let's also deal with this in the index page maybe instead
+	var sFullName = getQueryVariable("fullName");
+	
+	if(sFullName)
+	{
+		nameParts = getFirstLast(sFullName.plusDecode());
+		afSetSet('firstName', nameParts[0]);
+		afSetSet('lastName', nameParts[1]);
+	}
+	
 	if (pageInfo != undefined) {
 		//check ap
 		if (pageInfo.autopopulate) {
 			$('input.af').each(function() {
-				f_name = "f_" + $( this ).attr('name');
-				//console.log("populating:"+f_name+"|")
+				f_name = $( this ).attr('name');
 				$( this ).val(afGetGet(f_name,$( this ).attr('name')));
 			});
 		}
@@ -169,40 +171,118 @@ $(document).ready(function ()
 			{
 				paramString = '';
 				$.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
-					ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
+					ls_name = f_name; //todo: refactor localstorage name into our getsetter class
 					f_val = afGetGet(ls_name, f_name);
-					if (f_val) {
-						console.log(".");
+					if (f_val) 
+					{
+						console.log(f_val);
 						if (paramString != '') paramString += '&';
 						paramString +=f_name + "=" + f_val;
 					}
 				});
-				api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
+				
+				if(paramString != '')
 				{
-					json = JSON.parse(e);
+					api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
+					{
+						json = JSON.parse(e);
 
-					if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
-				});
+						if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
+							else console.log(e);
+					});					
+				}
 			}
 			else
 			{
 				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(afGetGet("orderId")),function(e)
 				{
+					//let's detect if it's a sale then take them to a receipt page?
+					console.log(e);
 				});
 			}
 		}
+		
+		if(typeof fieldInfo != 'undefined')
+		{
+			//let's create an easy way to deal with custom html and input fields
+			$.each(fieldInfo,function(k,v)
+			{
+				if(typeof v.attrs != 'undefined')
+				{
+					var sType = (typeof v.type == 'undefined') ? 'input' : v.type;
+					var sSelector = "{0}[name={1}]".sprtf(sType,v.name);
+					var oElement = $(sSelector);
+					
+					if(oElement) 
+					{
+						if(oElement.length > 1)
+						{
+							for(i=0;i<oElement.length-1;i++)
+							{
+								if(typeof v.default != 'undefined') 
+								{
+									if(oElement[i].value == v.default && oElement[i].type == 'radio') oElement[i].checked = true;
+								}
 
-		// trap our forms the same way. We loop the forms and trap their submits
-		$('form.af').each(function() {
-			//alert('found a form');
-			$( this ).submit(function (event) {
-				//alert('form submitted');
-				if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
-				//this.submit();
-				return SubmitSubmit(this);
+								$.each(v.attrs,function(x,y)
+								{
+									if(typeof y == 'boolean') oElement.prop(x,y);
+										else oElement.attr(x,y);
+								});
+							}
+						}
+						else
+						{
+							if(typeof v.value != 'undefined') oElement.val(v.value);
+
+							$.each(v.attrs,function(x,y)
+							{
+								if(typeof y == 'boolean') oElement.prop(x,y);
+									else oElement.attr(x,y);
+							});
+						}
+					}			
+				}
 			});
-		});
-
+		
+			$('form.af').validator().on('submit', function (e) 
+			{
+				if (e.isDefaultPrevented()) 
+				{
+					console.log("invalid form");
+				} 
+				else 
+				{
+					if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
+					
+					var params = "";
+					
+					if(typeof fieldInfo != 'undefined')
+					{
+						$.each(fieldInfo,function(k,v)
+						{
+							var sType = (typeof v.type == 'undefined') ? 'input' : v.type;
+							var sSelector = "{0}[name={1}]".sprtf(sType,v.name);
+							
+							var sValue = (sType == "localstorage") ? localStorage.getItem(v.name) : (typeof v.value != 'undefined') ? v.value : $(sSelector).val();
+							var sName = (typeof v.alias == 'undefined') ? v.name : v.alias;
+						
+							params = "{0}&{1}={2}".sprtf(params,sName,sValue);
+						});
+						
+						console.log(params);
+						console.log(creditcardjs.isValid());
+						
+						api("https://staging.tacticalmastery.com/api/order/","campaignId=3{0}".sprtf(params),function(e)
+						{
+							console.log(e);
+						});
+					}
+					
+					console.log("valid form");
+				}
+			})
+		}
 	}
 });
 
