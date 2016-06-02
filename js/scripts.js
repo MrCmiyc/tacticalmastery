@@ -115,9 +115,8 @@ function afGetGet(field,qsfield=false)
 		//	returnThis = '';
 		}
 	//}
-
-	return returnThis.replace(/[+]/g, ' ');
-
+	if (returnThis) return returnThis.replace(/[+]/g, ' ');
+	return returnThis
 
 }
 
