@@ -16,9 +16,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+    <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.0/jquery.liveaddress.min.js"></script>
     <script type="text/javascript">
-        var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true};
+        var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
     </script>
 
 </head>
@@ -214,12 +214,12 @@
                             <hr>
                             <fieldset class="form-group">
                                 <label>Street Address</label>
-                                <input type="text" class="form-control af" name="address1" placeholder="Your Address"
+                                <input type="text" class="form-control af" name="address1" placeholder="Your Address" id="f_address1"
                                        value="">
                             </fieldset>
                             <fieldset class="form-group">
                                 <label>City</label>
-                                <input type="text" class="form-control af" name="city" placeholder="Your City"
+                                <input type="text" class="form-control af" name="city" placeholder="Your City" id="f_city"
                                        value="">
                             </fieldset>
                             <fieldset class="form-group">

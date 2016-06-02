@@ -202,6 +202,20 @@ $(document).ready(function ()
 				return SubmitSubmit(this);
 			});
 		});
+		if (pageInfo.helpaddress) {
+
+			$.LiveAddress({
+				key: '10837777848707382',
+				addresses: [{
+					id: 'shipping',		// IDs are not part of the address
+					address1: '#f_address1',
+					locality: '#f_city',
+					administrative_area: '#f_state',
+					postal_code: '#f_zip'
+				}
+]
+			});
+		}
 
 	}
 });
