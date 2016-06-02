@@ -209,7 +209,7 @@ $(document).ready(function ()
 			//alert('found a form');
 			$( this ).submit(function (event) {
 				//alert('form submitted');
-				if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
+				//if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
 				//this.submit();
 				return SubmitSubmit(this);
 			});
@@ -226,6 +226,78 @@ $(document).ready(function ()
 					postal_code: '#f_zip'
 				}
 ]
+			});
+		}
+		//todo: this is temporary and only goes by page type being different. it will get messy.
+		if (pageInfo.type == 'orderform') {
+			console.log("we is validating");
+			$('#frm_order').formValidation({
+				framework: 'bootstrap',
+				icon: {
+					valid: 'glyphicon glyphicon-ok',
+					invalid: 'glyphicon glyphicon-remove',
+					validating: 'glyphicon glyphicon-refresh'
+				},
+				fields: {
+					firstName: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'First name is required'
+							},
+							stringLength: {
+								min: 3,
+								max: 30,
+								message: 'The name must be more than 3 and less than 30 characters long'
+							},
+							regexp: {
+								regexp: /^[a-zA-Z0-9_]+$/,
+								message: 'Names can only consist of alphabetical, number and underscore'
+							}
+						}
+					},
+					lastName: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Last name is required'
+							},
+							stringLength: {
+								min: 3,
+								max: 30,
+								message: 'The name must be more than 3 and less than 30 characters long'
+							},
+							regexp: {
+								regexp: /^[a-zA-Z0-9_]+$/,
+								message: 'Names can only consist of alphabetical, number and underscore'
+							}
+						}
+					},
+					emailAddress: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'The email address is required'
+							},
+							emailAddress: {
+								message: 'The input is not a valid email address'
+							}						}
+					},
+					phoneNumber: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Phone number is required'
+							},
+							stringLength: {
+								min: 9,
+								max: 20,
+								message: 'Please use a proper phone number, area code first'
+							},
+						}
+					},
+
+				}
 			});
 		}
 

@@ -10,6 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="val/dist/css/formValidation.min.css">
     <link rel="stylesheet" href="css/creditcardjs-v0.10.13.min.css">
     <link rel="stylesheet" href="skin1/css/main.css">
 
@@ -17,6 +18,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.3.1/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.0/jquery.liveaddress.min.js"></script>
+
+    <script src="val/dist/js/formValidation.min.js"></script>
+    <script src="val/dist/js/framework/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
@@ -64,7 +68,7 @@
         </section>
         <h2>You Get The Tactical Primitive Survivor Flashlight Today - Normally $116.00 Retail - For ONLY $29/ea <span>(A 75% Discount!)</span> PLUS.. We're throwing in FREE SHIPPING when you order yours today!</h2>
         <div class="row">
-            <form action="#" class="mainform form-validation">
+            <form action="#" class="mainform af" id="frm_order" >
                      <div class="col-lg-6">
                         <section class="mainbox">
                             <div class="offer">
@@ -145,25 +149,25 @@
                             <div class="field-holder">
                                 <label for="f_fname">First Name:</label>
                                 <div class="field">
-                                    <input id="f_fname" data-required="true" type="text" class="form-control af" placeholder="First Name" name="lastName" validate="min:2,max55,msg:Invalid First Name" >
+                                    <input id="f_fname" type="text" class="form-control af" placeholder="First Name" name="firstName" >
                                 </div>
                             </div>
                             <div class="field-holder">
                                 <label for="f_lname">Last Name:</label>
                                 <div class="field">
-                                    <input id="f_lname" data-required="true" type="text" class="form-control af" placeholder="Last Name" name="firstName">
+                                    <input id="f_lname" type="text" class="form-control af" placeholder="Last Name" name="lastName">
                                 </div>
                             </div>
                             <div class="field-holder">
                                 <label for="f_email">Email Address:</label>
                                 <div class="field">
-                                    <input id="f_email" data-required="true" type="email" class="form-control af" placeholder="Email Address" name="emailAddress">
+                                    <input id="f_email" type="email" class="form-control af" placeholder="Email Address" name="emailAddress">
                                 </div>
                             </div>
                             <div class="field-holder">
                                 <label for="phone">Phone Number:</label>
                                 <div class="field">
-                                    <input id="phone" data-required="true" type="tel" class="form-control af" placeholder="Phone Number" name="phoneNumber">
+                                    <input id="phone" type="tel" class="form-control af" placeholder="Phone Number" name="phoneNumber">
                                 </div>
                             </div>
                         </section>
@@ -355,7 +359,6 @@
         </footer>
     </div>
 </div>
-<script type="text/javascript" src="skin1/js/jquery.main.js" defer></script>
 <script src="js/creditcardjs-v0.10.13.min.js"></script>
 <script src="js/scripts.js"></script>
 
