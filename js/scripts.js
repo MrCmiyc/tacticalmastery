@@ -9,6 +9,18 @@ String.prototype.sprtf = function()
     });
 };
 
+function args(elem) {
+	// Return an object of element attributes
+	var newAttrs = {};
+	var rinlinejQuery = /^jQuery\d+$/;
+	$.each(elem.attributes, function(i, attr) {
+		if (attr.specified && !rinlinejQuery.test(attr.name)) {
+			newAttrs[attr.name] = attr.value;
+		}
+	});
+	return newAttrs;
+}
+
 function api(url,data,element)
 {
 	var jqxhr = $.ajax(
