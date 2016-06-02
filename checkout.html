@@ -16,11 +16,77 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.0/jquery.liveaddress.min.js"></script>
-    <script type="text/javascript">
-        var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
-    </script>
 
+	<script type="text/javascript">
+		var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true,helpaddress:true};
+		var fieldInfo = [];
+
+		//let's define exactly what we need to communicate with our crm
+		fieldInfo.push(
+			{
+				name: 'productId',
+				attrs: {required: true},
+				alias: 'product1_id',
+				default: "5"
+			},
+			{
+				name: 'firstName',
+				attrs: {placeholder: 'First Name','data-error': 'Your first name is required',required: true},
+			},
+			{
+				name: 'lastName',
+				attrs: {placeholder: 'Last Name','data-error': 'Your last name is required',required: true}
+			},
+			{
+				name: 'emailAddress',
+				attrs: {placeholder: 'Email Address','data-error': 'Email Address is required',required: true}
+			},
+			{
+				name: 'phoneNumber',
+				attrs: {placeholder: 'Phone Number',pattern: "^\\d{3}-\\d{3}-\\d{4}$", 'data-error': 'Please use the format XXX-XXX-XXXX',required: true}
+			},
+			{
+				name: 'address1',
+				attrs: {placeholder: 'Your Address','data-error': 'Your address is required',required: true}
+			},
+			{
+				name: 'city',
+				attrs: {placeholder: 'Your City','data-error': 'Your city is required',required: true}
+			},
+			{
+				name: 'postalCode',
+				attrs: {placeholder: 'Your ZIP Code',pattern: "^\\d{5}$",'data-error': 'Please enter a valid ZIP code',required: true}
+			},
+			{
+				name: 'state',
+				type: 'select'
+			},
+			{
+				name: 'orderId',
+				type: "localstorage"
+			},
+			{
+				name: 'card-number',
+				alias: 'cardNumber'
+			},
+			{
+				name: 'csc',
+				alias: 'cardSecurityCode'
+			},
+			{
+				name: 'month',
+				type: 'select'
+			},
+			{
+				name:'year',
+				type: 'select'
+			},
+			{
+				name:'product1_qty',
+				value: '1'
+			}
+		);
+	</script>
 </head>
 <body>
 <!-- Google Tag Manager -->
@@ -189,7 +255,7 @@
                             </fieldset>
                             <fieldset class="form-group">
                                 <label for="f_email">Email</label>
-                                <input type="email" class="form-control af" name="emailAddress" placeholder="E-Mail" id="f_email"  data-error="Please enter a valid email">
+                                <input type="email" class="form-control af" name="emailAddress" placeholder="E-Mail" id="f_email">
                                 <small class="text-muted">We'll never share your email with anyone else.</small>
                                 <div class="help-block with-errors"></div>
                             </fieldset>
