@@ -31,7 +31,7 @@ function api(url,data,element)
 		contentType: "application/json",
 		success: function(e)
 		{
-			console.log('api success');
+			//console.log('api success');
 			if(typeof e.result != "undefined")
 			{
 			}
@@ -127,8 +127,8 @@ function afGetGet(field,qsfield=false)
 		//	returnThis = '';
 		}
 	//}
-	return returnThis;
-
+	if (returnThis) return returnThis.replace(/[+]/g, ' ');
+	return returnThis
 
 }
 
@@ -184,7 +184,7 @@ $(document).ready(function ()
 					ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
 					f_val = afGetGet(ls_name, f_name);
 					if (f_val) {
-						console.log(".");
+						//console.log(".");
 						if (paramString != '') paramString += '&';
 						paramString +=f_name + "=" + f_val;
 					}
