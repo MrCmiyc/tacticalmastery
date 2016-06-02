@@ -146,6 +146,35 @@ function afSetSet(field,value)
 	}
 }
 
+//let's define a function to help push leads to our crm
+function crmCreateLead()
+{
+	paramString = '';
+
+	//let's create an easy way to deal with custom html and input fields
+	$.each(fieldInfo,function(k,v)
+	{
+		var sValue = afGetGet(v.name);
+		
+		if(sValue)
+		{
+			if (paramString != '') paramString += '&';
+			paramString += v.name + "=" + sValue;
+		}
+	});
+		
+	if(paramString != '')
+	{
+		api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
+		{
+			json = JSON.parse(e);
+
+			if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
+				else console.log(e);
+		});					
+	}	
+}
+
 $(document).ready(function ()
 {
 	//let's also deal with this in the index page maybe instead
@@ -166,34 +195,14 @@ $(document).ready(function ()
 				$( this ).val(afGetGet(f_name,$( this ).attr('name')));
 			});
 		}
-		if (pageInfo.hasorderid) {
+		if (pageInfo.hasorderid) 
+		{
 			if(localStorage.getItem("orderId") == null)
 			{
-				paramString = '';
-				$.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
-					ls_name = f_name; //todo: refactor localstorage name into our getsetter class
-					f_val = afGetGet(ls_name, f_name);
-					if (f_val) 
-					{
-						console.log(f_val);
-						if (paramString != '') paramString += '&';
-						paramString +=f_name + "=" + f_val;
-					}
-				});
-				
-				if(paramString != '')
-				{
-					api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
-					{
-						json = JSON.parse(e);
-
-						if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
-							else console.log(e);
-					});					
-				}
+				crmCreateLead();
 			}
 			else
-			{
+			{				
 				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(afGetGet("orderId")),function(e)
 				{
 					//let's detect if it's a sale then take them to a receipt page?
