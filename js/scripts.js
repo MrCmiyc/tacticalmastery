@@ -146,10 +146,49 @@ function afSetSet(field,value)
 
  */
 function SubmitSubmit(this_form) {
+//"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
 
-
+	if (pageInfo.type == "orderform") {
+		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
+	}
 	console.log("sumbitted: "+$(this_form).attr('name'));
-	$( this_form).find('input.af').each(function(){
+	paramString = 'campaignId=3&product1_qty=1';
+
+	$( this_form ).find('input').each(function() {
+			if ($.inArray($(this).attr('name'),apiFields) != -1) {
+				uVal = $(this).val()
+				if (uVal) {
+					if (paramString != '') paramString += '&';
+					paramString +=$(this).attr('name') + "=" + uVal;
+				}
+			}
+			console.log($(this).attr('name') +"="+ $(this).val());
+	});
+
+	$( this_form ).find('select').each(function() {
+		if ($.inArray($(this).attr('name'),apiFields) != -1) {
+			uVal = $(this).val()
+			if (uVal) {
+				if (paramString != '') paramString += '&';
+				paramString +=$(this).attr('name') + "=" + uVal;
+			}
+		}
+		console.log($(this).attr('name') +"="+ $(this).val());
+	});
+	if (window.orderID) paramString += "&orderId=" + window.orderID;
+
+
+	console.log(paramString);
+	//just do the order right meow and get a response
+	api("https://staging.tacticalmastery.com/api/order/",paramString,function(e)
+	{
+		json = JSON.parse(e);
+
+		console.log(json);
+	});
+
+
+	$( this_form ).find('input.af').each(function(){
 		if ($(this).val() != "") {
 			f_name = "f_" + $( this ).attr('name');
 			afSetSet(f_name, $( this ).val());
@@ -161,8 +200,7 @@ function SubmitSubmit(this_form) {
 		}
 	});
 
-	return true;
-
+	return false;
 }
 
 $(document).ready(function ()
@@ -177,6 +215,7 @@ $(document).ready(function ()
 			});
 		}
 		if (pageInfo.hasorderid) {
+			window.orderID = false;
 			if(localStorage.getItem("orderId") == null)
 			{
 				paramString = '';
@@ -193,12 +232,18 @@ $(document).ready(function ()
 				{
 					json = JSON.parse(e);
 
-					if(typeof json.message.orderId != 'undefined') afSetSet("orderId",json.message.orderId);
+					if(typeof json.message.orderId != 'undefined') {
+						window.orderID = json.message.orderId;
+
+						afSetSet("orderId", orderID);
+					}
 				});
 			}
 			else
 			{
-				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(afGetGet("orderId")),function(e)
+				window.orderID = afGetGet("orderId");
+
+				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(orderID),function(e)
 				{
 				});
 			}
@@ -209,7 +254,7 @@ $(document).ready(function ()
 			//alert('found a form');
 			$( this ).submit(function (event) {
 				//alert('form submitted');
-				//if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
+				if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
 				//this.submit();
 				return SubmitSubmit(this);
 			});
@@ -303,4 +348,6 @@ $(document).ready(function ()
 
 	}
 });
+
+
 

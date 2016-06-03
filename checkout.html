@@ -68,7 +68,7 @@
         </section>
         <h2>You Get The Tactical Primitive Survivor Flashlight Today - Normally $116.00 Retail - For ONLY $29/ea <span>(A 75% Discount!)</span> PLUS.. We're throwing in FREE SHIPPING when you order yours today!</h2>
         <div class="row">
-            <form action="#" class="mainform af" id="frm_order" >
+            <form action="#" class="mainform af" id="frm_order" name="orderform">
                      <div class="col-lg-6">
                         <section class="mainbox">
                             <div class="offer">
@@ -88,56 +88,56 @@
                             <ul class="list-unstyled radios">
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio" name="price" type="radio" checked>
+                                        <input id="radio" name="product1_id" type="radio" checked value="7">
                                         <label for="radio">Buy 3 Primitive Survivor Flashlights, GET 2 FREE! ($145 Total)</label>
                                     </div>
                                     <span class="price">$29/ea</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio2" name="price" type="radio">
+                                        <input id="radio2" name="product1_id" type="radio" value="5">
                                         <label for="radio2">Buy 2 Primitive Survivor Flashlights, GET 1 FREE! ($117 Total)</label>
                                     </div>
                                     <span class="price">$29/ea</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio3" name="price" type="radio">
+                                        <input id="radio3" name="product1_id" type="radio" value="3">
                                         <label for="radio3">1 Primitive Survivor Flashlight ($56.00 per unit)</label>
                                     </div>
                                     <span class="price">$56</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio4" name="price" type="radio">
+                                        <input id="radio4" name="product1_id" type="radio" value="4">
                                         <label for="radio4">2 Primitive Survivor Flashlights ($48.50 Per Unit)</label>
                                     </div>
                                     <span class="price">$97</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio5" name="price" type="radio">
+                                        <input id="radio5" name="product1_id" type="radio" value="6">
                                         <label for="radio5">4 Primitive Survivor Flashlights ($42.25 Per Unit)</label>
                                     </div>
                                     <span class="price">$169</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio6" name="price" type="radio">
+                                        <input id="radio6" name="product1_id" type="radio" value="8">
                                         <label for="radio6">10 Primitive Survivor Flashlights ($35.00 Per Unit)</label>
                                     </div>
                                     <span class="price">$350</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio7" name="price" type="radio">
+                                        <input id="radio7" name="product1_id" type="radio" value="9">
                                         <label for="radio7">15 Primitive Survivor Flashlights ($35.00 Per Unit)</label>
                                     </div>
                                     <span class="price">$525</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
-                                        <input id="radio8" name="price" type="radio">
+                                        <input id="radio8" name="product1_id" type="radio" value="10">
                                         <label for="radio8">20 Primitive Survivor Flashlights ($35.00 Per Unit)</label>
                                     </div>
                                     <span class="price">$700</span>
@@ -199,7 +199,7 @@
                             <div class="field-holder">
                                 <label for="f_state">State / Province:</label>
                                 <div class="field select">
-                                    <select id="f_state" data-required="true" class="form-control">
+                                    <select id="f_state" data-required="true" class="form-control" name="state">
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AZ">Arizona</option>
@@ -265,12 +265,12 @@
                             <div class="ccjs-card">
                                 <label class="ccjs-number">
                                     Card Number
-                                    <input name="card-number" class="ccjs-number" placeholder="•••• •••• •••• ••••">
+                                    <input name="cardNumber" class="ccjs-number" placeholder="•••• •••• •••• ••••">
                                 </label>
 
                                 <label class="ccjs-csc">
                                     Security Code
-                                    <input name="csc" class="ccjs-csc" placeholder="•••">
+                                    <input name="cardSecurityCode" class="ccjs-csc" placeholder="•••">
                                 </label>
 
                                 <button type="button" class="ccjs-csc-help">?</button>
