@@ -169,7 +169,7 @@ function SubmitSubmit(this_form) {
 					}
 				}
 			}
-			console.log($(this).attr('name') +"="+ $(this).val());
+			//console.log($(this).attr('name') +"="+ $(this).val());
 	});
 
 	$( this_form ).find('select').each(function() {
@@ -180,7 +180,7 @@ function SubmitSubmit(this_form) {
 				paramString +=$(this).attr('name') + "=" + uVal;
 			}
 		}
-		console.log($(this).attr('name') +"="+ $(this).val());
+		//console.log($(this).attr('name') +"="+ $(this).val());
 	});
 	if (window.orderID) paramString += "&orderId=" + window.orderID;
 
@@ -350,7 +350,9 @@ $(document).ready(function ()
 					},
 
 				}
-			});
+			}).on('success.form.fv', function(e) {
+				// Prevent form submission
+				e.preventDefault();});
 		}
 
 	}
