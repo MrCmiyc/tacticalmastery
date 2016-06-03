@@ -192,6 +192,13 @@ function SubmitSubmit(this_form) {
 		json = JSON.parse(e);
 
 		console.log(json);
+		if (json.result == "SUCCESS") {
+			document.location = '//tacticalmastery.com/success.html';
+		} else if (json.result == "ERROR") {
+			alert('FORM ERROR: '+ json.message )
+		} else {
+			alert('undefined error. please try again');
+		}
 	});
 
 
