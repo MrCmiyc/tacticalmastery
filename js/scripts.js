@@ -23,6 +23,7 @@ function args(elem) {
 
 function api(url,data,element)
 {
+	if (url == 'self') url = 'staging.tacticalmastery.com';
 	var jqxhr = $.ajax(
 	{
 		type: 'GET',
@@ -180,7 +181,7 @@ function SubmitSubmit(this_form) {
 
 	console.log(paramString);
 	//just do the order right meow and get a response
-	api("https://tacticalmastery.com/api/order/",paramString,function(e)
+	api("https://staging.tacticalmastery.com/api/order/",paramString,function(e)
 	{
 		json = JSON.parse(e);
 
@@ -228,7 +229,7 @@ $(document).ready(function ()
 						paramString +=f_name + "=" + f_val;
 					}
 				});
-				api("https://tacticalmastery.com/api/createlead/",paramString,function(e)
+				api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
 				{
 					json = JSON.parse(e);
 
@@ -242,8 +243,8 @@ $(document).ready(function ()
 			else
 			{
 				window.orderID = afGetGet("orderId");
-
-				api("https://tacticalmastery.com/api/getlead/","orderId={0}".sprtf(orderID),function(e)
+				//todo: just send /getlead (endpoints and have the function do the uri
+				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(orderID),function(e)
 				{
 				});
 			}
