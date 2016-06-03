@@ -180,7 +180,7 @@ function SubmitSubmit(this_form) {
 
 	console.log(paramString);
 	//just do the order right meow and get a response
-	api("https://staging.tacticalmastery.com/api/order/",paramString,function(e)
+	api("https://tacticalmastery.com/api/order/",paramString,function(e)
 	{
 		json = JSON.parse(e);
 
@@ -228,7 +228,7 @@ $(document).ready(function ()
 						paramString +=f_name + "=" + f_val;
 					}
 				});
-				api("https://staging.tacticalmastery.com/api/createlead/",paramString,function(e)
+				api("https://tacticalmastery.com/api/createlead/",paramString,function(e)
 				{
 					json = JSON.parse(e);
 
@@ -243,7 +243,7 @@ $(document).ready(function ()
 			{
 				window.orderID = afGetGet("orderId");
 
-				api("https://staging.tacticalmastery.com/api/getlead/","orderId={0}".sprtf(orderID),function(e)
+				api("https://tacticalmastery.com/api/getlead/","orderId={0}".sprtf(orderID),function(e)
 				{
 				});
 			}
