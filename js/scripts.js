@@ -159,8 +159,14 @@ function SubmitSubmit(this_form) {
 			if ($.inArray($(this).attr('name'),apiFields) != -1) {
 				uVal = $(this).val()
 				if (uVal) {
-					if (paramString != '') paramString += '&';
-					paramString +=$(this).attr('name') + "=" + uVal;
+					if ($(this).is(':radio')) {
+						if ($(this).is(':checked')){
+						if (paramString != '') paramString += '&';
+						paramString += $(this).attr('name') + "=" + uVal;}
+					} else {
+						if (paramString != '') paramString += '&';
+						paramString += $(this).attr('name') + "=" + uVal;
+					}
 				}
 			}
 			console.log($(this).attr('name') +"="+ $(this).val());
