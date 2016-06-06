@@ -234,7 +234,33 @@ function populateThanksPage(orderInfos) {
 $(document).ready(function ()
 {
 	if (pageInfo != undefined) {
-		//check ap
+
+		//Terms and privacy popups
+		$('#terms').click(function(e)
+		{
+			bModal = false;
+
+			$("#termsModal").load('terms.html');
+			$("#popupTerms").modal();
+
+		});
+
+		$('#privacy').click(function(e)
+		{
+			bModal = false;
+
+			$("#termsModal").load('privacy.html');
+			$("#popupTerms").modal();
+
+		});
+
+		$('#popupTerms').on('hidden.bs.modal', function (e)
+		{
+			bModal = true;
+		});
+
+
+		//check autopopulate
 		if (pageInfo.autopopulate) {
 			$('input.af').each(function() {
 				f_name = "f_" + $( this ).attr('name');

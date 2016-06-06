@@ -75,34 +75,6 @@
                 }
             });
 
-			$('#terms').click(function(e)
-			{
-				bModal = false;
-
-				api("terms.html",null,function(e)
-				{
-					$("#termsModal").html(e);
-				});
-
-				$("#popupTerms").modal();
-			});
-
-			$('#privacy').click(function(e)
-			{
-				bModal = false;
-
-				api("privacy.html",null,function(e)
-				{
-					$("#termsModal").html(e);
-				});
-
-				$("#popupTerms").modal();
-			});
-
-			$('#popupTerms').on('hidden.bs.modal', function (e)
-			{
-				bModal = true;
-			});
         });
 
     </script>
