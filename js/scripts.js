@@ -220,7 +220,7 @@ function SubmitSubmit(this_form) {
 function populateThanksPage(orderInfos) {
 
 	if ($.type( orderInfos ) === "array") orderInfos = orderInfos[0];
-	console.log(orderInfos);
+	//console.log(orderInfos);
 	$('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price'] );
 	$('#orderNumber').html(orderInfos['orderId'] );
 	$('#totItems').html("Order Summary");
@@ -243,8 +243,8 @@ $(document).ready(function ()
 			});
 		}
 		if (pageInfo.hasorderid) {
-			window.orderID = false;
-			if(localStorage.getItem("orderId") == null)
+			window.myOrderID = afGetGet("orderId","orderId");
+			if(myOrderID == null)
 			{
 				paramString = '';
 				$.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
@@ -269,9 +269,9 @@ $(document).ready(function ()
 			}
 			else
 			{
-				window.orderID = afGetGet("orderId","orderId");
+				//window.orderID = afGetGet("orderId","orderId");
 				//todo: just send /getlead (endpoints and have the function do the uri
-				api("getlead","orderId={0}".sprtf(orderID),function(e)
+				api("getlead","orderId={0}".sprtf(myOrderID),function(e)
 				{
 					json = JSON.parse(e);
 					if (pageInfo.type == 'thankyou') {
