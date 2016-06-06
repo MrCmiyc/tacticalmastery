@@ -152,7 +152,7 @@ function SubmitSubmit(this_form) {
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
 	}
-	console.log("sumbitted: "+$(this_form).attr('name'));
+	//console.log("sumbitted: "+$(this_form).attr('name'));
 	paramString = 'campaignId=3&product1_qty=1';
 
 	$( this_form ).find('input').each(function() {
@@ -182,10 +182,10 @@ function SubmitSubmit(this_form) {
 		}
 		//console.log($(this).attr('name') +"="+ $(this).val());
 	});
-	if (window.orderID) paramString += "&orderId=" + window.orderID;
+	if (window.myOrderID) paramString += "&orderId=" + window.myOrderID;
 
 
-	console.log(paramString);
+	//console.log(paramString);
 	//just do the order right meow and get a response
 	api("order",paramString,function(e)
 	{
@@ -193,7 +193,7 @@ function SubmitSubmit(this_form) {
 
 		//console.log(json);
 		if (json.result == "SUCCESS") {
-			document.location = '//tacticalmastery.com/success.html?orderId=" + window.orderID';
+			document.location = '//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 		} else if (json.result == "ERROR") {
 			alert('FORM ERROR: '+ json.message )
 		} else {
@@ -287,9 +287,9 @@ $(document).ready(function ()
 					json = JSON.parse(e);
 
 					if(typeof json.message.orderId != 'undefined') {
-						window.orderID = json.message.orderId;
+						window.myOrderID = json.message.orderId;
 
-						afSetSet("orderId", orderID);
+						afSetSet("orderId", myOrderID);
 					}
 				});
 			}
