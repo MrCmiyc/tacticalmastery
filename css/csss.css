@@ -1,0 +1,10 @@
+/* general stuff */
+
+.modal-dialog {
+    border:3px #000 solid;
+    border-radius:10px;
+}
+
+
+/* thanks page */
+.thanksfield { font-weight: bolder}
