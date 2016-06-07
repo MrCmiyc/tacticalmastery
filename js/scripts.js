@@ -217,6 +217,43 @@ function SubmitSubmit(this_form) {
 	return false;
 }
 
+function doUpsellYes(upsellID){
+	if (myOrderID) {
+		var paramString = 'orderId=' + myOrderID;
+		var productId;
+		var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+		switch (upsellID) {
+			case 'hdlmp':
+				productId = '31';
+				paramString += '&productQty=' + $('#selQty').val();
+				nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+		}
+		if (productId) {
+			paramString += '&productId=' + productId;
+			api("upsell",paramString,function(e)
+			{
+				json = JSON.parse(e);
+
+				//console.log(json);
+				if (json.result == "SUCCESS") {
+					document.location = nextPage;
+				} else if (json.result == "ERROR") {
+					alert('ERROR: '+ json.message )
+				} else {
+					alert('undefined error. please try again');
+				}
+			});
+		}
+	} else {
+		alert("There was an error finding your order, please refresh the page and try again.")
+	}
+}
+function doUpsellNo(){
+	var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+	document.location = nextPage;
+
+}
+
 function populateThanksPage(orderInfos) {
 
 	if ($.type( orderInfos ) === "array") orderInfos = orderInfos[0];
@@ -409,6 +446,18 @@ $(document).ready(function ()
 			}).on('success.form.fv', function(e) {
 				// Prevent form submission
 				e.preventDefault();});
+		}
+		if (pageInfo.type == 'upsell') {
+
+			$('#upsellYes').click(function(e)
+			{
+				doUpsellYes(pageInfo.upsellval)
+			});
+			$('#upsellNo').click(function(e)
+			{
+				doUpsellNo(pageInfo.upsellval)
+			});
+
 		}
 
 	}
