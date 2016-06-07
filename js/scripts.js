@@ -239,19 +239,17 @@ $(document).ready(function ()
 		$('#terms').click(function(e)
 		{
 			bModal = false;
-
-			$("#termsModal").load('terms.html');
-			$("#popupTerms").modal();
-
+			$("#popModalHead").html('Terms and Conditions');
+			$("#popModalBody").load('terms.html');
+			$("#popModal").modal();
 		});
 
 		$('#privacy').click(function(e)
 		{
 			bModal = false;
-
-			$("#termsModal").load('privacy.html');
-			$("#popupTerms").modal();
-
+			$("#popModalHead").html('Privacy Policy');
+			$("#popModalBody").load('privacy.html');
+			$("#popModal").modal();
 		});
 
 		$('#popupTerms').on('hidden.bs.modal', function (e)
