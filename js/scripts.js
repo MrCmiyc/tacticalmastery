@@ -217,16 +217,22 @@ function SubmitSubmit(this_form) {
 	return false;
 }
 
-function doUpsellYes(upsellID){
-	if (myOrderID) {
-		var paramString = 'orderId=' + myOrderID;
-		var productId;
+function doUpsellYes(upsellID,productId){
+	if (window.myOrderID) {
+		var paramString = 'orderId=' + window.myOrderID;
 		var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 		switch (upsellID) {
 			case 'hdlmp':
-				productId = '31';
+				productId = productId || '31';
 				paramString += '&productQty=' + $('#selQty').val();
-				nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+				nextPage='//tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+				break;
+			case 'recharge':
+				paramString += '&productQty=1';
+				productId = productId || '12';
+				//no nextpage, since this is the last in the chain
+				break;
+			default:
 		}
 		if (productId) {
 			paramString += '&productId=' + productId;
@@ -248,10 +254,15 @@ function doUpsellYes(upsellID){
 		alert("There was an error finding your order, please refresh the page and try again.")
 	}
 }
-function doUpsellNo(){
+function doUpsellNo(upsellID){
 	var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+	switch (upsellID) {
+		case 'hdlmp':
+			nextPage='//tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+			break;
+		default:
+	}
 	document.location = nextPage;
-
 }
 
 function populateThanksPage(orderInfos) {
