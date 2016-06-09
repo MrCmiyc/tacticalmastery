@@ -178,7 +178,7 @@
                             <div class="field-holder">
                                 <label for="f_address1">Street Address:</label>
                                 <div class="field">
-                                    <input id="f_address1" data-required="true" type="text" class="form-control af" name="address1" placeholder="Street Address">
+                                    <input id="f_address1" type="text" class="form-control af" name="address1" placeholder="Street Address">
                                 </div>
                             </div>
                             <div class="field-holder">
@@ -190,13 +190,13 @@
                             <div class="field-holder">
                                 <label for="f_city">City:</label>
                                 <div class="field">
-                                    <input id="f_city" data-required="true" type="text" class="form-control af" name="city" placeholder="Your City">
+                                    <input id="f_city" type="text" class="form-control af" name="city" placeholder="Your City">
                                 </div>
                             </div>
                             <div class="field-holder">
                                 <label for="f_state">State:</label>
                                 <div class="field select">
-                                    <select id="f_state" data-required="true" class="form-control" name="state">
+                                    <select id="f_state" class="form-control" name="state">
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AZ">Arizona</option>
@@ -254,7 +254,7 @@
                             <div class="field-holder">
                                 <label for="f_zip">Zip:</label>
                                 <div class="field">
-                                    <input id="f_zip" data-required="true" type="text" class="form-control af" placeholder="Zip Code" name="postalCode">
+                                    <input id="f_zip" type="text" class="form-control af" placeholder="Zip Code" name="postalCode">
                                 </div>
                             </div>
                         </section>
@@ -350,6 +350,21 @@
                 <li><a href="#" id="terms">Terms & Conditions</a></li>
             </ul>
         </footer>
+    </div>
+</div>
+
+<div id="popErrors" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                There were errors.
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="formerrors"></div>
+            </div>
+        </div>
+
     </div>
 </div>
 

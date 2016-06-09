@@ -362,15 +362,15 @@ $(document).ready(function ()
 		}
 
 		// trap our forms the same way. We loop the forms and trap their submits
-		$('form.af').each(function() {
-			//alert('found a form');
-			$( this ).submit(function (event) {
-				//alert('form submitted');
-				if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
-				//this.submit();
-				return SubmitSubmit(this);
-			});
-		});
+		//$('form.af').each(function() {
+		//	//alert('found a form');
+		//	$( this ).submit(function (event) {
+		//		//alert('form submitted');
+		//		if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
+		//		//this.submit();
+		//		return SubmitSubmit(this);
+		//	});
+		//});
 		//ditching this for now
 		// if (pageInfo.helpaddress) {
         //
@@ -399,6 +399,9 @@ $(document).ready(function ()
 					valid: 'glyphicon glyphicon-ok',
 					invalid: 'glyphicon glyphicon-remove',
 					validating: 'glyphicon glyphicon-refresh'
+				},
+				err: {
+					container: '#formerrors'
 				},
 				fields: {
 					firstName: {
@@ -508,9 +511,19 @@ $(document).ready(function ()
 					}
 
 				}
+			}).on('status.field.fv', function(e, data) {
+				data.fv.disableSubmitButtons(false);
+			}).on('success.field.fv', function(e, data) {
+				if (data.fv.getSubmitButton()) {
+					data.fv.disableSubmitButtons(false);
+				}
+			}).on('err.form.fv', function(e) {
+				$("#popErrors").modal();
+				e.preventDefault();
 			}).on('success.form.fv', function(e) {
-				// Prevent form submission
-				e.preventDefault();});
+				e.preventDefault();
+				SubmitSubmit(e);
+			});
 		}
 		if (pageInfo.type == 'upsell') {
 
