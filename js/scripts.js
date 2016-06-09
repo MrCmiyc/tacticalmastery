@@ -371,24 +371,25 @@ $(document).ready(function ()
 				return SubmitSubmit(this);
 			});
 		});
-		if (pageInfo.helpaddress) {
-
-			$.LiveAddress({
-				key: '10837777848707382',
-				waitForStreet: true,
-				geolocate: true,
-				geolocatePrecision: "city",
-				submitSelector: "#checkoutSubmit",
-				addresses: [{
-					id: 'shipping',		// IDs are not part of the address
-					address1: '#f_address1',
-					address2: '#f_address2',
-					locality: '#f_city',
-					administrative_area: '#f_state',
-					postal_code: '#f_zip'
-				}]
-			});
-		}
+		//ditching this for now
+		// if (pageInfo.helpaddress) {
+        //
+		//	$.LiveAddress({
+		//		key: '10837777848707382',
+		//		waitForStreet: true,
+		//		geolocate: true,
+		//		geolocatePrecision: "city",
+		//		submitSelector: "#checkoutSubmit",
+		//		addresses: [{
+		//			id: 'shipping',		// IDs are not part of the address
+		//			address1: '#f_address1',
+		//			address2: '#f_address2',
+		//			locality: '#f_city',
+		//			administrative_area: '#f_state',
+		//			postal_code: '#f_zip'
+		//		}]
+		//	});
+		//}
 		//todo: this is temporary and only goes by page type being different. it will get messy.
 		if (pageInfo.type == 'orderform') {
 			//console.log("we is validating");
@@ -454,9 +455,57 @@ $(document).ready(function ()
 								min: 9,
 								max: 20,
 								message: 'Please use a proper phone number, area code first'
-							},
+							}
 						}
 					},
+					address1: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a street address'
+							},
+							stringLength: {
+								min: 2,
+								max: 60,
+								message: 'please enter a full street adress'
+							}
+						}
+					},
+					state: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a city name'
+							}
+						}
+					},
+
+					city: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a city name'
+							},
+							stringLength: {
+								min: 2,
+								max: 50,
+								message: 'Please enter a proper length city'
+							}
+						}
+					},
+					postalCode: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a zip code'
+							},
+							stringLength: {
+								min: 5,
+								max: 10,
+								message: 'please enter a 5 digit or 9 digit zip code'
+							}
+						}
+					}
 
 				}
 			}).on('success.form.fv', function(e) {
