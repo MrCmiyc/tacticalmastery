@@ -14,15 +14,12 @@
     <link rel="stylesheet" href="css/creditcardjs-v0.10.13.min.css">
     <link type="text/css" href="css/csss.css" rel="stylesheet">
     <link rel="stylesheet" href="skin1/css/main.css">
-
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.3.1/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.0/jquery.liveaddress.min.js"></script>
-
     <script src="val/dist/js/formValidation.min.js"></script>
     <script src="val/dist/js/framework/bootstrap.min.js"></script>
-
     <script type="text/javascript">
         var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
     </script>
@@ -86,18 +83,18 @@
                                 <strong class="title">Item</strong>
                                 <span class="price">Price</span>
                             </div>
-                            <ul class="list-unstyled radios">
+                            <ul class="list-unstyled radios" style="padding-left:3px;">
                                 <li>
                                     <div class="radio-holder">
                                         <input id="radio" name="product1_id" type="radio" checked value="7">
-                                        <label for="radio">Buy 3 Primitive Survivor Flashlights, GET 2 FREE! ($145 Total)</label>
+                                        <label for="radio" class="bld">Buy 3 Primitive Survivor Flashlights, GET 2 FREE! ($145 Total)</label>
                                     </div>
                                     <span class="price">$29/ea</span>
                                 </li>
                                 <li>
                                     <div class="radio-holder">
                                         <input id="radio2" name="product1_id" type="radio" value="5">
-                                        <label for="radio2">Buy 2 Primitive Survivor Flashlights, GET 1 FREE! ($117 Total)</label>
+                                        <label for="radio2" class="bld">Buy 2 Primitive Survivor Flashlights, GET 1 FREE! ($117 Total)</label>
                                     </div>
                                     <span class="price">$29/ea</span>
                                 </li>
@@ -189,6 +186,12 @@
                                 <label for="f_address1">Street Address:</label>
                                 <div class="field">
                                     <input id="f_address1" data-required="true" type="text" class="form-control af" name="address1" placeholder="Street Address">
+                                </div>
+                            </div>
+                            <div class="field-holder">
+                                <label for="f_address2">Street Address 2:</label>
+                                <div class="field">
+                                    <input id="f_address2" type="text" class="form-control af" name="address2" placeholder="Address 2">
                                 </div>
                             </div>
                             <div class="field-holder">
@@ -330,7 +333,7 @@
 
 
                             </div>
-                        <input type="submit" value="YES! Ship Me My Primitive Survivor Flashlight" class="btn btn-primary">
+                        <input type="submit" id="checkoutSubmit" value="YES! Ship Me My Primitive Survivor Flashlight" class="btn btn-primary">
                         <ul class="securelist list-inline">
                             <li>
                                 <img src="skin1/images/img3.jpg" alt="image">

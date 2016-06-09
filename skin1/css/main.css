@@ -36,7 +36,7 @@ body {
 }
 #header {
 	overflow: hidden;
-	padding: 20px 0 20px;
+	padding: 5px 0 5px;
 }
 
 @media (min-width: 992px) {
@@ -319,13 +319,20 @@ h2 span {
 	right: 0;
 	top: 0;
 }
+
+.radios li label{
+	position: relative;
+	padding: 0 52px 14px 21px;
+}
+
 .radios li:nth-child(1), .radios li:nth-child(2) {
 	font-weight: 700;
 }
-.radios li input {
-	position: absolute;
-	left: 0;
-	top: 1px;
+.radio-holder label {
+	font-weight:normal;
+}
+.radio-holder label.bld {
+	font-weight: 700;
 }
 .field {
 	overflow: hidden;

@@ -148,7 +148,7 @@ function afSetSet(field,value)
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
-
+	var apiFields = [];
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
 	}
@@ -375,9 +375,14 @@ $(document).ready(function ()
 
 			$.LiveAddress({
 				key: '10837777848707382',
+				waitForStreet: true,
+				geolocate: true,
+				geolocatePrecision: "city",
+				submitSelector: "#checkoutSubmit",
 				addresses: [{
 					id: 'shipping',		// IDs are not part of the address
 					address1: '#f_address1',
+					address2: '#f_address2',
 					locality: '#f_city',
 					administrative_area: '#f_state',
 					postal_code: '#f_zip'
