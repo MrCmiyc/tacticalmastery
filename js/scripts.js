@@ -395,11 +395,6 @@ $(document).ready(function ()
 			//console.log("we is validating");
 			$('#frm_order').formValidation({
 				framework: 'bootstrap',
-				icon: {
-					valid: 'glyphicon glyphicon-ok',
-					invalid: 'glyphicon glyphicon-remove',
-					validating: 'glyphicon glyphicon-refresh'
-				},
 				err: {
 					container: '#formerrors'
 				},
