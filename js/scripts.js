@@ -75,12 +75,14 @@ function randString(x)
 	return s;
 }
 
-function getSetSet(field,value="",qsfield=false)
+function getSetSet(field,value,qsfield)
 {
+
+	value = value || '';
+	qsfield = qsfield || field;
+
 	var sField = value;
-	
-	if(!qsfield) qsfield = field;
-				
+
 	if(typeof(Storage) !== "undefined")
 	{
 		sField = localStorage.getItem(field);
@@ -107,8 +109,9 @@ function getFirstLast(instring) {
 }
 
 
-function afGetGet(field,qsfield=false)
+function afGetGet(field,qsfield)
 {
+	qsfield = qsfield || false;
 	var returnThis;
 
 	if(typeof(Storage) !== "undefined")
@@ -144,7 +147,9 @@ function afSetSet(field,value)
 
 
 /*  Page borne stuffs
-
+  todo: this needs serious refactoring to perform as intended.
+   todo:  messages/next/prev shoudl flow into a function that just handles success events and responds accordingly
+   todo: need to clousure this mess
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
@@ -174,7 +179,7 @@ function SubmitSubmit(this_form) {
 
 	$( this_form ).find('select').each(function() {
 		if ($.inArray($(this).attr('name'),apiFields) != -1) {
-			uVal = $(this).val()
+			uVal = $(this).val();
 			if (uVal) {
 				if (paramString != '') paramString += '&';
 				paramString +=$(this).attr('name') + "=" + uVal;
@@ -194,12 +199,12 @@ function SubmitSubmit(this_form) {
 		//console.log(json);
 		switch(json.result) {
 			case 'SUCCESS':
-				document.location = '//tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+				document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 				break;
 			case 'ERROR':
 				if (json.message) {
 					if (json.message == 'Order is already completed') {
-						document.location = '//tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+						document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 					} else {
 						$("#popModalHead").html('Problem with your order');
 						$("#popModalBody").html(json.message);
@@ -231,12 +236,12 @@ function SubmitSubmit(this_form) {
 function doUpsellYes(upsellID,productId){
 	if (window.myOrderID) {
 		var paramString = 'orderId=' + window.myOrderID;
-		var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+		var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 		switch (upsellID) {
 			case 'hdlmp':
 				productId = productId || '31';
 				paramString += '&productQty=' + $('#selQty').val();
-				nextPage='//tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+				nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 				break;
 			case 'recharge':
 				paramString += '&productQty=1';
@@ -255,9 +260,19 @@ function doUpsellYes(upsellID,productId){
 				if (json.result == "SUCCESS") {
 					document.location = nextPage;
 				} else if (json.result == "ERROR") {
-					alert('ERROR: '+ json.message )
+					if (json.message) {
+						if (json.message == 'This upsale was already taken.') {
+							document.location = nextPage;
+						} else {
+							$("#popModalHead").html('Problem with your Addon');
+							$("#popModalBody").html(json.message);
+							$("#popModal").modal();
+						}
+					}
 				} else {
-					alert('undefined error. please try again');
+					$("#popModalHead").html('Problem with your Addon');
+					$("#popModalBody").html('An unknown error occured, try again or call our customer service');
+					$("#popModal").modal();
 				}
 			});
 		}
@@ -266,10 +281,10 @@ function doUpsellYes(upsellID,productId){
 	}
 }
 function doUpsellNo(upsellID){
-	var nextPage='//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+	var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 	switch (upsellID) {
 		case 'hdlmp':
-			nextPage='//tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+			nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 			break;
 		default:
 	}
