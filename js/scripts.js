@@ -152,7 +152,7 @@ function SubmitSubmit(this_form) {
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
 	}
-	//console.log("sumbitted: "+$(this_form).attr('name'));
+	console.log("sumbitted: "+$(this_form).attr('name'));
 	paramString = 'campaignId=3&product1_qty=1';
 
 	$( this_form ).find('input').each(function() {
@@ -504,7 +504,6 @@ $(document).ready(function ()
 							}
 						}
 					}
-
 				}
 			}).on('status.field.fv', function(e, data) {
 				data.fv.disableSubmitButtons(false);
@@ -517,7 +516,8 @@ $(document).ready(function ()
 				e.preventDefault();
 			}).on('success.form.fv', function(e) {
 				e.preventDefault();
-				SubmitSubmit(e);
+				return SubmitSubmit('#frm_order');
+
 			});
 		}
 		if (pageInfo.type == 'upsell') {
