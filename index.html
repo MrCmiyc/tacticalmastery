@@ -6,156 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>XT808 LED Flashlight</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <link type="text/css" href="./xt808_files/kprofile.css" rel="stylesheet">
-    <link type="text/css" href="./xt808_files/kform.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="css/csss.css" rel="stylesheet">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-	<script src="js/scripts.js?ver=1"></script>
-
-    <script>
-        var disableOverRide = false; // Disable CS overRide
-    </script>
-    <!-- <scr ipt src="./xt808_files/cs.js"></scr ipt> -->
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
-    <script type="text/javascript">
-        var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
-    </script>
-
-    <script>
-
-		//Exit popup
-        $(document).ready(function ()
-		{
-			var bModal = true;
-
-			$(document).mousemove(function (e)
-			{
-                if (e.pageY <= 5 && bModal)
-				{
-                    $("#popup").modal();
-                }
-            });
-
-            $(".fullName").change(function ()
-			{   //console.log($(this).val());
-                consumerName = getFirstLast($(".fullName").val());
-                //tempArray = consumerName.split(" ");
-                $(".firstName").val(consumerName[0]);
-                $(".lastName").val(consumerName[1]);
-            });
-
-            $(".kform_submitBtn").click(function ()
-			{
-                consumerName = $(".fullName").val();
-                tempArray = consumerName.split(" ");
-
-                $(".firstName").val(tempArray[0]);
-                $(".lastName").val(tempArray[1]);
-                $(".kform").submit();
-            });
-
-            $("#submitButton").click(function (e)
-			{
-                $(".kform").submit();
-            });
-
-            $('.form-control').keypress(function (e)
-			{
-                if (e.which == 13)
-				{
-                    console.log("\n pressed enter");
-                    $(".kform").submit();
-                }
-            });
-
-        });
-
-    </script>
-
-    <style type="text/css">
-        /* TODO:stop gap, include this in the lib */
-        .btn_yes {
-            background: #33D107;
-            color: #fff;
-            font-weight: bold;
-            padding: 15px;
-            margin: 10px 0;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0);
-            border: 1px solid #E6E6E6;
-            white-space: normal;
-            height: auto;
-            font-size: 25px;
-
-        }
-        .btn_yes span.subtext {
-            color: #279707;
-            font-size: 14px;
-            font-weight: normal;
-        }
-        .btn_yes i {
-            margin-right: 10px;
-        }
-
-        .btn_yes:hover {
-            background: #279707;
-            color: #fff;
-        }
-        .btn_yes:hover span.subtext {
-            color: #33D107;
-            font-size: 14px;;
-        }
-
-        .div_notyes_btn {
-            background: #F00;
-            color: #fff;
-            font-size: 23px;
-            font-weight: bold;
-            padding: 15px;
-            margin: 10px 0;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0);
-            border: 1px solid #E6E6E6;
-            white-space: normal;
-            height: auto;
-            border-radius: 4px;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .div_notyes_btn a {
-            color: #fff;
-        }
-
-        .div_notyes_btn:hover a {
-            color: #eee;
-            text-decoration: underline;
-        }
-
-        .pre_foot img {
-            width:100%;
-        }
-
-
-    </style>
-
 </head>
 
 <body class="wbg">
 
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K7K7HF"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K7K7HF');</script>
 <!-- End Google Tag Manager -->
 
@@ -183,8 +48,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <hr>
 
             <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477
-			<br>
-			<a id="privacy" href="#">Privacy Statement</a> -&nbsp;<a id="terms" href="#">Terms &amp; Conditions</a></p>
+                <br>
+                <a id="privacy" href="#">Privacy Statement</a> -&nbsp;<a id="terms" href="#">Terms &amp; Conditions</a></p>
 
         </div>
     </div>
@@ -210,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To <span>INSTANTLY Recieve 75% Off</span> The
+                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To <span>INSTANTLY Receive 75% Off</span> The
                     XT808 Flashlight!</h3>
             </div>
             <div class="modal-body">
@@ -236,7 +101,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </div>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+<script src="js/scripts.js?ver=1"></script>
+<script>
+    var disableOverRide = false; // Disable CS overRide
+</script>
+<!-- <scr ipt src="./xt808_files/cs.js"></scr ipt> -->
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" defer></script><![endif]-->
+<script type="text/javascript">
+    var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
+</script>
 
+<script >
+    //Exit popup
+    $(document).ready(function()
+    {
+        var bModal = true;
+
+        $(document).mousemove(function (e)
+        {
+            if (e.pageY <= 5 && bModal)
+            {
+                $("#popup").modal();
+            }
+        });
+
+        $(".fullName").change(function ()
+        {   //console.log($(this).val());
+            consumerName = getFirstLast($(".fullName").val());
+            //tempArray = consumerName.split(" ");
+            $(".firstName").val(consumerName[0]);
+            $(".lastName").val(consumerName[1]);
+        });
+
+        $(".kform_submitBtn").click(function ()
+        {
+            consumerName = $(".fullName").val();
+            tempArray = consumerName.split(" ");
+
+            $(".firstName").val(tempArray[0]);
+            $(".lastName").val(tempArray[1]);
+            $(".kform").submit();
+        });
+
+        $("#submitButton").click(function (e)
+        {
+            $(".kform").submit();
+        });
+
+        $('.form-control').keypress(function (e)
+        {
+            if (e.which == 13)
+            {
+                console.log("\n pressed enter");
+                $(".kform").submit();
+            }
+        });
+
+    });
+
+</script>
 </body>
 </html>
