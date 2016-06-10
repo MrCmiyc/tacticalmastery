@@ -144,7 +144,9 @@ function afSetSet(field,value)
 
 
 /*  Page borne stuffs
-
+  todo: this needs serious refactoring to perform as intended.
+   todo:  messages/next/prev shoudl flow into a function that just handles success events and responds accordingly
+   todo: need to clousure this mess
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
@@ -255,6 +257,17 @@ function doUpsellYes(upsellID,productId){
 				if (json.result == "SUCCESS") {
 					document.location = nextPage;
 				} else if (json.result == "ERROR") {
+					if (json.message) {
+						if (json.message == 'This upsale was already taken.') {
+							document.location = nextPage;
+						} else {
+							$("#popModalHead").html('Problem with your Addon');
+							$("#popModalBody").html(json.message);
+							$("#popModal").modal();
+						}
+					}
+
+
 					alert('ERROR: '+ json.message )
 				} else {
 					alert('undefined error. please try again');
