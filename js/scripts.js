@@ -75,12 +75,14 @@ function randString(x)
 	return s;
 }
 
-function getSetSet(field,value="",qsfield=false)
+function getSetSet(field,value,qsfield)
 {
+
+	value = value || '';
+	qsfield = qsfield || field;
+
 	var sField = value;
-	
-	if(!qsfield) qsfield = field;
-				
+
 	if(typeof(Storage) !== "undefined")
 	{
 		sField = localStorage.getItem(field);
@@ -107,8 +109,9 @@ function getFirstLast(instring) {
 }
 
 
-function afGetGet(field,qsfield=false)
+function afGetGet(field,qsfield)
 {
+	qsfield = qsfield || false;
 	var returnThis;
 
 	if(typeof(Storage) !== "undefined")
@@ -176,7 +179,7 @@ function SubmitSubmit(this_form) {
 
 	$( this_form ).find('select').each(function() {
 		if ($.inArray($(this).attr('name'),apiFields) != -1) {
-			uVal = $(this).val()
+			uVal = $(this).val();
 			if (uVal) {
 				if (paramString != '') paramString += '&';
 				paramString +=$(this).attr('name') + "=" + uVal;
@@ -266,11 +269,10 @@ function doUpsellYes(upsellID,productId){
 							$("#popModal").modal();
 						}
 					}
-
-
-					alert('ERROR: '+ json.message )
 				} else {
-					alert('undefined error. please try again');
+					$("#popModalHead").html('Problem with your Addon');
+					$("#popModalBody").html('An unknown error occured, try again or call our customer service');
+					$("#popModal").modal();
 				}
 			});
 		}
