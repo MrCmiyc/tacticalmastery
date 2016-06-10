@@ -192,15 +192,26 @@ function SubmitSubmit(this_form) {
 		json = JSON.parse(e);
 
 		//console.log(json);
-		if (json.result == "SUCCESS") {
-			document.location = '//tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
-		} else if (json.result == "ERROR") {
-			alert('FORM ERROR: '+ json.message )
-		} else {
-			alert('undefined error. please try again');
+		switch(json.result) {
+			case 'SUCCESS':
+				document.location = '//tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+				break;
+			case 'ERROR':
+				if (json.message) {
+					if (json.message == 'Order is already completed') {
+						document.location = '//tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+					} else {
+						$("#popModalHead").html('Problem with your order');
+						$("#popModalBody").html(json.message);
+						$("#popModal").modal();
+					}
+				}
+				break;
+			default:
+				//todo: reply back to our api instead of logging here
+				break;
 		}
 	});
-
 
 	$( this_form ).find('input.af').each(function(){
 		if ($(this).val() != "") {
@@ -361,16 +372,10 @@ $(document).ready(function ()
 			}
 		}
 
-		// trap our forms the same way. We loop the forms and trap their submits
-		//$('form.af').each(function() {
-		//	//alert('found a form');
-		//	$( this ).submit(function (event) {
-		//		//alert('form submitted');
-		//		if (pageInfo.hasorderid) event.preventDefault(); //let the squeeze page act normal
-		//		//this.submit();
-		//		return SubmitSubmit(this);
-		//	});
-		//});
+			$( "#frm_order" ).submit(function (event) {
+				if (pageInfo.hasorderid) event.preventDefault();
+			});
+
 		//ditching this for now
 		// if (pageInfo.helpaddress) {
         //
