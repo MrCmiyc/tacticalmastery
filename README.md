@@ -11,7 +11,8 @@
 * http://www.tacticalmastery.com/us_recharge.html
 
 ## Staging server at Digital Ocean
-`ssh root@162.243.72.192`
+`ssh root@162.243.72.192`  
+Web server path `/var/www/tacticalmastery.com`
 
 ## The repo
 `git@bitbucket.org:firstworldwar/www.git`
