@@ -9,6 +9,7 @@
 * http://www.tacticalmastery.com/thankyou.html
 * http://www.tacticalmastery.com/us_hlmp.html
 * http://www.tacticalmastery.com/us_recharge.html
+* Fake order: http://tacticalmastery.com/thankyou.html?orderId=C3E3F2C1DA
 
 ## Staging server at Digital Ocean
 `ssh root@162.243.72.192`  
