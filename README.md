@@ -3,7 +3,9 @@
 ---
 
 ## News 14.Jun.2016
-### Autmatic deployment of master branch of the repo to http://staging.tacticalmastery.com
+* ### Automatic deployment of master branch of the repo to http://staging.tacticalmastery.com
+
+---
 
 ## Pages
 * http://www.tacticalmastery.com/index.html
