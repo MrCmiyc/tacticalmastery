@@ -1,5 +1,12 @@
 # tacticalmastery.com #
 
+---
+
+## News 14.Jun.2016
+* ### Automatic deployment of master branch of the repo to http://staging.tacticalmastery.com
+
+---
+
 ## Pages
 * http://www.tacticalmastery.com/index.html
 * http://www.tacticalmastery.com/terms.html

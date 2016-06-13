@@ -527,6 +527,32 @@ $(document).ready(function ()
 								message: 'please enter a 5 digit or 9 digit zip code'
 							}
 						}
+					},
+					cardNumber: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a valid card number'
+							},
+							stringLength: {
+								min: 14,
+								max: 16,
+								message: 'Credit card must be 15 or 16 digits'
+							}
+						}
+					},
+					cardSecurityCode: {
+						row: '.field',
+						validators: {
+							notEmpty: {
+								message: 'Please enter a valid security code'
+							},
+							stringLength: {
+								min: 3,
+								max: 4,
+								message: 'Security code Invalid Length'
+							}
+						}
 					}
 				}
 			}).on('status.field.fv', function(e, data) {
