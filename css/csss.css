@@ -50,8 +50,7 @@
     font-weight: bold;
     padding: 15px;
     margin: 10px 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0);
-    border: 1px solid #E6E6E6;
+    border: 1px solid #ce0202;
     white-space: normal;
     height: auto;
     border-radius: 4px;
@@ -70,4 +69,40 @@
 
 .pre_foot img {
     width:100%;
+}
+
+@-webkit-keyframes glowing {
+    0% { background-color: #FF0000; -webkit-box-shadow: 0 0 15px #7A1E1D; }
+    50% { background-color: #FF837B; -webkit-box-shadow: 0 0 40px #7A1E1D; }
+    100% { background-color: #FF0000; -webkit-box-shadow: none; }
+}
+
+@-moz-keyframes glowing {
+    0% { background-color: #FF0000; -moz-box-shadow: 0 0 15px #7A1E1D; }
+    50% { background-color: #FF837B; -moz-box-shadow: 0 0 40px #7A1E1D; }
+    100% { background-color: #FF0000; -moz-box-shadow: none; }
+}
+
+@-o-keyframes glowing {
+    0% { background-color: #FF0000; box-shadow: 0 0 15px #7A1E1D; }
+    50% { background-color: #FF837B; box-shadow: 0 0 40px #7A1E1D; }
+    100% { background-color: #FF0000; box-shadow: none; }
+}
+
+@keyframes glowing {
+    0% { background-color: #FF0000; box-shadow: 0 0 15px #7A1E1D; }
+    50% { background-color: #FF837B; box-shadow: 0 0 40px #7A1E1D; }
+    100% { background-color: #FF0000; box-shadow: none; }
+}
+
+.div-flash {
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+
+    -webkit-animation-iteration-count: 4;
+    -moz-animation-iteration-count: 4;
+    -o-animation-iteration-count: 4;
+    animation-iteration-count: 4;
 }
