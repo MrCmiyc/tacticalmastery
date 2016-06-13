@@ -1,0 +1,12 @@
+class_name: AcceptanceTester
+modules:
+       enabled:
+          - WebDriver:
+             url: 'http://staging.tacticalmastery.com'
+             clear_cookies: true
+             restart: true
+             host: 127.0.0.1
+             port: 4444
+             connection_timeout: 5
+             request_timeout: 15
+             browser: phantomjs
