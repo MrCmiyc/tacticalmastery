@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>XT808 LED Flashlight</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
-    <link type="text/css" href="css/csss.css" rel="stylesheet">
 </head>
 
 <body class="wbg">
@@ -100,69 +96,40 @@
 
     </div>
 </div>
+<noscript id="deferred-styles">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./xt808_files/custom.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="css/csss.css" rel="stylesheet">
+</noscript>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+</script>
+
 <script type="text/javascript">
     var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
-</script>
-<script src="js/scripts.js?ver=1"></script>
-<script>
     var disableOverRide = false; // Disable CS overRide
 </script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
+<script src="js/scripts.min.js?ver=1" defer></script>
+<script src="js/_index.js" defer></script>
+
 <!-- <scr ipt src="./xt808_files/cs.js"></scr ipt> -->
 <!--[if lt IE 9]>
 <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" defer></script><![endif]-->
 
-<script >
-    //Exit popup
-    $(document).ready(function()
-    {
-        var bModal = true;
-
-        $(document).mousemove(function (e)
-        {
-            if (e.pageY <= 5 && bModal)
-            {
-                $("#popup").modal();
-            }
-        });
-
-        $(".fullName").change(function ()
-        {   //console.log($(this).val());
-            consumerName = getFirstLast($(".fullName").val());
-            //tempArray = consumerName.split(" ");
-            $(".firstName").val(consumerName[0]);
-            $(".lastName").val(consumerName[1]);
-        });
-
-        $(".kform_submitBtn").click(function ()
-        {
-            consumerName = $(".fullName").val();
-            tempArray = consumerName.split(" ");
-
-            $(".firstName").val(tempArray[0]);
-            $(".lastName").val(tempArray[1]);
-            $(".kform").submit();
-        });
-
-        $("#submitButton").click(function (e)
-        {
-            $(".kform").submit();
-        });
-
-        $('.form-control').keypress(function (e)
-        {
-            if (e.which == 13)
-            {
-                console.log("\n pressed enter");
-                $(".kform").submit();
-            }
-        });
-
-    });
-
-</script>
 </body>
 </html>
