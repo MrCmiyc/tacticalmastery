@@ -42,3 +42,7 @@ $(document).ready(function()
 		}
 	});
 });
+
+window.onbeforeunload = function() {
+	return "Do you want to leave this site?";
+};
