@@ -387,9 +387,13 @@ $(document).ready(function ()
 			}
 		}
 
-			$( "#frm_order" ).submit(function (event) {
-				if (pageInfo.hasorderid) event.preventDefault();
-			});
+			//$( "#frm_order" ).submit(function (event) {
+			//	if (pageInfo.hasorderid) {
+			//		event.preventDefault();
+			//		return false;
+			//	}
+            //
+			//});
 
 		//ditching this for now
 		// if (pageInfo.helpaddress) {
@@ -535,9 +539,8 @@ $(document).ready(function ()
 				$("#popErrors").modal();
 				e.preventDefault();
 			}).on('success.form.fv', function(e) {
+				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
-				return SubmitSubmit('#frm_order');
-
 			});
 		}
 		if (pageInfo.type == 'upsell') {
