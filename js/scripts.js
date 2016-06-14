@@ -162,8 +162,9 @@ function SubmitSubmit(this_form) {
 
 	$( this_form ).find('input').each(function() {
 			if ($.inArray($(this).attr('name'),apiFields) != -1) {
-				uVal = $(this).val()
+				uVal = $(this).val();
 				if (uVal) {
+					uVal = encodeURIComponent(uVal);
 					if ($(this).is(':radio')) {
 						if ($(this).is(':checked')){
 						if (paramString != '') paramString += '&';
@@ -190,7 +191,7 @@ function SubmitSubmit(this_form) {
 	if (window.myOrderID) paramString += "&orderId=" + window.myOrderID;
 
 
-	console.log(paramString);
+	//console.log(paramString);
 	//just do the order right meow and get a response
 	api("order",paramString,function(e)
 	{
