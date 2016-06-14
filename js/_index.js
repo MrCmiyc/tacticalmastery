@@ -1,3 +1,4 @@
+var isBack = true;
 $(document).ready(function()
 {
 	var bModal = true;
@@ -7,8 +8,14 @@ $(document).ready(function()
 		if (e.pageY <= 5 && bModal)
 		{
 			$("#popup").modal();
+			alert(isBack);
+			isBack = false;
 		}
 	});
+
+	$('#popup').on('hidden.bs.modal', function () {
+		isBack = true;
+	})
 
 	$(".fullName").change(function ()
 	{   //console.log($(this).val());
@@ -43,6 +50,8 @@ $(document).ready(function()
 	});
 });
 
-window.onbeforeunload = function() {
-	return "Do you want to leave this site?";
-};
+window.onbeforeunload = function (e) {
+	if (isBack == true && false) {
+		return "Are you sure to leave?";
+	}
+}
