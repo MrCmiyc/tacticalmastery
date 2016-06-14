@@ -190,7 +190,7 @@ function SubmitSubmit(this_form) {
 	if (window.myOrderID) paramString += "&orderId=" + window.myOrderID;
 
 
-	//console.log(paramString);
+	console.log(paramString);
 	//just do the order right meow and get a response
 	api("order",paramString,function(e)
 	{
