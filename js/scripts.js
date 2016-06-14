@@ -577,6 +577,16 @@ $(document).ready(function ()
 				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
 			});
+			//try to populate the state box
+			$.getJSON('http://ipinfo.io', function(data){
+				if (data && data.region) {
+
+					console.log(data.region);
+					$("#f_state option").filter(function() {
+						return $(this).text() == data.region;
+					}).prop('selected', true);
+				}
+			})
 		}
 		if (pageInfo.type == 'upsell') {
 
