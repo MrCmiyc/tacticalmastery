@@ -23,7 +23,7 @@ function args(elem) {
 
 function api(endpoint,data,element)
 {
-	var url = 'https://api.tacticalmastery.com/api';
+	var url = 'https://api.tacticalmastery.com';
 	var jqxhr = $.ajax(
 	{
 		type: 'GET',
@@ -356,12 +356,12 @@ $(document).ready(function ()
 					ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
 					f_val = afGetGet(ls_name, f_name);
 					if (f_val) {
-						console.log(".");
+						//console.log(".");
 						if (paramString != '') paramString += '&';
 						paramString +=f_name + "=" + f_val;
 					} else if (requiredFields.indexOf(f_name) != -1) {
 						okToQuery = false;
-						console.log("breakquery: missing required field")
+						//console.log("breakquery: missing required field")
 					}
 				});
 				if (okToQuery) api("createlead",paramString,function(e)
@@ -581,7 +581,7 @@ $(document).ready(function ()
 			$.getJSON('http://ipinfo.io', function(data){
 				if (data && data.region) {
 
-					console.log(data.region);
+					//console.log(data.region);
 					$("#f_state option").filter(function() {
 						return $(this).text() == data.region;
 					}).prop('selected', true);
