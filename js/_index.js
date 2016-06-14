@@ -8,7 +8,7 @@ $(document).ready(function()
 		if (e.pageY <= 5 && bModal)
 		{
 			$("#popup").modal();
-			alert(isBack);
+			// alert(isBack);
 			isBack = false;
 		}
 	});
