@@ -8,8 +8,8 @@ The requests for the deployment can be **[observed here](https://bitbucket.org/f
 I hope the eventual hiccups here will be not that much, but tell me each time you notice something strange with this functionality.  
 Few seconds after the push the code should be live.  
 
-* ### SSH access to the server will have only Daniel and Tony  
-If you need something done on the server ask Daniel or Tony  
+* ### SSH access to the server will have only Brian and Tony  
+If you need something done on the server ask Brian or Tony  
 
 * ### Automatic tests  
 After each push to the master branch the code is deployed on the server and **[acceptance tests](https://bitbucket.org/firstworldwar/www/src/985ece31ae6e7670134ba116c8bc0411ae785862/tests/codecept/tests/acceptance/?at=master)** are run.  
