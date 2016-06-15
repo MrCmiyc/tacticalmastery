@@ -87,6 +87,12 @@ class Deploy {
                     exec("/usr/bin/git --git-dir={$this->_directory} --work-tree={$this->_workDirectory} checkout -f {$this->_branch} 2>&1", $output);
                     $this->log("Checkout {$this->_branch}... " . implode("\n", $output));
                     unset($output);
+                    
+                    $this->log("Purging the CDNs.");
+                    exec("/var/data/api/purge_cloudfront.sh >>{$this->_log} 2>&1");
+                    exec("/var/data/api/purge_hiberniacdn.sh >>{$this->_log} 2>&1");
+                    exec("/var/data/api/purge_highwinds.sh >>{$this->_log} 2>&1");
+                    
                     $this->log("Deployment successful. Starting the tests.");
                     chdir($this->_workDirectory . '/tests/codecept');
                     exec("rm -f {$this->_workDirectory}/tests/codecept/tests/_output/*");
