@@ -93,31 +93,16 @@
                         </div>
                     </div>
 
-                    <button type="button" id="js-btn-confirm" class="btn btn-block yesbutton optinbutton kform_submitBtn" onclick="return validate();">
+                    <button type="submit" id="js-btn-confirm" class="btn btn-block yesbutton optinbutton kform_submitBtn" onclick="return validate();">
                         <i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount
                     </button>
                 </form>
                 <p class="text-center popupdisclaimer">* we will not spam, rent, or sell your information... *</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="js-div-modal-notification" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="text-center popuptitle">
-                    CALL NUMBERHERE FOR A LIMITED TIME DISCOUNT ON A XT 808 FLASHLIGHT.
-                </h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
+                <div class="row" id="js-div-notification" style="display: none;">
                     <div class="col-sm-12">
-                        <button type="submit" id="js-btn-submit" class="btn btn-block yesbutton optinbutton kform_submitBtn" onclick="return validate();">
-                            <i class="fa fa-check"></i>&nbsp;OK
-                        </button>
+                        <div class="alert alert-info text-center">
+                            <h2 style="margin: 0px;">CALL NUMBERHERE FOR A LIMITED TIME DISCOUNT ON A XT 808 FLASHLIGHT.</h2>
+                        </div>
                     </div>
                 </div>
             </div>
