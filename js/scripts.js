@@ -23,7 +23,7 @@ function args(elem) {
 
 function api(endpoint,data,element)
 {
-	var url = 'https://api.tacticalmastery.com/api';
+	var url = 'https://api.tacticalmastery.com';
 	var jqxhr = $.ajax(
 	{
 		type: 'GET',
@@ -157,13 +157,14 @@ function SubmitSubmit(this_form) {
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
 	}
-	console.log("sumbitted: "+$(this_form).attr('name'));
+	//console.log("sumbitted: "+$(this_form).attr('name'));
 	paramString = 'campaignId=3&product1_qty=1';
 
 	$( this_form ).find('input').each(function() {
 			if ($.inArray($(this).attr('name'),apiFields) != -1) {
-				uVal = $(this).val()
+				uVal = $(this).val();
 				if (uVal) {
+					uVal = encodeURIComponent(uVal);
 					if ($(this).is(':radio')) {
 						if ($(this).is(':checked')){
 						if (paramString != '') paramString += '&';
@@ -199,6 +200,10 @@ function SubmitSubmit(this_form) {
 		//console.log(json);
 		switch(json.result) {
 			case 'SUCCESS':
+				if(typeof json.message.orderId != 'undefined') {
+					window.myOrderID = json.message.orderId;
+					afSetSet("orderId", myOrderID);
+				}
 				document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 				break;
 			case 'ERROR':
@@ -345,6 +350,9 @@ $(document).ready(function ()
 			if(myOrderID == null)
 			{
 				paramString = '';
+				var okToQuery = true;
+				var requiredFields = ['firstName', 'lastName', 'emailAddress'];
+				var optionalFields = ['phoneNumber'];
 				$.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
 					ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
 					f_val = afGetGet(ls_name, f_name);
@@ -352,15 +360,17 @@ $(document).ready(function ()
 						//console.log(".");
 						if (paramString != '') paramString += '&';
 						paramString +=f_name + "=" + f_val;
+					} else if (requiredFields.indexOf(f_name) != -1) {
+						okToQuery = false;
+						//console.log("breakquery: missing required field")
 					}
 				});
-				api("createlead",paramString,function(e)
+				if (okToQuery) api("createlead",paramString,function(e)
 				{
 					json = JSON.parse(e);
 
 					if(typeof json.message.orderId != 'undefined') {
 						window.myOrderID = json.message.orderId;
-
 						afSetSet("orderId", myOrderID);
 					}
 				});
@@ -568,6 +578,14 @@ $(document).ready(function ()
 				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
 			});
+			//try to populate the state box
+			$.getJSON('http://ipinfo.io', function(data){
+				if (data && data.region) {
+					$("#f_state option").filter(function() {
+						return $(this).text() == data.region;
+					}).prop('selected', true);
+				}
+			})
 		}
 		if (pageInfo.type == 'upsell') {
 
