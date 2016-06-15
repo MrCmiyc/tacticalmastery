@@ -1,52 +1,39 @@
 var isBack = true;
-$(document).ready(function()
-{
-	var bModal = true;
-
-	$(document).mousemove(function (e)
-	{
-		if (e.pageY <= 5 && bModal)
-		{
-			$("#popup").modal();
-			// alert(isBack);
-			isBack = false;
+var bModal = true;
+$(document).ready(function() {
+	$(document).mousemove(function(e) {
+		if (e.pageY <= 5 && bModal) {
+			$("div#js-div-popup").modal();
 		}
 	});
 
-	$('#popup').on('hidden.bs.modal', function () {
+	$('div#js-div-popup').on('shown.bs.modal', function () {
+		$("input#js-text-first-name, input#js-text-last-name, input#js-text-phone-number").val('');
+		isBack = false;
+		$("input#js-text-first-name").focus();
+	});
+
+	$('div#js-div-popup').on('hidden.bs.modal', function() {
 		isBack = true;
-	})
-
-	$(".fullName").change(function ()
-	{   //console.log($(this).val());
-		consumerName = getFirstLast($(".fullName").val());
-		//tempArray = consumerName.split(" ");
-		$(".firstName").val(consumerName[0]);
-		$(".lastName").val(consumerName[1]);
 	});
 
-	$(".kform_submitBtn").click(function ()
-	{
-		consumerName = $(".fullName").val();
-		tempArray = consumerName.split(" ");
-
-		$(".firstName").val(tempArray[0]);
-		$(".lastName").val(tempArray[1]);
-		$(".kform").submit();
+	$('div#js-div-modal-notification').on('hidden.bs.modal', function() {
+		bModal = true;
 	});
 
-	$("#submitButton").click(function (e)
-	{
-		$(".kform").submit();
+	$("button#js-btn-submit").click(function() {
+		$("form#js-form-lead").submit();
 	});
 
-	$('.form-control').keypress(function (e)
-	{
-		if (e.which == 13)
-		{
-			console.log("\n pressed enter");
-			$(".kform").submit();
+	$("input.form-control").keyup(function(e) {
+		if (e.keyCode == 13 && $(this).attr('id') == 'js-text-first-name') {
+			$("input#js-text-last-name").focus();
+		} else if (e.keyCode == 13 && $(this).attr('id') == 'js-text-last-name') {
+			$("input#js-text-phone-number").focus();
+		} else if (e.keyCode == 13 && $(this).attr('id') == 'js-text-phone-number') {
+			$("button#js-btn-confirm").click();
 		}
+		return false;
 	});
 });
 
@@ -54,4 +41,11 @@ window.onbeforeunload = function (e) {
 	if (isBack == true && false) {
 		return "Are you sure to leave?";
 	}
+}
+
+function validate() {
+	$("div#js-div-popup").modal('hide');
+	$("div#js-div-modal-notification").modal();
+	bModal = false;
+	return false;
 }

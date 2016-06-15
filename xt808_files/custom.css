@@ -381,7 +381,7 @@ hr {
 	border-color:#E6E6E6;	
 }
 
-#popup input#name, #popup input#email {
+#popup input#name, #popup input#email, .text-large {
 	background-repeat: no-repeat;
     background-position: 96%;
 	border:1px solid #ccc;

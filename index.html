@@ -25,29 +25,27 @@
             <h1 class="text-center toptitle">XT808 LED Flashlight Coupon Registration</h1>
             <img src="./xt808_files/featured-in.png" class="img-responsive center-block" alt="Featured in">
 
-            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-
             <iframe src="//fast.wistia.net/embed/iframe/rc30nimscw?videoFoam=true"
                     allowtransparency="true" frameborder="0" scrolling="no"
                     name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen
                     oallowfullscreen msallowfullscreen width="640" height="360"></iframe>
             <script src="//fast.wistia.net/assets/external/iframe-api-v1.js" defer></script>
 
-            <button type="button" class="btn btn-block btn_yes" data-toggle="modal" data-target="#popup">
+            <button type="button" class="btn btn-block btn-yes" data-toggle="modal" data-target="#js-div-popup">
                 <i class="fa fa-shopping-cart"></i>Yes! I Want 75% Off XT808!<br>
                 <span class="subtext">Free Shipping valid till today.</span>
             </button>
 
-            <div class="div_notyes_btn div-flash">
+            <div class="div-not-yes-btn div-flash">
                 <a href="tel://1-844-478-8240">Call Now</a> and claim your FREE Flashlight<br>
                 <a href="tel://1-844-478-8240">(844) 478-8240</a>
             </div>
-            <div class="pre_foot">
+            <div class="pre-foot">
                 <img src="images/index_foot.jpg">
             </div>
             <hr>
-            <p class="text-center">1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477
-                <br>
+            <p class="text-center">
+                1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477<br>
                 <a id="privacy" href="#">Privacy Statement</a> -&nbsp;<a id="terms" href="#">Terms &amp; Conditions</a>
             </p>
         </div>
@@ -68,34 +66,65 @@
     </div>
 </div>
 
-<div id="popup" class="modal fade" role="dialog">
+<div id="js-div-popup" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="text-center popuptitle">Enter Your Name and Telephone number To <span>INSTANTLY Receive 75% Off</span> The
-                    XT808 Flashlight!</h3>
+                <h3 class="text-center popuptitle">
+                    Enter Your Name and Telephone number To
+                    <span>INSTANTLY Receive 75% Off</span> TheXT808 Flashlight!
+                </h3>
             </div>
             <div class="modal-body">
-                <form class="kform af" action="https://secure.tacticalmastery.com/checkout.html" method="GET" id="formLead" name="formLead">
-                    <input type="hidden" class="form-control firstName" id="fname" name="firstName"
-                           placeholder="First Name">
-                    <input type="hidden" class="form-control lastName" id="lname" name="lastName"
-                           placeholder="Last Name">
-                    <input type="text" class="form-control fullName namebox af" id="name" name="fullName"
-                           placeholder="Enter Your Full Name (First Last)">
-                    <input type="text" class="form-control fullName af" id="phone" name="phoneNumber"
-                           style="padding:15px;height:54px;font-size:16px" placeholder="Your Phone Number">
-                    <button type="submit" id="submitButton" class="btn btn-block yesbutton optinbutton kform_submitBtn">
+                <form class="kform af" action="https://secure.tacticalmastery.com/checkout.html" method="GET" id="js-form-lead" name="formLead">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control text-large" id="js-text-first-name" name="firstName" placeholder="Enter Your First Name" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control text-large" id="js-text-last-name" name="lastName" placeholder="Your Last Name" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="tel" class="form-control text-large" id="js-text-phone-number" name="phoneNumber" placeholder="Your Phone Number" required>
+                        </div>
+                    </div>
+
+                    <button type="button" id="js-btn-confirm" class="btn btn-block yesbutton optinbutton kform_submitBtn" onclick="return validate();">
                         <i class="fa fa-check"></i>YES! Instantly Apply My 75% Discount
                     </button>
                 </form>
                 <p class="text-center popupdisclaimer">* we will not spam, rent, or sell your information... *</p>
             </div>
         </div>
-
     </div>
 </div>
+
+<div id="js-div-modal-notification" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="text-center popuptitle">
+                    CALL NUMBERHERE FOR A LIMITED TIME DISCOUNT ON A XT 808 FLASHLIGHT.
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" id="js-btn-submit" class="btn btn-block yesbutton optinbutton kform_submitBtn" onclick="return validate();">
+                            <i class="fa fa-check"></i>&nbsp;OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <noscript id="deferred-styles">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
