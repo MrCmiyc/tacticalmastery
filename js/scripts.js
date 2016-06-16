@@ -579,7 +579,7 @@ $(document).ready(function ()
 				e.preventDefault();
 			});
 			//try to populate the state box
-			$.getJSON('http://ipinfo.io', function(data){
+			$.getJSON('//geo.tacticalmastery.com/get/', function(data){
 				if (data && data.region) {
 					$("#f_state option").filter(function() {
 						return $(this).text() == data.region;
