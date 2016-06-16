@@ -8,14 +8,12 @@ $(document).ready(function() {
 	});
 
 	$('div#js-div-popup').on('shown.bs.modal', function () {
-		isBack = false;
 		$("input#js-text-first-name").focus();
 	});
 
 	$('div#js-div-popup').on('hidden.bs.modal', function() {
 		$("input#js-text-first-name, input#js-text-last-name, input#js-text-phone-number").val('');
 		$("div#js-div-notification").hide();
-		isBack = true;
 	});
 
 	$("input#js-text-phone-number").keyup(function(e) {
@@ -24,11 +22,12 @@ $(document).ready(function() {
 });
 
 window.onbeforeunload = function (e) {
-	if (isBack == true && false) {
+	if (isBack == true) {
 		return "Are you sure to leave?";
 	}
 }
 
 function validate() {
+	isBack = false;
 	return true;
 }

@@ -591,10 +591,12 @@ $(document).ready(function ()
 
 			$('#upsellYes').click(function(e)
 			{
+				isBack = false;
 				doUpsellYes(pageInfo.upsellval)
 			});
 			$('#upsellNo').click(function(e)
 			{
+				isBack = false;
 				doUpsellNo(pageInfo.upsellval)
 			});
 
