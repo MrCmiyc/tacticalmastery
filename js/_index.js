@@ -19,6 +19,10 @@ $(document).ready(function() {
 	$("input#js-text-phone-number").keyup(function(e) {
 		$("div#js-div-notification").fadeIn();
 	});
+
+	$("a.a-prevent-back").click(function() {
+		isBack = false;
+	});
 });
 
 window.onbeforeunload = function (e) {
