@@ -11,37 +11,50 @@
     <link href="us_recharge/css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        var pageInfo = {type: 'upsell', upsellval:'recharge', autopopulate: false, hasorderid: true, helpaddress: false};
-    </script>
-    <script src="js/scripts.js?ver=1" defer></script>
 </head>
 
 <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K7K7HF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K7K7HF');</script>
+<!-- End Google Tag Manager -->
+
 <header class="header">
-      <div class="container">
-          <div class="logo"><a href=""><img src="us_recharge/images/logo.png" alt="logo"></a></div>
-          <div class="menu">
-              <ul>
-                  <li><a href="">STEP 1: CREATE ACCOUNT</a></li>
-                  <li><a href="">STEP 2: CUSTOMIZE ORDER</a></li>
-                  <li><a href="">STEP 3: ORDER COMPLETE</a></li>
-              </ul>
-          </div>
-      </div>
+    <div class="container">
+        <div class="logo">
+            <a href="#">
+                <img src="us_recharge/images/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="">STEP 1: CREATE ACCOUNT</a></li>
+                <li><a href="">STEP 2: CUSTOMIZE ORDER</a></li>
+                <li><a href="">STEP 3: ORDER COMPLETE</a></li>
+            </ul>
+        </div>
+    </div>
 </header>
 <div class="middle-wrap">
     <div class="container rechargable-wrap">
         <div class="rechargable">
-           <p><strong>WAIT!</strong> Would you like for us to add</p>
+           <p>
+               <strong>WAIT!</strong> Would you like for us to add
+           </p>
            <h2>RECHARGEABLE LITHIUM ION BATTERIES</h2>
-           <p><strong class="re-strong1">AND a Premium Warranty</strong> to your order for <strong>75% OFF?</strong></p>
+           <p>
+               <strong class="re-strong1">AND a Premium Warranty</strong> to your order for <strong>75% OFF?</strong>
+           </p>
         </div>
     </div>
     <div class="container rechargable-content">
-        <div class="re-battery"><img src="us_recharge/images/battery.png" alt="battery"></div>
+        <div class="re-battery">
+            <img src="us_recharge/images/battery.png" alt="battery">
+        </div>
         <div class="re-content-inner">
             <div class="premium">
                 <div class="premium-inner">
@@ -50,25 +63,34 @@
             </div>
             <div class="warrenty">
                 <div class="warrenty-inner">
-                    <p><strong>YES!</strong> Please add the <strong>Rechargeable Battery Pack</strong> and the <strong>Three Year Premium Warranty</strong> to my order at the discounted rate of <strong>$129</strong></p>
+                    <p>
+                        <strong>YES!</strong> Please add the <strong>Rechargeable Battery Pack</strong> and the
+                        <strong>Three Year Premium Warranty</strong> to my order at the discounted rate of <strong>$129</strong>
+                    </p>
                     <a class="btn" href="#"  onclick="doUpsellYes(pageInfo.upsellval,11)">75% OFF!</a>
                 </div>
             </div>
             <div class="warrenty purchase">
                 <div class="warrenty-inner">
-                    <p><strong>NO,</strong> I would only like to purchase the Rechargeable Battery and 1 Year Premium Warranty at the original price of <strong>$49</strong></p>
+                    <p>
+                        <strong>NO,</strong> I would only like to purchase the Rechargeable Battery and
+                        1 Year Premium Warranty at the original price of <strong>$49</strong>
+                    </p>
                     <a class="btn" href="#" onclick="doUpsellYes(pageInfo.upsellval,12)">$49</a>
                 </div>
             </div>
             <div class="btm-text">
-                <div class="text-center h4"><button id="upsellNo" value="hdlmp" class="btn btn-danger">No thanks, I'll just use some AAA’s from around the house :(</button></div>
-                <span><strong>IMPORTANT:</strong> AAAs will only last 2 hours. The T5 LED Bulb uses large <br>amounts of power for optimal operation.</span>
+                <div class="text-center h4">
+                    <button id="upsellNo" value="hdlmp" class="btn btn-danger">No thanks, I'll just use some AAA’s from around the house :(</button>
+                </div>
+                <span>
+                    <strong>IMPORTANT:</strong> AAAs will only last 2 hours.
+                    The T5 LED Bulb uses large <br>amounts of power for optimal operation.
+                </span>
             </div>
         </div>
     </div>
 </div>
-<footer class="footer"><a href=""><img src="us_recharge/images/red-logo.png" alt="logo"></a></footer>
-</body>
 <div id="popModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -80,7 +102,15 @@
                 <div id="popModalBody"></div>
             </div>
         </div>
-
     </div>
 </div>
+<footer class="footer"><a href=""><img src="us_recharge/images/red-logo.png" alt="logo"></a></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
+<script type="text/javascript">
+    var pageInfo = {type: 'upsell', upsellval:'recharge', autopopulate: false, hasorderid: true, helpaddress: false};
+</script>
+<script src="js/scripts.js?ver=1" defer></script>
+<script src="js/_us_recharge.js" defer></script>
+</body>
 </html>
