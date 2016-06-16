@@ -2,9 +2,9 @@
 
 $I = new AcceptanceTester($scenario);
 $I->wantTo('ensure that secure page works');
-$I->amOnUrl('https://secure.tacticalmastery.com');
+$I->amOnUrl('https://staging.tacticalmastery.com');
 $I->amOnPage('/checkout.html?firstName=Tester&lastName=Testin&fullName=&phoneNumber=123123123');
-$I->see('TACTICAL PRIMITIVE SURVIVOR FLASHLIGHT - 800 LUMENS');
+$I->see('TACTICAL PRIMITIVE SURVIVOR FLASHLIGHT - 800');
 $I->fillField('#f_email', '123@123.com');
 $I->fillField('#f_address1', 'Test str.');
 $I->fillField('#f_city', 'Los Angeles');
