@@ -258,71 +258,94 @@
                         </div>
                     </section>
                 </div>
-                <div class="col-lg-6 col-sm-12" style="padding: 0px;">
-                    <div class="ccjs-card">
-                        <label class="ccjs-number">
-                            Card Number
-                            <input name="cardNumber" class="ccjs-number col-lg-6" placeholder="•••• •••• •••• ••••">
-                        </label>
-                        <label class="ccjs-csc">
-                            Security Code
-                            <input name="cardSecurityCode" class="ccjs-csc" placeholder="•••">
-                        </label>
-                        <button type="button" class="ccjs-csc-help">?</button>
-                        <label class="ccjs-name">
-                            <input type="hidden" class="ccjs-name" style="visibility: hidden">
-                        </label>
-                        <fieldset class="ccjs-expiration">
-                            <legend>Expiration</legend>
-                            <select name="month" class="ccjs-month">
-                                <option selected disabled>MM</option>
-                                <option value="01">01</option>
-                                <option value="02">02</option>
-                                <option value="03">03</option>
-                                <option value="04">04</option>
-                                <option value="05">05</option>
-                                <option value="06">06</option>
-                                <option value="07">07</option>
-                                <option value="08">08</option>
-                                <option value="09">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-
-                            <select name="year" class="ccjs-year">
-                                <option selected disabled>YY</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                            </select>
-                        </fieldset>
-
-                        <select name="card-type" class="ccjs-hidden-card-type">
-                            <option value="amex" class="ccjs-amex">American Express</option>
-                            <option value="discover" class="ccjs-discover">Discover</option>
-                            <option value="mastercard" class="ccjs-mastercard">MasterCard</option>
-                            <option value="visa" class="ccjs-visa">Visa</option>
-                            <option value="diners-club" class="ccjs-diners-club">Diners Club</option>
-                            <option value="jcb" class="ccjs-jcb">JCB</option>
-                            <!--<option value="laser" class="laser">Laser</option>-->
-                            <!--<option value="maestro" class="maestro">Maestro</option>-->
-                            <!--<option value="unionpay" class="unionpay">UnionPay</option>-->
-                            <!--<option value="visa-electron" class="visa-electron">Visa Electron</option>-->
-                            <!--<option value="dankort" class="dankort">Dankort</option>-->
-                        </select>
+                <div class="col-lg-6">
+                    <!-- CREDIT CARD FORM STARTS HERE -->
+                    <div class="panel panel-default credit-card-box">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 style="font-size: 18px !important;"><strong>Step #4:</strong> Payment Details</h3>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-9 col-md-9">
+                                    <div class="field-holder">
+                                        <label for="cardNumber">Card Number</label>
+                                        <input id='js-txt-cardnumber'
+                                                type="tel"
+                                                class="form-control btn-lg"
+                                                name="cardNumber"
+                                                placeholder="0000 0000 0000 0000"
+                                                required
+                                                />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <label for="cardNumber">&nbsp;</label>
+                                    <div class="form-group text-center">
+                                        <img src="/images/credit_card/blank.png" style="height: 35px;" id="js-img-credit-card"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="cardExpiry"><span class="hidden-xs">Month</span></label>
+                                    <select class="form-control text-center" name="month">
+                                        <option value="">--- Select ---</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="cardExpiry"><span class="hidden-xs">Year</span></label>
+                                    <select class="form-control text-center" name="year">
+                                        <option value="">--- Select ---</option>
+                                        <option value="16"> 2016</option>
+                                        <option value="17"> 2017</option>
+                                        <option value="18"> 2018</option>
+                                        <option value="19"> 2019</option>
+                                        <option value="20"> 2020</option>
+                                        <option value="21"> 2021</option>
+                                        <option value="22"> 2022</option>
+                                        <option value="23"> 2023</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    <div class="form-group">
+                                        <label for="cardCVC">CV Code</label>
+                                        <input
+                                                type="tel"
+                                                class="form-control"
+                                                name="cardSecurityCode"
+                                                placeholder="CVC"
+                                                autocomplete="cc-csc"
+                                                required
+                                                />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- CREDIT CARD FORM ENDS HERE -->
                 </div>
                 <div class="col-lg-6">
-                    <button class="btn btn-primary" id="checkoutSubmit" type="submit" onclick="return validate();">
+                    <button class="btn btn-primary" id="checkoutSubmit" type="submit" onclick="return validate();" disabled>
                         YES! Ship Me My Primitive Survivor Flashlight
                     </button>
                     <ul class="securelist list-inline">
@@ -374,6 +397,23 @@
     </div>
 </div>
 
+<div id="popErrorsCustom" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                There were errors.
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="formerrorsCustom">
+                    <small class="help-block">Please enter expire date correctly.</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div id="popModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -416,6 +456,12 @@
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
 <script type="text/javascript" src="val/dist/js/formValidation.min.js" defer></script>
 <script type="text/javascript" src="val/dist/js/framework/bootstrap.min.js" defer></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js" defer></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
+<script type="text/javascript" src="js/jquery.creditCardValidator.js" defer></script>
+
 <script>
     var loadDeferredStyles = function() {
         var addStylesNode = document.getElementById("deferred-styles");

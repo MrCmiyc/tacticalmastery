@@ -16,3 +16,11 @@ $(document).ready(function() {
 		isBack = false;
 	});
 });
+$('input[name=cardNumber]').payment('formatCardNumber');
+$('input#js-txt-cardnumber').validateCreditCard(function(result) {
+	if (result.card_type != null) {
+		$("img#js-img-credit-card").attr('src', 'images/credit_card/' + result.card_type.name + '.png')
+	} else {
+		$("img#js-img-credit-card").attr('src', 'images/credit_card/blank.png')
+	}
+});
