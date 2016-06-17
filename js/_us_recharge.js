@@ -10,3 +10,9 @@ function validate() {
 	isBack = false;
 	return true;
 }
+
+$(document).ready(function() {
+	$("a.a-prevent-back").click(function() {
+		isBack = false;
+	});
+});
