@@ -8,3 +8,28 @@ ul.radios li {
 ul.radios li span.price {
   padding-top: 5px;
 }
+
+.offer {
+  padding: 0px;
+}
+
+.scissor-img {
+  width: 100%;
+  max-width: 107px;
+}
+
+@media (min-width: 240px) {
+  .scissor-title {
+    font-size: 12px;
+  }
+
+  .scissor-description {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 480px) {
+  .scissor-title {
+    font-size: 15px;
+  }
+}
