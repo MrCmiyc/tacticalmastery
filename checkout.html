@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primitive Survivor</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="skin1/css/allcss.css" rel="stylesheet">
 </head>
 <body>
 <!-- Google Tag Manager -->
@@ -32,20 +30,8 @@
                 <h1>TACTICAL Primitive Survivor FLASHLIGHT - 800 LUMENS</h1>
             </div>
             <div class="row">
-                <div class="col-lg-5">
-                    <div class="image-holder">
-                        <img src="skin1/images/img1.jpg" alt="image description">
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <ul class="info list-unstyled">
-                        <li class="half">MATERIAL: Aluminum</li>
-                        <li class="half">POWER: 3 AAA</li>
-                        <li class="half">LUMENS: 800</li>
-                        <li class="half">ZOOMABLE: 1x - 2000x</li>
-                        <li>5 MODES: High <em>|</em> Medium <em>|</em> Low <em>|</em> Strobe <em>|</em> S.O.S</li>
-                        <li>NORMALLY: <span class="price">$116.00</span></li>
-                    </ul>
+                <div class="col-lg-12">
+                    <img src="skin1/images/img1_item.jpg" alt="image description" style="width: 100%;">
                 </div>
             </div>
         </section>
@@ -75,14 +61,14 @@
                             <li>
                                 <div class="radio-holder">
                                     <input id="radio" name="product1_id" type="radio" checked value="7">
-                                    <label for="radio" class="bld">Buy 3 Primitive Survivor Flashlights, GET 2 FREE! ($145 Total)</label>
+                                    <label for="radio"><b>Buy 3 Primitive Survivor Flashlights, GET 2 FREE!</b> ($145 Total)</label>
                                 </div>
                                 <span class="price">$29/ea</span>
                             </li>
                             <li>
                                 <div class="radio-holder">
                                     <input id="radio2" name="product1_id" type="radio" value="5">
-                                    <label for="radio2" class="bld">Buy 2 Primitive Survivor Flashlights, GET 1 FREE! ($117 Total)</label>
+                                    <label for="radio2"><b>Buy 2 Primitive Survivor Flashlights, GET 1 FREE!</b> ($117 Total)</label>
                                 </div>
                                 <span class="price">$29/ea</span>
                             </li>
@@ -381,16 +367,34 @@
     </div>
 </div>
 
+<noscript id="deferred-styles">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="skin1/css/allcss.css" rel="stylesheet">
+    <link type="text/css" href="css/checkout.css" rel="stylesheet">
+</noscript>
+
 <!--form validation, main.css csss.css, creditcard-->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
 <script type="text/javascript" src="val/dist/js/formValidation.min.js" defer></script>
 <script type="text/javascript" src="val/dist/js/framework/bootstrap.min.js" defer></script>
+<script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+</script>
 <script type="text/javascript">
     var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
 </script>
 <script src="js/scripts.js" defer></script>
-
 <script src="js/_checkout.js" defer></script>
+
 </body>
 </html>

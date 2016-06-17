@@ -1,0 +1,10 @@
+div.radio-holder label {
+  padding: 0px;
+}
+ul.radios li {
+  padding-left: 5px;
+}
+
+ul.radios li span.price {
+  padding-top: 5px;
+}
