@@ -540,7 +540,7 @@ $(document).ready(function ()
 							}
 						}
 					},
-					cardNumber: {
+					cardNumberSpace: {
 						row: '.field',
 						validators: {
 							notEmpty: {
@@ -548,7 +548,7 @@ $(document).ready(function ()
 							},
 							stringLength: {
 								min: 14,
-								max: 21,
+								max: 20,
 								message: 'Credit card must be 15 or 16 digits'
 							}
 						}
