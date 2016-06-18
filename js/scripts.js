@@ -575,7 +575,6 @@ $(document).ready(function ()
 				$("#popErrors").modal();
 				e.preventDefault();
 			}).on('success.form.fv', function(e) {
-				$("div#js-div-loading-bar").show();
 				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
 			});
