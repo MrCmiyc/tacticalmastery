@@ -116,6 +116,7 @@
     </div>
 </div>
 
+<!-- block:dev -->
 <noscript id="deferred-styles">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -133,20 +134,24 @@
         var addStylesNode = document.getElementById("deferred-styles");
         var replacement = document.createElement("div");
         replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement)
+        document.body.appendChild(replacement);
         addStylesNode.parentElement.removeChild(addStylesNode);
     };
     var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
     if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
     else window.addEventListener('load', loadDeferredStyles);
 </script>
+<!-- blockEnd -->
 <script type="text/javascript">
     var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
     var disableOverRide = false; // Disable CS overRide
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
+<!-- block:js -->
 <script src="js/scripts.js" defer></script>
 <script src="js/_index.js" defer></script>
+<!-- blockEnd -->
+
 </body>
 </html>
