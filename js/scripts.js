@@ -298,10 +298,28 @@ function populateThanksPage(orderInfos) {
 	$('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price'] );
 	$('#orderNumber').html(orderInfos['orderId'] );
 	$('#totItems').html("Order Summary");
+	//now loop and add the products
 	$.each( orderInfos.items, function( i, val ) {
 		$('#orderDet tr:last').after('<tr><td>'+ val.name+'</td><td class="text-right">'+ val.price+'</td></tr>');
 	});
-	//now loop and add the products
+	// The "appears on statement as" only appears in the transacion api
+	// TODO: The query to the order status can mosetly be completely replaced by this query but no time atm.
+	// TODO: it's dumb to dump an api query here. This whole thing should be refactored to something like grabfields('thanksinfo', orderid)
+	api("trans","orderId={0}".sprtf(myOrderID),function(e)
+	{
+		json = JSON.parse(e);
+		if (json.result == "SUCCESS") {
+			if (json.message.data) {
+				firstRow=json.message.data[0];
+				if (firstRow && firstRow['merchantDescriptor']) {
+					$('#ccIdentity').html('<br>' + firstRow['merchantDescriptor']);
+				} else {
+					$('#ccIdentity').html('<br>Tactical Mastery');
+				}
+			}
+		}
+
+	});
 
 }
 
