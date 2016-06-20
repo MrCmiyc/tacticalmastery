@@ -153,6 +153,23 @@ function afSetSet(field,value)
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
+	$("div#js-div-loading-bar").show();
+	var year = $("select[name=year]").val();
+	var month = $("select[name=month]").val();
+	var d = new Date();
+	var currentYear = d.getFullYear().toString().substr(2,2);
+	var currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
+	if (currentYear < year) {
+
+	} else if ((currentYear == year) && (currentMonth <= month)) {
+
+	} else {
+		$("div#js-div-loading-bar").hide();
+		$("#popModalHead").html('Problem with your order');
+		$("#popModalBody").html('Invalid Expiration Date');
+		$("#popModal").modal();
+		return;
+	}
 	var apiFields = [];
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
@@ -211,6 +228,7 @@ function SubmitSubmit(this_form) {
 					if (json.message == 'Order is already completed') {
 						document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 					} else {
+						$("div#js-div-loading-bar").hide();
 						$("#popModalHead").html('Problem with your order');
 						$("#popModalBody").html(json.message);
 						$("#popModal").modal();
@@ -593,7 +611,6 @@ $(document).ready(function ()
 				$("#popErrors").modal();
 				e.preventDefault();
 			}).on('success.form.fv', function(e) {
-				$("div#js-div-loading-bar").show();
 				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
 			});
