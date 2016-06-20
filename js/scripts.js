@@ -211,8 +211,14 @@ function SubmitSubmit(this_form) {
 					if (json.message == 'Order is already completed') {
 						document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 					} else {
+						$("div#js-div-loading-bar").hide();
 						$("#popModalHead").html('Problem with your order');
-						$("#popModalBody").html(json.message);
+						if(json.message.trim() != 'Invalid Credit Card Number') {
+							json.message = 'Eek! Something went dark with your order and it was not processed. ' +
+								'Call our support team to shed some light and get your order processed right away! ' +
+								'- <a href="tel:+18444478240">(844) 447-8240</a>';
+						}
+						$("#popModalBody").html('<span style="color:red;font-size:24px">'+json.message+'</span>');
 						$("#popModal").modal();
 					}
 				}
