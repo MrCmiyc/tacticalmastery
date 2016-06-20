@@ -221,12 +221,12 @@ function SubmitSubmit(this_form) {
 					window.myOrderID = json.message.orderId;
 					afSetSet("orderId", myOrderID);
 				}
-				document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+				document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 				break;
 			case 'ERROR':
 				if (json.message) {
 					if (json.message == 'Order is already completed') {
-						document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+						document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 					} else {
 						$("div#js-div-loading-bar").hide();
 						$("#popModalHead").html('Problem with your order');
@@ -259,17 +259,17 @@ function SubmitSubmit(this_form) {
 function doUpsellYes(upsellID,productId){
 	if (window.myOrderID) {
 		var paramString = 'orderId=' + window.myOrderID;
-		var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+		var nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 		switch (upsellID) {
 			case 'hdlmp':
-				productId = productId || '31';
-				paramString += '&productQty=' + $('#selQty').val();
-				nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
-				break;
-			case 'recharge':
 				paramString += '&productQty=1';
 				productId = productId || '12';
 				//no nextpage, since this is the last in the chain
+				break;
+			case 'recharge':
+				productId = productId || '31';
+				paramString += '&productQty=' + $('#selQty').val();
+				nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 				break;
 			default:
 		}
@@ -306,8 +306,8 @@ function doUpsellYes(upsellID,productId){
 function doUpsellNo(upsellID){
 	var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 	switch (upsellID) {
-		case 'hdlmp':
-			nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+		case 'recharge':
+			nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 			break;
 		default:
 	}
