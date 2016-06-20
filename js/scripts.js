@@ -153,6 +153,23 @@ function afSetSet(field,value)
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
+	$("div#js-div-loading-bar").show();
+	var year = $("select[name=year]").val();
+	var month = $("select[name=month]").val();
+	var d = new Date();
+	var currentYear = d.getFullYear().toString().substr(2,2);
+	var currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
+	if (currentYear < year) {
+
+	} else if ((currentYear == year) && (currentMonth <= month)) {
+
+	} else {
+		$("div#js-div-loading-bar").hide();
+		$("#popModalHead").html('Problem with your order');
+		$("#popModalBody").html('Invalid Expiration Date');
+		$("#popModal").modal();
+		return;
+	}
 	var apiFields = [];
 	if (pageInfo.type == "orderform") {
 		apiFields = ['firstName', 'lastName', 'emailAddress', 'phoneNumber','address1','address2','city','state','postalCode','cardNumber','cardSecurityCode','month','year','campaignId','product1_id','product1_qty']
@@ -204,12 +221,12 @@ function SubmitSubmit(this_form) {
 					window.myOrderID = json.message.orderId;
 					afSetSet("orderId", myOrderID);
 				}
-				document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+				document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 				break;
 			case 'ERROR':
 				if (json.message) {
 					if (json.message == 'Order is already completed') {
-						document.location = '//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+						document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
 					} else {
 						$("div#js-div-loading-bar").hide();
 						$("#popModalHead").html('Problem with your order');
@@ -247,17 +264,17 @@ function SubmitSubmit(this_form) {
 function doUpsellYes(upsellID,productId){
 	if (window.myOrderID) {
 		var paramString = 'orderId=' + window.myOrderID;
-		var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+		var nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 		switch (upsellID) {
 			case 'hdlmp':
-				productId = productId || '31';
-				paramString += '&productQty=' + $('#selQty').val();
-				nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
-				break;
-			case 'recharge':
 				paramString += '&productQty=1';
 				productId = productId || '12';
 				//no nextpage, since this is the last in the chain
+				break;
+			case 'recharge':
+				productId = productId || '31';
+				paramString += '&productQty=' + $('#selQty').val();
+				nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 				break;
 			default:
 		}
@@ -294,8 +311,8 @@ function doUpsellYes(upsellID,productId){
 function doUpsellNo(upsellID){
 	var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
 	switch (upsellID) {
-		case 'hdlmp':
-			nextPage='//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+		case 'recharge':
+			nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
 			break;
 		default:
 	}
@@ -309,10 +326,28 @@ function populateThanksPage(orderInfos) {
 	$('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price'] );
 	$('#orderNumber').html(orderInfos['orderId'] );
 	$('#totItems').html("Order Summary");
+	//now loop and add the products
 	$.each( orderInfos.items, function( i, val ) {
 		$('#orderDet tr:last').after('<tr><td>'+ val.name+'</td><td class="text-right">'+ val.price+'</td></tr>');
 	});
-	//now loop and add the products
+	// The "appears on statement as" only appears in the transacion api
+	// TODO: The query to the order status can mosetly be completely replaced by this query but no time atm.
+	// TODO: it's dumb to dump an api query here. This whole thing should be refactored to something like grabfields('thanksinfo', orderid)
+	api("trans","orderId={0}".sprtf(myOrderID),function(e)
+	{
+		json = JSON.parse(e);
+		if (json.result == "SUCCESS") {
+			if (json.message.data) {
+				firstRow=json.message.data[0];
+				if (firstRow && firstRow['merchantDescriptor']) {
+					$('#ccIdentity').html('<br>' + firstRow['merchantDescriptor']);
+				} else {
+					$('#ccIdentity').html('<br>Tactical Mastery');
+				}
+			}
+		}
+
+	});
 
 }
 
@@ -581,7 +616,6 @@ $(document).ready(function ()
 				$("#popErrors").modal();
 				e.preventDefault();
 			}).on('success.form.fv', function(e) {
-				$("div#js-div-loading-bar").show();
 				fakevar = SubmitSubmit('#frm_order');
 				e.preventDefault();
 			});

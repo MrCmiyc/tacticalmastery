@@ -92,6 +92,10 @@ class Deploy {
                     exec("HOME=/home/www-data && /var/data/api/purge_cloudfront.sh >>{$this->_log} 2>&1");
                     exec("/var/data/api/purge_hiberniacdn.sh >>{$this->_log} 2>&1");
                     exec("/var/data/api/purge_highwinds.sh >>{$this->_log} 2>&1");
+
+                    $this->log("Starting Gulp:");
+                    chdir($this->_workDirectory . '/dev');
+                    exec("/usr/bin/node node_modules/gulp/bin/gulp.js >>{$this->_log} 2>&1");
                     
                     $this->log("Deployment successful. Starting the tests.");
                     chdir($this->_workDirectory . '/tests/codecept');
