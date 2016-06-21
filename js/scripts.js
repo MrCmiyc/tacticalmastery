@@ -302,29 +302,35 @@ function doUpsellYes(upsellID, productId) {
             {
                 json = JSON.parse(e);
 
-                //console.log(json);
-                if (json.result == "SUCCESS") {
-                    document.location = nextPage;
-                } else if (json.result == "ERROR") {
-                    if (json.message) {
-                        if (json.message == 'This upsale was already taken.') {
-                            document.location = nextPage;
-                        } else {
-                            $("#popModalHead").html('Problem with your Addon');
-                            $("#popModalBody").html(json.message);
-                            $("#popModal").modal();
-                        }
-                    }
-                } else {
-                    $("#popModalHead").html('Problem with your Addon');
-                    $("#popModalBody").html('An unknown error occured, try again or call our customer service');
-                    $("#popModal").modal();
-                }
-            });
-        }
-    } else {
-        alert("There was an error finding your order, please refresh the page and try again.")
-    }
+				//console.log(json);
+				if (json.result == "SUCCESS") {
+					document.location = nextPage;
+				} else if (json.result == "ERROR") {
+					if (json.message) {
+						var messageOut = '';
+						if (typeof(json.message) === "string") {
+							messageOut = json.message;
+						} else {
+							for (var k in json.message) {
+								if (json.message.hasOwnProperty(k)) {
+									messageOut += k + ":" + json.message[k] + '<br>';
+								}
+							}
+						}
+						$("#popModalHead").html('Problem with your Addon');
+						$("#popModalBody").html(messageOut);
+						$("#popModal").modal();
+					}
+				} else {
+					$("#popModalHead").html('Problem with your Addon');
+					$("#popModalBody").html('An unknown error occured, try again or call our customer service');
+					$("#popModal").modal();
+				}
+			});
+		}
+	} else {
+		alert("There was an error finding your order, please refresh the page and try again.")
+	}
 }
 function doUpsellNo(upsellID) {
     var nextPage = '/thankyou.html?orderId=' + window.myOrderID;
