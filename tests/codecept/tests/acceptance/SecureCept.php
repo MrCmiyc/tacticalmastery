@@ -16,20 +16,20 @@ $I->selectOption('#frm_order > div > div.col-lg-6.col-sm-12 > div > fieldset > s
 $I->selectOption('#frm_order > div > div.col-lg-6.col-sm-12 > div > fieldset > select.ccjs-year', '18');
 $I->fillField('#frm_order > div > div.col-lg-6.col-sm-12 > div > label.ccjs-csc > input', '100');
 
-// Go to the upsell page
-$I->amGoingTo('Go to the upsell page');
-$I->makeScreenshot('checkout');
-$I->click('#checkoutSubmit');
-$I->waitForText('TACTICAL TL900 HEADLAMP',5);
-$I->seeInCurrentUrl('/us_hlmp.html');
-
-
 // Go to the recharge page
 $I->amGoingTo('Go to the recharge page');
-$I->makeScreenshot('upsell1');
-$I->click('#upsellNo');
+$I->makeScreenshot('checkout');
+$I->click('#checkoutSubmit');
 $I->waitForText('RECHARGEABLE LITHIUM', 2);
 $I->seeInCurrentUrl('/us_recharge.html');
+
+
+// Go to the upsell page
+$I->amGoingTo('Go to the upsell page');
+$I->makeScreenshot('upsell1');
+$I->click('#upsellNo');
+$I->waitForText('TACTICAL TL900 HEADLAMP',5);
+$I->seeInCurrentUrl('/us_hlmp.html');
 
 // Go the the final order page
 $I->amGoingTo('Go the the thank you page');
