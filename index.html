@@ -145,7 +145,11 @@
 <!-- blockEnd -->
 <script type="text/javascript">
     var pageInfo = {type:'index', autopopulate:true, hasorderid:false};
-    var disableOverRide = false; // Disable CS overRide
+    // Disable CS overRide
+    var disableOverRide = false; 
+    // Clear the slate to be ready for new orders
+    window.localStorage.clear();
+    delete window.myOrderID;
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" defer></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>

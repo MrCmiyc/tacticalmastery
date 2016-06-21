@@ -1,9 +1,9 @@
-String.prototype.sprtf = function()
+String.prototype.sprtf = function ()
 {
     var args, pattern;
     pattern = /\{\d+\}/g;
     args = arguments;
-    return this.replace(pattern, function(capture)
+    return this.replace(pattern, function (capture)
     {
         return args[capture.match(/\d+/)];
     });
@@ -13,7 +13,7 @@ function args(elem) {
     // Return an object of element attributes
     var newAttrs = {};
     var rinlinejQuery = /^jQuery\d+$/;
-    $.each(elem.attributes, function(i, attr) {
+    $.each(elem.attributes, function (i, attr) {
         if (attr.specified && !rinlinejQuery.test(attr.name)) {
             newAttrs[attr.name] = attr.value;
         }
@@ -21,61 +21,61 @@ function args(elem) {
     return newAttrs;
 }
 
-function api(endpoint,data,element)
+function api(endpoint, data, element)
 {
     var url = 'https://api.tacticalmastery.com';
     var jqxhr = $.ajax(
-    {
-        type: 'GET',
-        url: url + "/" + endpoint + "/",
-        data: data,
-        contentType: "application/json",
-        success: function(e)
-        {
-            //console.log('api success');
-            if(typeof e.result != "undefined")
             {
-            }
-            element(e);
-        },
-        error: function(e)
-        {
-            console.log("error");
-        }
-    });
+                type: 'GET',
+                url: url + "/" + endpoint + "/",
+                data: data,
+                contentType: "application/json",
+                success: function (e)
+                {
+                    //console.log('api success');
+                    if (typeof e.result != "undefined")
+                    {
+                    }
+                    element(e);
+                },
+                error: function (e)
+                {
+                    console.log("error");
+                }
+            });
 }
 
-function getQueryVariable(variable) 
+function getQueryVariable(variable)
 {
     var query = window.location.search.substring(1);
     var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) 
+    for (var i = 0; i < vars.length; i++)
     {
         var pair = vars[i].split('=');
-        
-        if (decodeURIComponent(pair[0]) == variable) 
+
+        if (decodeURIComponent(pair[0]) == variable)
         {
             return decodeURIComponent(pair[1]);
         }
     }
-    
+
     return "";
-}    
+}
 
 function randString(x)
 {
     var s = "";
-    
-    while(s.length<x&&x>0)
+
+    while (s.length < x && x > 0)
     {
         var r = Math.random();
-        s+= (r<0.1?Math.floor(r*100):String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)));
+        s += (r < 0.1 ? Math.floor(r * 100) : String.fromCharCode(Math.floor(r * 26) + (r > 0.5 ? 97 : 65)));
     }
-    
+
     return s;
 }
 
-function getSetSet(field,value,qsfield)
+function getSetSet(field, value, qsfield)
 {
 
     value = value || '';
@@ -83,15 +83,16 @@ function getSetSet(field,value,qsfield)
 
     var sField = value;
 
-    if(typeof(Storage) !== "undefined")
+    if (typeof (Storage) !== "undefined")
     {
         sField = localStorage.getItem(field);
-        if(sField==null) sField = getQueryVariable(qsfield);
-        
-        localStorage.setItem(field,sField);
+        if (sField == null)
+            sField = getQueryVariable(qsfield);
+
+        localStorage.setItem(field, sField);
     }
-    
-    $("input[name="+field+"]").val(sField);
+
+    $("input[name=" + field + "]").val(sField);
 }
 
 function getFirstLast(instring) {
@@ -101,62 +102,62 @@ function getFirstLast(instring) {
     var ln = '';
     if (parts instanceof Array) {
         ln = parts.join(' ');
-    }
-    else {
+    } else {
         ln = parts;
     }
-    return [fn,ln];
+    return [fn, ln];
 }
 
 
-function afGetGet(field,qsfield)
+function afGetGet(field, qsfield)
 {
     qsfield = qsfield || false;
     var returnThis;
 
-    if(typeof(Storage) !== "undefined")
+    if (typeof (Storage) !== "undefined")
     {
         returnThis = localStorage.getItem(field);
     }
     //if (returnThis == undefined) {
-        if(qsfield) {
+    if (qsfield) {
 
-            qParam = getQueryVariable(qsfield);
-            if (qParam) {
-                //TODO: this is buggy, no check for local storage, lets just define our own getter setter method for ls, then gracefully fall back to a cookie
-                localStorage.setItem(field,qParam);
-                returnThis = qParam;
-            }
+        qParam = getQueryVariable(qsfield);
+        if (qParam) {
+            //TODO: this is buggy, no check for local storage, lets just define our own getter setter method for ls, then gracefully fall back to a cookie
+            localStorage.setItem(field, qParam);
+            returnThis = qParam;
+        }
         //} else {
         //    returnThis = '';
-        }
+    }
     //}
-    if (returnThis) return returnThis.replace(/[+]/g, ' ');
-    return returnThis
+    if (returnThis)
+        return returnThis.replace(/[+]/g, ' ');
+    return returnThis;
 
 }
 
-function afSetSet(field,value)
+function afSetSet(field, value)
 {
 
-    if(typeof(Storage) !== "undefined")
+    if (typeof (Storage) !== "undefined")
     {
-        localStorage.setItem(field,value);
+        localStorage.setItem(field, value);
     }
 }
 
 
 /*  Page borne stuffs
-  todo: this needs serious refactoring to perform as intended.
-   todo:  messages/next/prev shoudl flow into a function that just handles success events and responds accordingly
-   todo: need to clousure this mess
+ todo: this needs serious refactoring to perform as intended.
+ todo:  messages/next/prev shoudl flow into a function that just handles success events and responds accordingly
+ todo: need to clousure this mess
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
     $("div#js-div-loading-bar").show();
     var year = $("select[name=year]").val(), month = $("select[name=month]").val();
     var d = new Date();
-    var currentYear = d.getFullYear().toString().substr(2,2), currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
+    var currentYear = d.getFullYear().toString().substr(2, 2), currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
     if (!((currentYear < year) || (currentYear == year) && (currentMonth <= month))) {
         $("div#js-div-loading-bar").hide();
         $("#popModalHead").html('Problem with your order');
@@ -168,28 +169,28 @@ function SubmitSubmit(this_form) {
     if (pageInfo.type == "orderform") {
         apiFields = [
             'firstName',
-			'lastName',
-			'emailAddress',
-			'phoneNumber',
-			'address1',
-			'address2',
-			'city',
-			'state',
-			'postalCode',
-			'cardNumber',
-			'cardSecurityCode',
-			'month',
-			'year',
-			'campaignId',
-			'product1_id',
-			'product1_qty'
-		]
+            'lastName',
+            'emailAddress',
+            'phoneNumber',
+            'address1',
+            'address2',
+            'city',
+            'state',
+            'postalCode',
+            'cardNumber',
+            'cardSecurityCode',
+            'month',
+            'year',
+            'campaignId',
+            'product1_id',
+            'product1_qty'
+        ];
     }
     //console.log("sumbitted: "+$(this_form).attr('name'));
     var paramString = 'campaignId=3&product1_qty=1';
 
-    $(this_form).find('input').each(function() {
-        if ($.inArray($(this).attr('name'),apiFields) != -1) {
+    $(this_form).find('input').each(function () {
+        if ($.inArray($(this).attr('name'), apiFields) != -1) {
             var uVal = $(this).val();
             if (uVal) {
                 uVal = encodeURIComponent(uVal);
@@ -211,14 +212,14 @@ function SubmitSubmit(this_form) {
         //console.log($(this).attr('name') +"="+ $(this).val());
     });
 
-    $(this_form).find('select').each(function() {
-        if ($.inArray($(this).attr('name'),apiFields) != -1) {
+    $(this_form).find('select').each(function () {
+        if ($.inArray($(this).attr('name'), apiFields) != -1) {
             var uVal = $(this).val();
             if (uVal) {
                 if (paramString != '') {
                     paramString += '&';
                 }
-                paramString +=$(this).attr('name') + "=" + uVal;
+                paramString += $(this).attr('name') + "=" + uVal;
             }
         }
         //console.log($(this).attr('name') +"="+ $(this).val());
@@ -229,47 +230,47 @@ function SubmitSubmit(this_form) {
 
     //console.log(paramString);
     //just do the order right meow and get a response
-    api("order", paramString, function(e) {
+    api("order", paramString, function (e) {
         json = JSON.parse(e);
 
         //console.log(json);
-        switch(json.result) {
+        switch (json.result) {
             case 'SUCCESS':
-                if(typeof json.message.orderId != 'undefined') {
+                if (typeof json.message.orderId != 'undefined') {
                     window.myOrderID = json.message.orderId;
                     afSetSet("orderId", myOrderID);
                 }
-                document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+                document.location = '/us_recharge.html?orderId=' + window.myOrderID;
                 break;
-			case 'ERROR':
-				if (json.message) {
-					if (json.message == 'Order is already completed') {
-						document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
-					} else {
-						$("div#js-div-loading-bar").hide();
-						$("#popModalHead").html('Problem with your order');
-						if(json.message.trim() != 'Invalid Credit Card Number') {
-							json.message = 'Eek! Something went dark with your order and it was not processed. ' +
-								'Call our support team to shed some light and get your order processed right away! ' +
-								'- <a href="tel:+18444478240">(844) 447-8240</a>';
-						}
-						$("#popModalBody").html('<span style="color:red;font-size:24px">'+json.message+'</span>');
-						$("#popModal").modal();
-					}
-				}
-				break;
-			default:
-				//todo: reply back to our api instead of logging here
-				break;
+            case 'ERROR':
+                if (json.message) {
+                    if (json.message == 'Order is already completed') {
+                        document.location = '/us_recharge.html?orderId=' + window.myOrderID;
+                    } else {
+                        $("div#js-div-loading-bar").hide();
+                        $("#popModalHead").html('Problem with your order');
+                        if (json.message.trim() != 'Invalid Credit Card Number') {
+                            json.message = 'Eek! Something went dark with your order and it was not processed. ' +
+                                    'Call our support team to shed some light and get your order processed right away! ' +
+                                    '- <a href="tel:+18444478240">(844) 447-8240</a>';
+                        }
+                        $("#popModalBody").html('<span style="color:red;font-size:24px">' + json.message + '</span>');
+                        $("#popModal").modal();
+                    }
+                }
+                break;
+            default:
+                //todo: reply back to our api instead of logging here
+                break;
         }
     });
 
-    $(this_form).find('input.af').each(function(){
+    $(this_form).find('input.af').each(function () {
         if ($(this).val() != "") {
             f_name = "f_" + $(this).attr('name');
             afSetSet(f_name, $(this).val());
             if (f_name == 'f_fullName') {
-                nameParts = getFirstLast($( this ).val());
+                nameParts = getFirstLast($(this).val());
                 afSetSet('f_firstName', nameParts[0]);
                 afSetSet('f_lastName', nameParts[1]);
             }
@@ -278,26 +279,26 @@ function SubmitSubmit(this_form) {
     return false;
 }
 
-function doUpsellYes(upsellID,productId){
+function doUpsellYes(upsellID, productId) {
     if (window.myOrderID) {
         var paramString = 'orderId=' + window.myOrderID;
-        var nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+        var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
         switch (upsellID) {
             case 'hdlmp':
-                // paramString += '&productQty=1';
                 productId = productId || '12';
                 paramString += '&productQty=' + $('#selQty').val();
-                //no nextpage, since this is the last in the chain
+                nextPage = '/thankyou.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
+                paramString += '&productQty=1';
                 productId = productId || '31';
-                nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+                nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:
         }
         if (productId) {
             paramString += '&productId=' + productId;
-            api("upsell",paramString,function(e)
+            api("upsell", paramString, function (e)
             {
                 json = JSON.parse(e);
 
@@ -325,11 +326,11 @@ function doUpsellYes(upsellID,productId){
         alert("There was an error finding your order, please refresh the page and try again.")
     }
 }
-function doUpsellNo(upsellID){
-    var nextPage='//secure.tacticalmastery.com/thankyou.html?orderId=' + window.myOrderID;
+function doUpsellNo(upsellID) {
+    var nextPage = '/thankyou.html?orderId=' + window.myOrderID;
     switch (upsellID) {
         case 'recharge':
-            nextPage='//secure.tacticalmastery.com/us_hlmp.html?orderId=' + window.myOrderID;
+            nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
             break;
         default:
     }
@@ -338,24 +339,25 @@ function doUpsellNo(upsellID){
 
 function populateThanksPage(orderInfos) {
 
-    if ($.type( orderInfos ) === "array") orderInfos = orderInfos[0];
+    if ($.type(orderInfos) === "array")
+        orderInfos = orderInfos[0];
     //console.log(orderInfos);
-    $('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price'] );
-    $('#orderNumber').html(orderInfos['orderId'] );
+    $('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price']);
+    $('#orderNumber').html(orderInfos['orderId']);
     $('#totItems').html("Order Summary");
     //now loop and add the products
-    $.each( orderInfos.items, function( i, val ) {
-        $('#orderDet tr:last').after('<tr><td>'+ val.name+'</td><td class="text-right">'+ val.price+'</td></tr>');
+    $.each(orderInfos.items, function (i, val) {
+        $('#orderDet tr:last').after('<tr><td>' + val.name + '</td><td class="text-right">' + val.price + '</td></tr>');
     });
     // The "appears on statement as" only appears in the transacion api
     // TODO: The query to the order status can mosetly be completely replaced by this query but no time atm.
     // TODO: it's dumb to dump an api query here. This whole thing should be refactored to something like grabfields('thanksinfo', orderid)
-    api("trans","orderId={0}".sprtf(myOrderID),function(e)
+    api("trans", "orderId={0}".sprtf(myOrderID), function (e)
     {
         json = JSON.parse(e);
         if (json.result == "SUCCESS") {
             if (json.message.data) {
-                firstRow=json.message.data[0];
+                firstRow = json.message.data[0];
                 if (firstRow && firstRow['merchantDescriptor']) {
                     $('#ccIdentity').html('<br>' + firstRow['merchantDescriptor']);
                 } else {
@@ -373,7 +375,7 @@ $(document).ready(function ()
     if (pageInfo != undefined) {
 
         //Terms and privacy popups
-        $('#terms').click(function(e)
+        $('#terms').click(function (e)
         {
             bModal = false;
             $("#popModalHead").html('Terms and Conditions');
@@ -381,7 +383,7 @@ $(document).ready(function ()
             $("#popModal").modal();
         });
 
-        $('#privacy').click(function(e)
+        $('#privacy').click(function (e)
         {
             bModal = false;
             $("#popModalHead").html('Privacy Policy');
@@ -397,47 +399,48 @@ $(document).ready(function ()
 
         //check autopopulate
         if (pageInfo.autopopulate) {
-            $('input.af').each(function() {
-                f_name = "f_" + $( this ).attr('name');
+            $('input.af').each(function () {
+                f_name = "f_" + $(this).attr('name');
                 //console.log("populating:"+f_name+"|")
-                $( this ).val(afGetGet(f_name,$( this ).attr('name')));
+                $(this).val(afGetGet(f_name, $(this).attr('name')));
             });
         }
         if (pageInfo.hasorderid) {
-            window.myOrderID = afGetGet("orderId","orderId");
-            if(myOrderID == null)
+            window.myOrderID = afGetGet("orderId", "orderId");
+            if (myOrderID == null)
             {
                 paramString = '';
                 var okToQuery = true;
                 var requiredFields = ['firstName', 'lastName', 'emailAddress'];
                 var optionalFields = ['phoneNumber'];
-                $.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function( index, f_name ) {
+                $.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function (index, f_name) {
                     ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
                     f_val = afGetGet(ls_name, f_name);
                     if (f_val) {
                         //console.log(".");
-                        if (paramString != '') paramString += '&';
-                        paramString +=f_name + "=" + f_val;
+                        if (paramString != '')
+                            paramString += '&';
+                        paramString += f_name + "=" + f_val;
                     } else if (requiredFields.indexOf(f_name) != -1) {
                         okToQuery = false;
                         //console.log("breakquery: missing required field")
                     }
                 });
-                if (okToQuery) api("createlead",paramString,function(e)
-                {
-                    json = JSON.parse(e);
+                if (okToQuery)
+                    api("createlead", paramString, function (e)
+                    {
+                        json = JSON.parse(e);
 
-                    if(typeof json.message.orderId != 'undefined') {
-                        window.myOrderID = json.message.orderId;
-                        afSetSet("orderId", myOrderID);
-                    }
-                });
-            }
-            else
+                        if (typeof json.message.orderId != 'undefined') {
+                            window.myOrderID = json.message.orderId;
+                            afSetSet("orderId", myOrderID);
+                        }
+                    });
+            } else
             {
                 //window.orderID = afGetGet("orderId","orderId");
                 //todo: just send /getlead (endpoints and have the function do the uri
-                api("getlead","orderId={0}".sprtf(myOrderID),function(e)
+                api("getlead", "orderId={0}".sprtf(myOrderID), function (e)
                 {
                     json = JSON.parse(e);
                     if (pageInfo.type == 'thankyou') {
@@ -445,7 +448,7 @@ $(document).ready(function ()
                         if (json.result == "SUCCESS") {
                             populateThanksPage(json.message.data);
                         } else if (json.result == "ERROR") {
-                            alert('Error: '+ json.message )
+                            alert('Error: ' + json.message);
                         } else {
                             alert('undefined error. please try again');
                         }
@@ -455,13 +458,13 @@ $(document).ready(function ()
             }
         }
 
-            //$( "#frm_order" ).submit(function (event) {
-            //    if (pageInfo.hasorderid) {
-            //        event.preventDefault();
-            //        return false;
-            //    }
-            //
-            //});
+        //$( "#frm_order" ).submit(function (event) {
+        //    if (pageInfo.hasorderid) {
+        //        event.preventDefault();
+        //        return false;
+        //    }
+        //
+        //});
 
         //ditching this for now
         // if (pageInfo.helpaddress) {
@@ -503,8 +506,8 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
-                                message: 'Names can only consist of alphabetical, number and underscore'
+                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
                     },
@@ -520,8 +523,8 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
-                                message: 'Names can only consist of alphabetical, number and underscore'
+                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
                     },
@@ -533,7 +536,7 @@ $(document).ready(function ()
                             },
                             emailAddress: {
                                 message: 'The input is not a valid email address'
-                            }                        }
+                            }}
                     },
                     phoneNumber: {
                         row: '.field',
@@ -569,7 +572,6 @@ $(document).ready(function ()
                             }
                         }
                     },
-
                     city: {
                         row: '.field',
                         validators: {
@@ -623,23 +625,23 @@ $(document).ready(function ()
                         }
                     }
                 }
-            }).on('status.field.fv', function(e, data) {
+            }).on('status.field.fv', function (e, data) {
                 data.fv.disableSubmitButtons(false);
-            }).on('success.field.fv', function(e, data) {
+            }).on('success.field.fv', function (e, data) {
                 if (data.fv.getSubmitButton()) {
                     data.fv.disableSubmitButtons(false);
                 }
-            }).on('err.form.fv', function(e) {
+            }).on('err.form.fv', function (e) {
                 $("#popErrors").modal();
                 e.preventDefault();
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 fakevar = SubmitSubmit('#frm_order');
                 e.preventDefault();
             });
             //try to populate the state box
-            $.getJSON('//geo.tacticalmastery.com/get/', function(data){
+            $.getJSON('//geo.tacticalmastery.com/get/', function (data) {
                 if (data && data.region) {
-                    $("#f_state option").filter(function() {
+                    $("#f_state option").filter(function () {
                         return $(this).text() == data.region;
                     }).prop('selected', true);
                 }
@@ -647,12 +649,12 @@ $(document).ready(function ()
         }
         if (pageInfo.type == 'upsell') {
 
-            $('#upsellYes').click(function(e)
+            $('#upsellYes').click(function (e)
             {
                 isBack = false;
                 doUpsellYes(pageInfo.upsellval)
             });
-            $('#upsellNo').click(function(e)
+            $('#upsellNo').click(function (e)
             {
                 isBack = false;
                 doUpsellNo(pageInfo.upsellval)

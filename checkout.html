@@ -440,6 +440,9 @@
 </script>
 <script type="text/javascript">
     var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true};
+    // Clear the slate to be ready for new orders
+    window.localStorage.clear();
+    delete window.myOrderID;
 </script>
 <script src="js/scripts.js" defer></script>
 <script src="js/_checkout.js" defer></script>
