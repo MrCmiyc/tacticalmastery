@@ -153,6 +153,7 @@ function afSetSet(field,value)
  */
 function SubmitSubmit(this_form) {
 //"/api/order/?firstName=danner-3&lastName=omerick&address1=123+main+street&city=sarasota&state=fl&postalCode=34202&phoneNumber=551-587-8328&emailAddress=zedzedbeta5@yahoo.com&orderId=B2DF48140C&cardNumber=0000000000000000&cardSecurityCode=100&month=06&year=17&campaignId=3&product1_id=3&product1_qty=1
+<<<<<<< HEAD
     $("div#js-div-loading-bar").show();
     var year = $("select[name=year]").val(), month = $("select[name=month]").val();
     var d = new Date();
@@ -241,21 +242,26 @@ function SubmitSubmit(this_form) {
                 }
                 document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
                 break;
-            case 'ERROR':
-                if (json.message) {
-                    if (json.message == 'Order is already completed') {
-                        document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
-                    } else {
-                        $("div#js-div-loading-bar").hide();
-                        $("#popModalHead").html('Problem with your order');
-                        $("#popModalBody").html(json.message);
-                        $("#popModal").modal();
-                    }
-                }
-                break;
-            default:
-                //todo: reply back to our api instead of logging here
-                break;
+			case 'ERROR':
+				if (json.message) {
+					if (json.message == 'Order is already completed') {
+						document.location = '//secure.tacticalmastery.com/us_recharge.html?orderId=' + window.myOrderID;
+					} else {
+						$("div#js-div-loading-bar").hide();
+						$("#popModalHead").html('Problem with your order');
+						if(json.message.trim() != 'Invalid Credit Card Number') {
+							json.message = 'Eek! Something went dark with your order and it was not processed. ' +
+								'Call our support team to shed some light and get your order processed right away! ' +
+								'- <a href="tel:+18444478240">(844) 447-8240</a>';
+						}
+						$("#popModalBody").html('<span style="color:red;font-size:24px">'+json.message+'</span>');
+						$("#popModal").modal();
+					}
+				}
+				break;
+			default:
+				//todo: reply back to our api instead of logging here
+				break;
         }
     });
 
