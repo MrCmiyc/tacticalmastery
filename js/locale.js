@@ -5,7 +5,7 @@ $(document).ready(function() {
         locale = 'en';
     }
     $.getJSON("locale/" + locale + "/" + pageInfo.langFile + ".json", function (json) {
-        $.each($("[data-trans]"), function (index, item) {
+        $.each($("[trans]"), function (index, item) {
             var trans = $(item).text();
             if (json[trans] != undefined) {
                 $(item).text(json[trans]);
@@ -25,5 +25,9 @@ $(document).ready(function() {
                 $(item).text(json[trans]);
             }
         });
+
+        if (pageInfo.langFile == 'recharge') {
+            $("button#upsellNo").text(json['no_thanks_i_will_just_use_some']);
+        }
     });
 });

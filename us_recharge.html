@@ -38,9 +38,9 @@
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="" data-trans>STEP 1: CREATE ACCOUNT</a></li>
-                        <li><a href="" data-trans>STEP 2: CUSTOMIZE ORDER</a></li>
-                        <li><a href="" data-trans>STEP 3: ORDER COMPLETE</a></li>
+                        <li><a href="" trans>STEP 1: CREATE ACCOUNT</a></li>
+                        <li><a href="" trans>STEP 2: CUSTOMIZE ORDER</a></li>
+                        <li><a href="" trans>STEP 3: ORDER COMPLETE</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,11 +49,11 @@
             <div class="container rechargable-wrap">
                 <div class="rechargable">
                     <p>
-                        <strong data-trans>WAIT!</strong> <trans>Would you like for us to add</trans>
+                        <strong trans>WAIT!</strong> <trans>Would you like for us to add</trans>
                     </p>
-                    <h2 data-trans>RECHARGEABLE LITHIUM ION BATTERIES</h2>
+                    <h2 trans>RECHARGEABLE LITHIUM ION BATTERIES</h2>
                     <p>
-                        <strong class="re-strong1" data-trans>AND a Premium Warranty</strong> <trans>to your order for</trans> <strong data-trans>75% OFF?</strong>
+                        <strong class="re-strong1" trans>AND a Premium Warranty</strong> <trans>to your order for</trans> <strong trans>75% OFF?</strong>
                     </p>
                 </div>
             </div>
@@ -74,28 +74,26 @@
                     <div class="warrenty">
                         <div class="warrenty-inner">
                             <p>
-                                <strong>YES!</strong> Please add <strong><span class="product-title-1">1</span> x Rechargeable Battery Pack</strong> and the
-                                <strong>Three Year Premium Warranty</strong> to my order at the discounted rate of <strong id="upsellPrice1">$129</strong>
+                                <strong trans>YES!</strong> <trans>Please add</trans> <strong trans>1 x Rechargeable Battery Pack</strong> <trans>and the</trans>
+                                <strong trans>Three Year Premium Warranty</strong> <trans>to my order at the discounted rate of</trans> <strong id="upsellPrice1">$129</strong>
                             </p>
-                            <a id="upsellProduct1" class="btn a-prevent-back" href="#" productId="38" onclick="doUpsellYes(pageInfo.upsellval, $(this).attr('productId'))">75% OFF!</a>
+                            <a id="upsellProduct1" class="btn a-prevent-back" href="#" productId="38" onclick="doUpsellYes(pageInfo.upsellval, $(this).attr('productId'))">75% <trans>OFF</trans>!</a>
                         </div>
                     </div>
                     <div class="warrenty purchase">
                         <div class="warrenty-inner">
                             <p>
-                                <strong>NO,</strong> I would only like to purchase <span class="product-title-2">1</span> x Rechargeable Battery and
-                                1 Year Premium Warranty at the original price of <strong  id="upsellPrice2">$49</strong>
+                                <strong><trans>NO</trans>,</strong> <trans>I would only like to purchase 1 x Rechargeable Battery and 1 Year Premium Warranty at the original price of</trans> <strong>$49</strong>
                             </p>
                             <a id="upsellProduct2" class="btn a-prevent-back" href="#" productId="46" onclick="doUpsellYes(pageInfo.upsellval, $(this).attr('productId'))">$49</a>
                         </div>
                     </div>
                     <div class="btm-text">
                         <div class="text-center h4">
-                            <button id="upsellNo" value="hdlmp" class="btn btn-danger a-prevent-back">No thanks, I'll just use some AAA’s from around the house :(</button>
+                            <button id="upsellNo" value="hdlmp" class="btn btn-danger a-prevent-back">No thanks, I'll just use some AAA's from around the house</button>
                         </div>
                         <span>
-                            <strong>IMPORTANT:</strong> AAAs will only last 2 hours.
-                            The T5 LED Bulb uses large <br>amounts of power for optimal operation.
+                            <strong trans>IMPORTANT:</strong> <trans>AAAs will only last 2 hours. The T5 LED Bulb uses large amounts of power for optimal operation.</trans>
                         </span>
                     </div>
                 </div>
@@ -116,15 +114,15 @@
         </div>
 
         <div class="text-center" style="color: white; margin-top: 10px; margin-bottom: 20px;">
-            <strong class="heading">Primitive Survivor XT808 Flashlight</strong>
-            <div>1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477</div>
+            <strong class="heading" trans>Primitive Survivor XT808 Flashlight</strong>
+            <div trans>1863 Pioneer Pkwy E Suite 222 Springfield, OR 97477</div>
             <div>
                 <a href="tel://1-888-412-3081" class="a-prevent-back">Tel : (888) 412-3081</a>
             </div>
             <div>
-                <a href="#" id="privacy">Privacy Policy</a>
+                <a href="#" id="privacy" trans>Privacy Policy</a>
                 &nbsp;-&nbsp;
-                <a href="#" id="terms">Terms & Conditions</a>
+                <a href="#" id="terms" trans>Terms & Conditions</a>
             </div>
             <img src="/images/logo_gold.png" style="margin-top: 15px;"/>
         </div>
@@ -132,7 +130,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
         <script type="text/javascript">
-                                var pageInfo = {type: 'upsell', upsellval: 'recharge', autopopulate: false, hasorderid: true, helpaddress: false, langFile: 'recharge'};
+            var pageInfo = {type: 'upsell', upsellval: 'recharge', autopopulate: false, hasorderid: true, helpaddress: false, langFile: 'recharge'};
         </script>
         <script src="js/scripts.js" defer></script>
         <script src="js/_us_recharge.js" defer></script>
