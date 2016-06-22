@@ -38,9 +38,9 @@
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="">STEP 1: CREATE ACCOUNT</a></li>
-                        <li><a href="">STEP 2: CUSTOMIZE ORDER</a></li>
-                        <li><a href="">STEP 3: ORDER COMPLETE</a></li>
+                        <li><a href="" data-trans>STEP 1: CREATE ACCOUNT</a></li>
+                        <li><a href="" data-trans>STEP 2: CUSTOMIZE ORDER</a></li>
+                        <li><a href="" data-trans>STEP 3: ORDER COMPLETE</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,11 +49,11 @@
             <div class="container rechargable-wrap">
                 <div class="rechargable">
                     <p>
-                        <strong>WAIT!</strong> Would you like for us to add
+                        <strong data-trans>WAIT!</strong> <trans>Would you like for us to add</trans>
                     </p>
-                    <h2>RECHARGEABLE LITHIUM ION BATTERIES</h2>
+                    <h2 data-trans>RECHARGEABLE LITHIUM ION BATTERIES</h2>
                     <p>
-                        <strong class="re-strong1">AND a Premium Warranty</strong> to your order for <strong>75% OFF?</strong>
+                        <strong class="re-strong1" data-trans>AND a Premium Warranty</strong> <trans>to your order for</trans> <strong data-trans>75% OFF?</strong>
                     </p>
                 </div>
             </div>
@@ -64,7 +64,11 @@
                 <div class="re-content-inner">
                     <div class="premium">
                         <div class="premium-inner">
-                            <p><span class="product-title-1">1</span> x PREMIUM LITHIUM ION<br>RECHARGEABLE BATTERY<br>+<br>3 YEAR PREMIUM WARRANTY</p>
+                            <p>
+                                <span class="product-title-1">1</span> <trans>x PREMIUM LITHIUM ION</trans><br>
+                                <trans>RECHARGEABLE BATTERY</trans><br>+<br>
+                                <trans>3 YEAR PREMIUM WARRANTY</trans>
+                            </p>
                         </div>
                     </div>
                     <div class="warrenty">
@@ -128,9 +132,10 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
         <script type="text/javascript">
-                                var pageInfo = {type: 'upsell', upsellval: 'recharge', autopopulate: false, hasorderid: true, helpaddress: false};
+                                var pageInfo = {type: 'upsell', upsellval: 'recharge', autopopulate: false, hasorderid: true, helpaddress: false, langFile: 'recharge'};
         </script>
         <script src="js/scripts.js" defer></script>
         <script src="js/_us_recharge.js" defer></script>
+        <script src="js/locale.js" defer></script>
     </body>
 </html>
