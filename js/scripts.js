@@ -200,6 +200,9 @@ function SubmitSubmit(this_form) {
                             paramString += '&';
                         }
                         paramString += $(this).attr('name') + "=" + uVal;
+                        if ($(this).attr('name') === 'product1_id') {
+                            afSetSet('initialProductId', uVal);
+                        }
                     }
                 } else {
                     if (paramString != '') {
@@ -281,13 +284,13 @@ function doUpsellYes(upsellID, productId) {
         var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
         switch (upsellID) {
             case 'hdlmp':
-                productId = productId || '12';
+                productId = productId || '31';
                 paramString += '&productQty=' + $('#selQty').val();
                 nextPage = '/thankyou.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
+                productId = productId || '12';
                 paramString += '&productQty=1';
-                productId = productId || '31';
                 nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:
@@ -298,35 +301,35 @@ function doUpsellYes(upsellID, productId) {
             {
                 json = JSON.parse(e);
 
-				//console.log(json);
-				if (json.result == "SUCCESS") {
-					document.location = nextPage;
-				} else if (json.result == "ERROR") {
-					if (json.message) {
-						var messageOut = '';
-						if (typeof(json.message) === "string") {
-							messageOut = json.message;
-						} else {
-							for (var k in json.message) {
-								if (json.message.hasOwnProperty(k)) {
-									messageOut += k + ":" + json.message[k] + '<br>';
-								}
-							}
-						}
-						$("#popModalHead").html('Problem with your Addon');
-						$("#popModalBody").html(messageOut);
-						$("#popModal").modal();
-					}
-				} else {
-					$("#popModalHead").html('Problem with your Addon');
-					$("#popModalBody").html('An unknown error occured, try again or call our customer service');
-					$("#popModal").modal();
-				}
-			});
-		}
-	} else {
-		alert("There was an error finding your order, please refresh the page and try again.")
-	}
+                //console.log(json);
+                if (json.result == "SUCCESS") {
+                    document.location = nextPage;
+                } else if (json.result == "ERROR") {
+                    if (json.message) {
+                        var messageOut = '';
+                        if (typeof (json.message) === "string") {
+                            messageOut = json.message;
+                        } else {
+                            for (var k in json.message) {
+                                if (json.message.hasOwnProperty(k)) {
+                                    messageOut += k + ":" + json.message[k] + '<br>';
+                                }
+                            }
+                        }
+                        $("#popModalHead").html('Problem with your Addon');
+                        $("#popModalBody").html(messageOut);
+                        $("#popModal").modal();
+                    }
+                } else {
+                    $("#popModalHead").html('Problem with your Addon');
+                    $("#popModalBody").html('An unknown error occured, try again or call our customer service');
+                    $("#popModal").modal();
+                }
+            });
+        }
+    } else {
+        alert("There was an error finding your order, please refresh the page and try again.")
+    }
 }
 function doUpsellNo(upsellID) {
     var nextPage = '/thankyou.html?orderId=' + window.myOrderID;

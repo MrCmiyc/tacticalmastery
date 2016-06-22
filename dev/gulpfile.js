@@ -9,7 +9,7 @@ var htmlmin = require('gulp-htmlmin');
 var fs = require('fs');
 
 gulp.task('CSS index optimization', function () {
-    return gulp.src(['../css/bootstrap_3.3.6.css', '../css/font-awesome.min.css', '../css/csss.css', '../xt808_files/custom.css'])
+    return gulp.src(['../css/bootstrap_3.3.6.css', '../css/font-awesome.min.css', '../css/csss.css', '../xt808_files/custom.css', '../css/common.css'])
             .pipe(concat('index.css'))
             .pipe(uncss({
                 html: ['../index.html'],
