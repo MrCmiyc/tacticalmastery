@@ -1,16 +1,26 @@
 /* general stuff */
+.background-white {
+    background-color: #fff;
+}
 
 .modal-dialog {
     border:3px #000 solid;
     border-radius:10px;
 }
 
-
 /* thanks page */
 .thanksfield { font-weight: bolder}
 
 /* Index Page */
-/* TODO:stop gap, include this in the lib */
+.text-large {
+    background-repeat: no-repeat;
+    background-position: 96%;
+    border: 1px solid #ccc;
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    height: auto;
+}
 
 .btn-yes {
     background: #33D107;
@@ -43,7 +53,7 @@
     font-size: 14px;;
 }
 
-.div-not-yes-btn {
+.div-btn-call {
     background: #F00;
     color: #fff;
     font-size: 23px;
@@ -58,17 +68,21 @@
     text-align: center;
 }
 
-.div-not-yes-btn a {
+.div-btn-call a {
     color: #fff;
 }
 
-.div-not-yes-btn:hover a {
+.div-btn-call:hover a {
     color: #eee;
     text-decoration: underline;
 }
 
 .pre-foot img {
     width:100%;
+}
+
+.top-title {
+    margin: 20px 0 10px 0;
 }
 
 @-webkit-keyframes glowing {

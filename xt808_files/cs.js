@@ -28,7 +28,7 @@ $(document).ready(function() {
      	overRide=1;
      	console.log("\n Changing Buttons to: " +getUrlVar('altText'));
  		$('.popuptitle').html(urldecode(getUrlVar('altText')));
-    	$('.yesbutton').html(urldecode(getUrlVar('altText')));
+    	$('.btn-submit').html(urldecode(getUrlVar('altText')));
      }
     	if(getUrlVar('75') == 'off'){
     		console.log("\n 75% off verbage off - using alternate checkout");
@@ -52,7 +52,7 @@ $(document).ready(function() {
     	}
     	if((overRide == 1) && (disableOverRide != true)){
 			var buttonSet = true;
-			$('.yesbutton').unbind("click").click(function(){
+			$('.btn-submit').unbind("click").click(function(){
 					window.location.href = goto;
 					return false;
 			});
