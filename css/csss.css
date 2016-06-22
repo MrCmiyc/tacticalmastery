@@ -85,6 +85,54 @@
     margin: 20px 0 10px 0;
 }
 
+@media (min-width: 240px) {
+    .btn-add-cart {
+        position: absolute;
+        top: 16px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        color: #FFF;
+        font-size: 24px;
+        text-shadow: 1px -1px #000000;
+    }
+}
+
+@media (min-width: 320px) {
+    .btn-add-cart {
+        top: 12px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 360px) {
+    .btn-add-cart {
+        top: 14px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 411px) {
+    .btn-add-cart {
+        top: 16px;
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 768px) {
+    .btn-add-cart {
+        top: 13px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 991px) {
+    .btn-add-cart {
+        top: 16px;
+        font-size: 24px;
+    }
+}
+
 @-webkit-keyframes glowing {
     0% { background-color: #FF0000; -webkit-box-shadow: 0 0 15px #7A1E1D; }
     50% { background-color: #FF837B; -webkit-box-shadow: 0 0 40px #7A1E1D; }
