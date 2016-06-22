@@ -11,6 +11,7 @@ if (!isset($_GET['key']) || $_GET['key'] !== $code) {
         const DEPLOY_LOG = 'Deployments log';
         const HTTP_ERRORS = 'Http errors';
         const PHANTOMJS_LOG = 'PhantomJs Log';
+        const API_LOG = 'API Log';
 
 $constants = [
     STAGING_LOG => 'STAGING_LOG_PATH',
@@ -20,6 +21,7 @@ $constants = [
     DEPLOY_LOG => 'DEPLOY_LOG_PATH',
     HTTP_ERRORS => 'HTTP_ERRORS_PATH',
     PHANTOMJS_LOG => 'PHANTOMJS_LOG_PATH',
+    API_LOG => 'API_LOG_PATH',
 ];
 
 if (file_exists(__DIR__ . '/paths.php')) {
@@ -34,6 +36,7 @@ $files = [
     DEPLOY_LOG => defined('DEPLOY_LOG_PATH') ? DEPLOY_LOG_PATH : '/tmp/git_deploy.log',
     PHANTOMJS_LOG => defined('PHANTOMJS_LOG_PATH') ? PHANTOMJS_LOG_PATH : '/tmp/phantomjs.log',
     HTTP_ERRORS => defined('HTTP_ERRORS_PATH') ? HTTP_ERRORS_PATH : '/var/log/nginx/error.log',
+    API_LOG => defined('API_LOG_PATH') ? API_LOG_PATH : '/var/log/nginx/api.access_log',
 ];
 
 if (isset($_POST['action']) && $_POST['action'] === 'getData' && isset($_POST['fileKey'])) {
