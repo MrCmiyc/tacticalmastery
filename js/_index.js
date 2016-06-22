@@ -25,7 +25,13 @@ $(document).ready(function() {
         isBack = false;
     });
 
-    $.getJSON("locale/en/index.json", function(json) {
+	var language = window.navigator.userLanguage || window.navigator.language;
+	language = language.substring(0, 2);
+	if (language != 'es') {
+		language = 'en';
+	}
+
+    $.getJSON("locale/" + language + "/index.json", function(json) {
 		$.each($("[data-trans]"), function(index, item) {
             var trans = $(item).text();
 			if (json[trans] != undefined) {
