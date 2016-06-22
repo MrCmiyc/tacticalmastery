@@ -200,9 +200,6 @@ function SubmitSubmit(this_form) {
                             paramString += '&';
                         }
                         paramString += $(this).attr('name') + "=" + uVal;
-                        if ($(this).attr('name') === 'product1_id') {
-                            afSetSet('initialProductId', uVal);
-                        }
                     }
                 } else {
                     if (paramString != '') {
@@ -251,8 +248,8 @@ function SubmitSubmit(this_form) {
                     $("#popModalHead").html('Problem with your order');
                     if (json.message.trim() != 'Invalid Credit Card Number') {
                         json.message = 'Eek! Something went dark with your order and it was not processed. ' +
-                                'Call our support team to shed some light and get your order processed right away! ' +
-                                '- <a href="tel:+18444478240">(844) 447-8240</a>';
+                            'Call our support team to shed some light and get your order processed right away! ' +
+                            '- <a href="tel:+18444478240">(844) 447-8240</a>';
                     }
                     $("#popModalBody").html('<span style="color:red;font-size:24px">' + json.message + '</span>');
                     $("#popModal").modal();
@@ -284,13 +281,13 @@ function doUpsellYes(upsellID, productId) {
         var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
         switch (upsellID) {
             case 'hdlmp':
-                productId = productId || '31';
+                productId = productId || '12';
                 paramString += '&productQty=' + $('#selQty').val();
                 nextPage = '/thankyou.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
-                productId = productId || '12';
                 paramString += '&productQty=1';
+                productId = productId || '31';
                 nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:
@@ -301,6 +298,35 @@ function doUpsellYes(upsellID, productId) {
             {
                 json = JSON.parse(e);
 
+                //console.log(json);
+                if (json.result == "SUCCESS") {
+                    document.location = nextPage;
+                } else if (json.result == "ERROR") {
+                    if (json.message) {
+                        var messageOut = '';
+                        if (typeof(json.message) === "string") {
+                            messageOut = json.message;
+                        } else {
+                            for (var k in json.message) {
+                                if (json.message.hasOwnProperty(k)) {
+                                    messageOut += k + ":" + json.message[k] + '<br>';
+                                }
+                            }
+                        }
+                        $("#popModalHead").html('Problem with your Addon');
+                        $("#popModalBody").html(messageOut);
+                        $("#popModal").modal();
+                    }
+                } else {
+                    $("#popModalHead").html('Problem with your Addon');
+                    $("#popModalBody").html('An unknown error occured, try again or call our customer service');
+                    $("#popModal").modal();
+                }
+            });
+        }
+    } else {
+        alert("There was an error finding your order, please refresh the page and try again.")
+    }
                 //console.log(json);
                 if (json.result == "SUCCESS") {
                     document.location = nextPage;
@@ -411,9 +437,13 @@ $(document).ready(function ()
             });
         }
         if (pageInfo.hasorderid) {
-            window.myOrderID = afGetGet("orderId", "orderId");
-            if (myOrderID == null)
-            {
+            if (getQueryVariable('task') == 'startneworder') {
+                window.myOrderID = null;
+                console.log('new order')
+            } else {
+                window.myOrderID = afGetGet("orderId", "orderId");
+            }
+            if (myOrderID == null) {
                 paramString = '';
                 var okToQuery = true;
                 var requiredFields = ['firstName', 'lastName', 'emailAddress'];
@@ -458,6 +488,31 @@ $(document).ready(function ()
                             alert('undefined error. please try again');
                         }
 
+                    } else {
+                        if (json.message && json.message.data && json.message.data[0]) {
+                            if (json.message.data[0]['orderStatus'] == 'COMPLETE') {
+                                //the order is complete and they are not on the success page
+                                // they can be on an upsell page up to an hour after the initial sale
+                                var doThatPop = true;
+                                if (pageInfo.type == 'upsell') {
+                                    var gmtStr = json.message.data[0]['dateUpdated'] + ' GMT-0400';
+                                    var orderDate = new Date(gmtStr);
+                                    var nowDate = new Date();
+                                    var minutesSince = ((nowDate - orderDate) / 1000 / 60);
+                                    console.log('Minutes since last order' + minutesSince);
+                                    doThatPop = (minutesSince > 50);
+                                }
+                                if (doThatPop) {
+                                    $("#popModalHead").html('Previous order detected!');
+                                    var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
+                                        'You may either view your reciept page or start a new order<br> ' +
+                                        '<a href="/thankyou.html?orderId=' + window.myOrderID + '">VIEW CURRENT RECIEPT</a><br>' +
+                                        '<a href="/checkout.html?task=startneworder">START NEW ORDER</a>';
+                                    $("#popModalBody").html('<span style="color:red;font-size:18px">' + myMessage + '</span>');
+                                    $("#popModal").modal();
+                                }
+                            }
+                        }
                     }
                 });
             }
@@ -696,8 +751,8 @@ $(document).ready(function ()
             function Fb(a,b){wb(b,function(b,d){"style"==d?a.style.cssText=b:"class"==d?a.className=b:"for"==d?a.htmlFor=b:d in Gb?a.setAttribute(Gb[d],b):0==d.lastIndexOf("aria-",0)||0==d.lastIndexOf("data-",0)?a.setAttribute(d,b):a[d]=b})}var Gb={cellpadding:"cellPadding",cellspacing:"cellSpacing",colspan:"colSpan",frameborder:"frameBorder",height:"height",maxlength:"maxLength",role:"role",rowspan:"rowSpan",type:"type",usemap:"useMap",valign:"vAlign",width:"width"};
             function Hb(a,b,c){var d=arguments,e=document,f=d[0],g=d[1];if(!zb&&g&&(g.name||g.type)){f=["<",f];g.name&&f.push(' name="',ra(g.name),'"');if(g.type){f.push(' type="',ra(g.type),'"');var h={};yb(h,g);delete h.type;g=h}f.push(">");f=f.join("")}f=e.createElement(f);g&&(q(g)?f.className=g:aa(g)?vb.apply(null,[f].concat(g)):Fb(f,g));2<d.length&&Ib(e,f,d,2);return f}
             function Ib(a,b,c,d){function e(c){c&&b.appendChild(q(c)?a.createTextNode(c):c)}for(;d<c.length;d++){var f=c[d];!ba(f)||da(f)&&0<f.nodeType?e(f):C(Jb(f)?F(f):f,e)}}
-            function Kb(){var a;var b=document;a=b.createElement("div");t?(a.innerHTML="<br><div class=ccjs-csc-diagram-wrapper><div class=ccjs-csc-diagram style='height: 190px !important;'><div class=ccjs-barcode></div><div class=ccjs-signature>Signature and digits from card #</div><div class=ccjs-card-code>123</div><div class=ccjs-explanation>On most cards, the 3-digit security code is on the back, to the right of the signature. On American Express cards, the 4-digit security code is on the front, to the top-right of the card number.</div><button type=button class=ccjs-close>&times;</button></div></div>",a.removeChild(a.firstChild)):
-                    a.innerHTML="<div class=ccjs-csc-diagram-wrapper><div class=ccjs-csc-diagram style='height: 190px !important;'><div class=ccjs-barcode></div><div class=ccjs-signature>Signature and digits from card #</div><div class=ccjs-card-code>123</div><div class=ccjs-explanation>On most cards, the 3-digit security code is on the back, to the right of the signature. On American Express cards, the 4-digit security code is on the front, to the top-right of the card number.</div><button type=button class=ccjs-close>&times;</button></div></div>";
+            function Kb(){var a;var b=document;a=b.createElement("div");t?(a.innerHTML="<br><div class=ccjs-csc-diagram-wrapper><div class=ccjs-csc-diagram><div class=ccjs-barcode></div><div class=ccjs-signature>Signature and digits from card #</div><div class=ccjs-card-code>123</div><div class=ccjs-explanation>On most cards, the 3-digit security code is on the back, to the right of the signature.</div><button type=button class=ccjs-close>&times;</button></div><div class=ccjs-csc-diagram-amex><div class=ccjs-card-number>XXXX XXXXXX XXXXX</div><div class=ccjs-explanation>On American Express cards, the 4-digit security code is on the front, to the top-right of the card number.</div><div class=ccjs-card-code>1234</div><button type=button class=ccjs-close>&times;</button></div></div>",a.removeChild(a.firstChild)):
+                    a.innerHTML="<div class=ccjs-csc-diagram-wrapper><div class=ccjs-csc-diagram><div class=ccjs-barcode></div><div class=ccjs-signature>Signature and digits from card #</div><div class=ccjs-card-code>123</div><div class=ccjs-explanation>On most cards, the 3-digit security code is on the back, to the right of the signature.</div><button type=button class=ccjs-close>&times;</button></div><div class=ccjs-csc-diagram-amex><div class=ccjs-card-number>XXXX XXXXXX XXXXX</div><div class=ccjs-explanation>On American Express cards, the 4-digit security code is on the front, to the top-right of the card number.</div><div class=ccjs-card-code>1234</div><button type=button class=ccjs-close>&times;</button></div></div>";
                 if(1==a.childNodes.length)a=a.removeChild(a.firstChild);else{for(b=b.createDocumentFragment();a.firstChild;)b.appendChild(a.firstChild);a=b}return a}function Lb(a,b){Ib(Mb(a),a,arguments,1)}function Nb(a,b){b.parentNode&&b.parentNode.insertBefore(a,b.nextSibling)}function Tb(a){a&&a.parentNode&&a.parentNode.removeChild(a)}function Ub(a){return Ab&&void 0!=a.children?a.children:E(a.childNodes,function(a){return 1==a.nodeType})}
             function Vb(a){if(Cb&&!(t&&w("9")&&!w("10")&&m.SVGElement&&a instanceof m.SVGElement))return a.parentElement;a=a.parentNode;return da(a)&&1==a.nodeType?a:null}function Mb(a){return 9==a.nodeType?a:a.ownerDocument||a.document}
             function P(a,b){if("textContent"in a)a.textContent=b;else if(a.firstChild&&3==a.firstChild.nodeType){for(;a.lastChild!=a.firstChild;)a.removeChild(a.lastChild);a.firstChild.data=b}else{for(var c;c=a.firstChild;)a.removeChild(c);a.appendChild(Mb(a).createTextNode(String(b)))}}var Wb={SCRIPT:1,STYLE:1,HEAD:1,IFRAME:1,OBJECT:1},Xb={IMG:" ",BR:"\n"};
