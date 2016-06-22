@@ -24,30 +24,6 @@ $(document).ready(function() {
     $("a.a-prevent-back").click(function() {
         isBack = false;
     });
-
-	var language = window.navigator.userLanguage || window.navigator.language;
-	language = language.substring(0, 2);
-	if (language != 'es') {
-		language = 'en';
-	}
-
-    $.getJSON("locale/" + language + "/index.json", function(json) {
-		$.each($("[data-trans]"), function(index, item) {
-            var trans = $(item).text();
-			if (json[trans] != undefined) {
-				$(item).text(json[trans]);
-			}
-        });
-
-		$.each($("[placeholder]"), function(index, item) {
-			var trans = $(item).attr('placeholder');
-			if (json[trans] != undefined) {
-				$(item).attr('placeholder', json[trans]);
-			}
-		});
-
-		msgPrevent = json[msgPrevent];
-    });
 });
 
 window.onbeforeunload = function (e) {
