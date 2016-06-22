@@ -96,12 +96,34 @@
         font-size: 24px;
         text-shadow: 1px -1px #000000;
     }
+
+    .btn-chat-online {
+        position: absolute;
+        color: #FFF;
+        font-size: 24px;
+        top: 14px;
+        left: 79px;
+    }
+
+    .btn-support {
+        position: absolute;
+        color: #333;
+        font-size: 28px;
+        top: 50px;
+        left: 42px;
+    }
 }
 
 @media (min-width: 320px) {
     .btn-add-cart {
         top: 12px;
         font-size: 18px;
+    }
+
+    .btn-chat-online {
+        font-size: 27px;
+        top: 13px;
+        left: 105px;
     }
 }
 
@@ -110,12 +132,19 @@
         top: 14px;
         font-size: 20px;
     }
+    .btn-chat-online {
+        left: 120px;
+    }
 }
 
 @media (min-width: 411px) {
     .btn-add-cart {
         top: 16px;
         font-size: 22px;
+    }
+
+    .btn-chat-online {
+        left: 145px;
     }
 }
 
@@ -124,12 +153,32 @@
         top: 13px;
         font-size: 16px;
     }
+
+    .btn-chat-online {
+        left: 75px;
+        top: 13px;
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 991px) {
     .btn-add-cart {
         top: 16px;
         font-size: 24px;
+    }
+
+    .btn-chat-online {
+        left: 75px;
+        top: 13px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .btn-chat-online {
+        left: 80px;
+        top: 14px;
+        font-size: 26px;
     }
 }
 
