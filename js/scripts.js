@@ -146,6 +146,15 @@ function afSetSet(field, value)
     }
 }
 
+function addHiddenField(theForm, key, value) {
+    // Create a hidden input element, and append it to the form:
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;'name-as-seen-at-the-server';
+    input.value = value;
+    theForm.appendChild(input);
+}
+
 
 /*  Page borne stuffs
  todo: this needs serious refactoring to perform as intended.
@@ -230,6 +239,18 @@ function SubmitSubmit(this_form) {
     if (window.myOrderID) {
         paramString += "&orderId=" + window.myOrderID;
     }
+    //todo: this is gettig painfully redundant,
+    var trackingFields = ['affId','s1','s2','s3'];
+    $.each(trackingFields, function (index, f_name) {
+        ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
+        f_val = afGetGet(ls_name, f_name);
+        if (f_val) {
+            //console.log(".");
+            if (paramString != '')
+                paramString += '&';
+            paramString += f_name + "=" + f_val;
+        }
+    });
 
     //console.log(paramString);
     //just do the order right meow and get a response
@@ -392,6 +413,24 @@ $(document).ready(function ()
 {
     if (pageInfo != undefined) {
 
+        //make sure affiliate stuff is always there
+        //anything we put here will end up in a page variable as well as ls
+        window.trkStuff = new Array();
+
+        var trackingFields = ['affId','s1','s2','s3']; //todo, should be "global" thing (class init)
+
+        //trap the lander form and add affiliate info (otherwise we do not carry over to secure
+        var iF = document.forms['formLead'];
+
+        $.each(trackingFields, function (index, f_name) {
+            var ls_name = "f_" + f_name;
+            var f_val = afGetGet(ls_name, f_name);
+            if (f_val) {
+                trkStuff[f_name] = f_val;
+                if (iF != 'undefined') addHiddenField(iF, f_name, f_val);
+            }
+        });
+
         //Terms and privacy popups
         $('#terms').click(function (e)
         {
@@ -433,9 +472,9 @@ $(document).ready(function ()
             if (myOrderID == null) {
                 paramString = '';
                 var okToQuery = true;
-                var requiredFields = ['firstName', 'lastName', 'emailAddress'];
-                var optionalFields = ['phoneNumber'];
-                $.each(['firstName', 'lastName', 'emailAddress', 'phoneNumber'], function (index, f_name) {
+                var requiredFields = ['firstName', 'lastName','phoneNumber' ];
+                var optionalFields = ['emailAddress','affId','s1','s2','s3'];
+                $.each(requiredFields.concat(optionalFields), function (index, f_name) {
                     ls_name = "f_" + f_name; //todo: refactor localstorage name into our getsetter class
                     f_val = afGetGet(ls_name, f_name);
                     if (f_val) {
@@ -445,9 +484,10 @@ $(document).ready(function ()
                         paramString += f_name + "=" + f_val;
                     } else if (requiredFields.indexOf(f_name) != -1) {
                         okToQuery = false;
-                        //console.log("breakquery: missing required field")
+                        //console.log("breakquery: missing required field:" + f_name)
                     }
                 });
+                //console.log(paramString);
                 if (okToQuery)
                     api("createlead", paramString, function (e)
                     {
@@ -486,7 +526,7 @@ $(document).ready(function ()
                                     var orderDate = new Date(gmtStr);
                                     var nowDate = new Date();
                                     var minutesSince = ((nowDate - orderDate) / 1000 / 60);
-                                    console.log('Minutes since last order' + minutesSince);
+                                    //console.log('Minutes since last order' + minutesSince);
                                     doThatPop = (minutesSince > 55);
                                 }
                                 if (doThatPop) {
