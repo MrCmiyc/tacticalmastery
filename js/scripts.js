@@ -422,9 +422,9 @@ $(document).ready(function ()
             });
         }
         if (pageInfo.hasorderid) {
-            if (getQueryVariable('task') == 'startneworder') {
+            if (pageInfo.type == 'orderform') {
                 window.myOrderID = null;
-                console.log('new order')
+                //console.log('new order')
             } else {
                 window.myOrderID = afGetGet("orderId", "orderId");
             }
@@ -485,16 +485,18 @@ $(document).ready(function ()
                                     var nowDate = new Date();
                                     var minutesSince = ((nowDate - orderDate) / 1000 / 60);
                                     console.log('Minutes since last order' + minutesSince);
-                                    doThatPop = (minutesSince > 50);
+                                    doThatPop = (minutesSince > 55);
                                 }
                                 if (doThatPop) {
-                                    $("#popModalHead").html('Previous order detected!');
-                                    var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
-                                        'You may either view your reciept page or start a new order<br> ' +
-                                        '<a href="/thankyou.html?orderId=' + window.myOrderID + '">VIEW CURRENT RECIEPT</a><br>' +
-                                        '<a href="/checkout.html?task=startneworder">START NEW ORDER</a>';
-                                    $("#popModalBody").html('<span style="color:red;font-size:18px">' + myMessage + '</span>');
-                                    $("#popModal").modal();
+                                    isBack = false;
+                                    setTimeout("location.href = '/thankyou.html';",1500);
+                                    //$("#popModalHead").html('Previous order detected!');
+                                    //var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
+                                    //    'You may either view your reciept page or start a new order<br> ' +
+                                    //    '<a href="/thankyou.html?orderId=' + window.myOrderID + '">VIEW CURRENT RECIEPT</a><br>' +
+                                    //    '<a href="/checkout.html?task=startneworder">START NEW ORDER</a>';
+                                    //$("#popModalBody").html('<span style="color:red;font-size:18px">' + myMessage + '</span>');
+                                    //$("#popModal").modal();
                                 }
                             }
                         }
