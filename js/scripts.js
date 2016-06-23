@@ -309,6 +309,10 @@ function doUpsellYes(upsellID, productId) {
                         var messageOut = '';
                         if (typeof(json.message) === "string") {
                             messageOut = json.message;
+                            if (messageOut === 'This upsale was already taken.') {
+                                // continue down the funnel if the upsell is done
+                                document.location = nextPage;                                
+                            }
                         } else {
                             for (var k in json.message) {
                                 if (json.message.hasOwnProperty(k)) {
