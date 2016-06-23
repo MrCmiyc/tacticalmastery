@@ -425,7 +425,7 @@ $(document).ready(function ()
             var f_val = afGetGet(ls_name, f_name);
             if (f_val) {
                 trkStuff[f_name] = f_val;
-                if (iF != 'undefined') addHiddenField(iF, f_name, f_val);
+                if (iF != undefined) addHiddenField(iF, f_name, f_val);
             }
         });
 
