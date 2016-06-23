@@ -150,7 +150,7 @@ function addHiddenField(theForm, key, value) {
     // Create a hidden input element, and append it to the form:
     var input = document.createElement('input');
     input.type = 'hidden';
-    input.name = key;'name-as-seen-at-the-server';
+    input.name = key;
     input.value = value;
     theForm.appendChild(input);
 }
