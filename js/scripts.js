@@ -426,7 +426,7 @@ $(document).ready(function ()
         if (pageInfo.hasorderid) {
             if (pageInfo.type == 'orderform') {
                 window.myOrderID = null;
-                console.log('new order')
+                //console.log('new order')
             } else {
                 window.myOrderID = afGetGet("orderId", "orderId");
             }
@@ -490,6 +490,7 @@ $(document).ready(function ()
                                     doThatPop = (minutesSince > 55);
                                 }
                                 if (doThatPop) {
+                                    isBack = false;
                                     setTimeout("location.href = '/thankyou.html';",1500);
                                     //$("#popModalHead").html('Previous order detected!');
                                     //var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
