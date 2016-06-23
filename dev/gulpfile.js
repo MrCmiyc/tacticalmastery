@@ -9,7 +9,7 @@ var htmlmin = require('gulp-htmlmin');
 var fs = require('fs');
 
 gulp.task('CSS index optimization', function () {
-    return gulp.src(['../css/bootstrap_3.3.6.css', '../css/font-awesome.min.css', '../css/csss.css', '../xt808_files/custom.css', '../css/common.css'])
+    return gulp.src(['../css/bootstrap_3.3.6.css', '../css/font-awesome.min.css', '../css/csss.css', '../css/common.css'])
             .pipe(concat('index.css'))
             .pipe(uncss({
                 html: ['../index.html'],
@@ -25,7 +25,7 @@ gulp.task('CSS index optimization', function () {
 });
 
 gulp.task('JS index optimization', function () {
-    return gulp.src(['../js/scripts.js', '../js/_index.js'])
+    return gulp.src(['../js/scripts.js', '../js/_index.js', '../js/locale.js'])
             .pipe(concat('index.js'))
             .pipe(uglify({mangle: {toplevel: false}}))
             .pipe(gulp.dest('../js/optimized'));
