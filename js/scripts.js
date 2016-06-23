@@ -333,12 +333,14 @@ function doUpsellYes(upsellID, productId) {
                     $("#popModalBody").html('An unknown error occured, try again or call our customer service');
                     $("#popModal").modal();
                 }
+                $("div#js-div-loading-bar").fadeOut();
             });
         }
     } else {
         alert("There was an error finding your order, please refresh the page and try again.")
+        $("div#js-div-loading-bar").fadeOut();
     }
-    $("div#js-div-loading-bar").fadeOut();
+
 }
 function doUpsellNo(upsellID) {
     $("div#js-div-loading-bar").show();
