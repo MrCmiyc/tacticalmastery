@@ -5,10 +5,6 @@
     <meta id="vp" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <title>:::</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/hdlmp_1/custom.css" rel="stylesheet" type="text/css">
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
-    <link type="text/css" href="css/csss.css" rel="stylesheet">
 </head>
 <body>
 <!-- Google Tag Manager -->
@@ -157,12 +153,37 @@
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
-<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" defer></script>
+<noscript id="deferred-styles">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700'>
+    <link rel="stylesheet" type="text/css" href="css/hdlmp_1/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/csss.css">
+</noscript>
+
+<script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+</script>
+
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" defer></script>
+<![endif]-->
 <script type="text/javascript">
     var pageInfo = {type: 'upsell', upsellval:'hdlmp', autopopulate: false, hasorderid: true, helpaddress: false, langFile: 'hlmp'};
 </script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" defer></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" defer></script>
+<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" defer></script>
 <script src="js/scripts.js" defer></script>
 <script src="js/_us_hlmp.js" defer></script>
 <script src="js/locale.js" defer></script>
