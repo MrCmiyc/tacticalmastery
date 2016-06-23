@@ -159,7 +159,7 @@ function SubmitSubmit(this_form) {
     var d = new Date();
     var currentYear = d.getFullYear().toString().substr(2, 2), currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
     if (!((currentYear < year) || (currentYear == year) && (currentMonth <= month))) {
-        $("div#js-div-loading-bar").hide();
+        $("div#js-div-loading-bar").fadeOut();
         $("#popModalHead").html('Problem with your order');
         $("#popModalBody").html('Invalid Expiration Date');
         $("#popModal").modal();
@@ -247,7 +247,6 @@ function SubmitSubmit(this_form) {
                 break;
             case 'ERROR':
                 if (json.message) {
-                    $("div#js-div-loading-bar").hide();
                     $("#popModalHead").html('Problem with your order');
                     if (json.message.trim() != 'Invalid Credit Card Number') {
                         json.message = 'Eek! Something went dark with your order and it was not processed. ' +
@@ -262,6 +261,7 @@ function SubmitSubmit(this_form) {
                 //todo: reply back to our api instead of logging here
                 break;
         }
+        $("div#js-div-loading-bar").fadeOut();
     });
 
     $(this_form).find('input.af').each(function () {
@@ -279,6 +279,7 @@ function SubmitSubmit(this_form) {
 }
 
 function doUpsellYes(upsellID, productId) {
+    $("div#js-div-loading-bar").show();
     if (window.myOrderID) {
         var paramString = 'orderId=' + window.myOrderID;
         var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
@@ -294,6 +295,7 @@ function doUpsellYes(upsellID, productId) {
                 nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:
+                break;
         }
         if (productId) {
             paramString += '&productId=' + productId;
@@ -329,11 +331,13 @@ function doUpsellYes(upsellID, productId) {
                     $("#popModalBody").html('An unknown error occured, try again or call our customer service');
                     $("#popModal").modal();
                 }
+                $("div#js-div-loading-bar").fadeOut();
             });
         }
     } else {
         alert("There was an error finding your order, please refresh the page and try again.")
     }
+    $("div#js-div-loading-bar").fadeOut();
 }
 function doUpsellNo(upsellID) {
     var nextPage = '/thankyou.html?orderId=' + window.myOrderID;
