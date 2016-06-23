@@ -686,12 +686,12 @@ $(document).ready(function ()
             $('#upsellYes').click(function (e)
             {
                 isBack = false;
-                doUpsellYes(pageInfo.upsellval)
+                doUpsellYes(pageInfo.upsellval);
             });
             $('#upsellNo').click(function (e)
             {
                 isBack = false;
-                doUpsellNo(pageInfo.upsellval)
+                doUpsellNo(pageInfo.upsellval);
             });
 
         }
