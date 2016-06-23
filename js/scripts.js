@@ -200,6 +200,9 @@ function SubmitSubmit(this_form) {
                             paramString += '&';
                         }
                         paramString += $(this).attr('name') + "=" + uVal;
+                        if ($(this).attr('name') === 'product1_id') {
+                            afSetSet('initialProductId', uVal);
+                        }
                     }
                 } else {
                     if (paramString != '') {
@@ -281,13 +284,13 @@ function doUpsellYes(upsellID, productId) {
         var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
         switch (upsellID) {
             case 'hdlmp':
-                productId = productId || '12';
+                productId = productId || '31';
                 paramString += '&productQty=' + $('#selQty').val();
                 nextPage = '/thankyou.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
+                productId = productId || '12';
                 paramString += '&productQty=1';
-                productId = productId || '31';
                 nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:

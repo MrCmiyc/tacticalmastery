@@ -608,7 +608,7 @@ select.form-control {
     display: inline-block;
     vertical-align: top;
     margin: 0 8px 0 0;
-    background: url(../../images/checkout_1/images/lock.jpg) no-repeat;
+    background: url(../../images/checkout_1/lock.jpg) no-repeat;
     width: 15px;
     height: 19px;
     content: "";
