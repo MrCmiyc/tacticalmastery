@@ -306,6 +306,7 @@ function doUpsellYes(upsellID, productId) {
                 //console.log(json);
                 if (json.result == "SUCCESS") {
                     document.location = nextPage;
+                    return;
                 } else if (json.result == "ERROR") {
                     if (json.message) {
                         var messageOut = '';
@@ -313,7 +314,8 @@ function doUpsellYes(upsellID, productId) {
                             messageOut = json.message;
                             if (messageOut === 'This upsale was already taken.') {
                                 // continue down the funnel if the upsell is done
-                                document.location = nextPage;                                
+                                document.location = nextPage;
+                                return;
                             }
                         } else {
                             for (var k in json.message) {
@@ -331,7 +333,6 @@ function doUpsellYes(upsellID, productId) {
                     $("#popModalBody").html('An unknown error occured, try again or call our customer service');
                     $("#popModal").modal();
                 }
-                $("div#js-div-loading-bar").fadeOut();
             });
         }
     } else {
@@ -340,6 +341,7 @@ function doUpsellYes(upsellID, productId) {
     $("div#js-div-loading-bar").fadeOut();
 }
 function doUpsellNo(upsellID) {
+    $("div#js-div-loading-bar").show();
     var nextPage = '/thankyou.html?orderId=' + window.myOrderID;
     switch (upsellID) {
         case 'recharge':
@@ -348,6 +350,7 @@ function doUpsellNo(upsellID) {
         default:
     }
     document.location = nextPage;
+    return;
 }
 
 function populateThanksPage(orderInfos) {
