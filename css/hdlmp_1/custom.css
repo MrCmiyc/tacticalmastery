@@ -1,9 +1,23 @@
-body{ margin:0; padding:0;background-size:100%;
- /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/}
-html{ margin:0; padding:0; box-sizing:border-box; font-family: 'Open Sans', sans-serif;}
+@media (min-width: 240px) {
+ body {
+  background: #000 url(../../images/hdlmp_1/phone_main.jpg) no-repeat;
+  background-size: 100%;
+ }
+}
+
+@media (min-width: 768px) {
+ body {
+  margin: 0;
+  padding: 0;
+  background: url(../../images/hdlmp_1/main_bg.jpg) no-repeat top center #000;
+  /* -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;*/
+ }
+}
+
+html{ margin:0; padding:0; box-sizing:border-box;}
 h1, h2, h3, h4, h5, h6, ul, form, select, input, textarea{ margin:0; padding:0;}
 ul li{ list-style:none}
 img{ max-width:100%;}
