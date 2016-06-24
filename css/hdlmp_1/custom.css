@@ -1,6 +1,5 @@
 @media (min-width: 240px) {
  body {
-  background: #000 url(../../images/hdlmp_1/phone_main.jpg) no-repeat;
   background-size: 100%;
  }
 }
@@ -9,7 +8,6 @@
  body {
   margin: 0;
   padding: 0;
-  background: url(../../images/hdlmp_1/main_bg.jpg) no-repeat top center #000;
   /* -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
