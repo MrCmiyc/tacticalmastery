@@ -1,21 +1,8 @@
-@media (min-width: 240px) {
- body {
-  background-size: 100%;
- }
-}
-
-@media (min-width: 768px) {
- body {
-  margin: 0;
-  padding: 0;
-  /* -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;*/
- }
-}
-
-html{ margin:0; padding:0; box-sizing:border-box;}
+ /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/}
+html{ margin:0; padding:0; box-sizing:border-box; font-family: 'Open Sans', sans-serif;}
 h1, h2, h3, h4, h5, h6, ul, form, select, input, textarea{ margin:0; padding:0;}
 ul li{ list-style:none}
 img{ max-width:100%;}
@@ -65,10 +52,8 @@ a img{ border:none;}
 		
 }
 @media (max-width: 767px){
-.top_title{ background:url(../../images/hdlmp_1/phone_bg.png) repeat-x; padding: 11px;}
 .top_title h2 {font-size: 19px;line-height: 24px;}
 .hide{ display:none;}	
-body{ background:#000 url(../../images/hdlmp_1/phone_main.jpg) no-repeat ; background-size:100%;}
 .logo { margin: 0 auto; padding: 8px 0 18px;text-align: center; width: 199px;}
 .container{ padding:0;}
 .inn_con {padding: 0 20px;}
