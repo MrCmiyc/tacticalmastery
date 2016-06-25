@@ -630,13 +630,13 @@ html, body {
   border-bottom: 1px solid #E5E5E5;
 }
 .landing-header .container {
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
 }
 .landing-header .container .logo {
   display: inline-block;
   margin-bottom: 5px;
-  max-width: 300px;
+  max-width: 280px;
 }
 .landing-header .container ul.information {
   font-size: 0.9375em;
@@ -661,13 +661,13 @@ html, body {
 
 .landing-main {
   background-image: url("../../images/crossword.png");
-  padding: 30px 0;
+  padding: 20px 0;
 }
 .landing-main .container {
   max-width: 650px;
 }
 .landing-main .container .title {
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   font-size: 1.5625em;
   line-height: 1.2em;
   text-align: center;
@@ -682,7 +682,7 @@ html, body {
   width: 100%;
   position: relative;
   background: #eee;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 .landing-main .container .video-container:before {
   display: block;
@@ -722,7 +722,7 @@ html, body {
   border-radius: 5px;
   text-align: center;
   text-decoration: none;
-  padding: 18px;
+  padding: 11px 18px;
   font-size: 2em;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -777,7 +777,7 @@ html, body {
   }
 }
 .landing-main .container .shipping-expire {
-  margin: 25px 0;
+  margin: 25px 0 0 0;
 }
 .landing-main .container .shipping-expire .text {
   text-align: center;
@@ -812,7 +812,7 @@ html, body {
 }
 
 .landing-footer {
-  padding: 25px 0;
+  padding: 10px 0 25px 0;
 }
 .landing-footer .container .social-media {
   text-align: center;
