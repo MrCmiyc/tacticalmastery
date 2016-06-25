@@ -112,7 +112,16 @@ tbody.collapse.in {
   width: 90%;
   margin: 30px auto;
 
+  &.mini-modal-760 {
+    max-width: 760px;
+    margin: 100px auto 30px auto;
+  }
+
   @media (max-width: $screen-sm-max) {
-    margin: 80px auto 30px auto;
+    margin: 40px auto 30px auto;
+
+    &.mini-modal-760 {
+      margin: 40px auto 30px auto;
+    }
   }
 }
