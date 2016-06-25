@@ -209,8 +209,11 @@ html, body {
 					left: 0; right: 0;
 					margin-left: auto;
 					margin-right: auto;
-					max-width: 50%;
-					max-height: 50%;
+					display: block;
+					width: auto !important;
+					height: auto !important;
+					max-height: 40% !important;
+					max-width: 40% !important;
 				}
 			}
 
@@ -221,7 +224,7 @@ html, body {
 			}
 		}
 
-		> img {
+		img.aligncenter, img.alignleft, img.alignright {
 			width: 560px;
 			// max-width: 560px;
 			// width: 50%;
@@ -229,24 +232,24 @@ html, body {
 			box-shadow: rgba(#d3d3d3, 0.75) 0 0 3px 3px;
 		}
 
-		> img:not(img.aligncenter) {
+		img:not(img.aligncenter) {
 			max-width: 550px;
 			width: 50%;
 		}
 
 
 
-		> img.alignleft {
+		img.alignleft {
 			float: left;
 			margin-right: 25px;
 		}
 
-		> img.alignright {
+		img.alignright {
 			float: right;
 			margin-left: 25px;
 		}
 
-		> img.aligncenter {
+		img.aligncenter {
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
@@ -255,7 +258,7 @@ html, body {
 		}
 
 		@media (max-width: $screen-xs-max) {
-			> img.alignleft, > img.alignright, > img.aligncenter {
+			img.alignleft, img.alignright, img.aligncenter {
 				display: block !important;
 				width: 100% !important;
 				max-width: 100% !important;
