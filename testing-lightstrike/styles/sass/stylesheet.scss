@@ -11,6 +11,7 @@
 @import "assets/_variables.scss";
 @import "assets/_mixins.scss";
 @import "assets/_fixers.scss";
+@import "assets/_modal.scss";
 
 // ================================
 //              Styles
@@ -50,7 +51,7 @@ html, body {
 		.logo {
 			display: inline-block;
 			margin-bottom: 5px;
-			max-width: 390px;
+			max-width: 300px;
 		}
 
 		ul.information {
