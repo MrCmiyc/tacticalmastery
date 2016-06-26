@@ -662,7 +662,7 @@ html, body {
 }
 
 .landing-main {
-  background-image: url("../../images/crossword.png");
+  background-image: url("../image/crossword.png");
   padding: 20px 0;
 }
 .landing-main .container {
@@ -743,7 +743,7 @@ html, body {
   display: block;
   width: 85px;
   height: 90px;
-  background-image: url("../../images/arrow.png");
+  background-image: url("../image/arrow.png");
   background-size: 100% 100%;
   position: absolute;
   right: 101%;
@@ -755,7 +755,7 @@ html, body {
   display: block;
   width: 85px;
   height: 90px;
-  background-image: url("../../images/arrow.png");
+  background-image: url("../image/arrow.png");
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   background-size: 100% 100%;
