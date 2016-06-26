@@ -1616,3 +1616,6 @@ html, body {
 .modal-window.offer-off form button:hover, .modal-window.offer-off form input[type="submit"]:hover {
   background: #2aac06;
 }
+#cardNumber {
+  display: none;
+}
