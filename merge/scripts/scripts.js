@@ -709,6 +709,19 @@ $(document).ready(function ()
                                 message: 'Security code Invalid Length'
                             }
                         }
+                    },
+                    cardNumberSpace: {
+                        row: '.field',
+                        validators: {
+                            notEmpty: {
+                                message: 'Please enter a valid card number'
+                            },
+                            stringLength: {
+                                min: 13,
+                                max: 16,
+                                message: 'Card number Invalid Length'
+                            }
+                        }
                     }
                 }
             }).on('status.field.fv', function (e, data) {
