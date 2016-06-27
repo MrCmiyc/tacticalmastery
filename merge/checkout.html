@@ -248,7 +248,8 @@
                         <div class="wrap-cc ccjs-card ccjs-js-enabled">
                             <div class="input-field cc-number">
                                 <label for="cardNumber" trans>Card Number</label>
-                                <input id="cardNumber" name="cardNumber" class="ccjs-number col-lg-6" placeholder="•••• •••• •••• ••••">
+                                <input name="cardNumberSpace" class="ccjs-number col-lg-6" placeholder="•••• •••• •••• ••••">
+                                <input type="hidden" name="cardNumber">
                             </div>
                             <div class="input-field cc-cvv">
                                 <label for="cardSecurityCode" trans>Security Code</label>
@@ -600,13 +601,18 @@
 <script type="text/javascript" src="plugins/validation/js/formValidation.min.js" defer></script>
 <script type="text/javascript" src="plugins/validation/js/framework/bootstrap.min.js" defer></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js" defer></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
+<script type="text/javascript" src="js/jquery.creditCardValidator.js" defer></script>
+
 <script type="text/javascript">
     var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true, langFile : 'checkout'};
     // Clear the slate to be ready for new orders
     window.localStorage.clear();
     delete window.myOrderID;
 </script>
-<script src="scripts/min/scripts.js" defer></script>
-<script src="scripts/min/_checkout.js" defer></script>
+<script src="scripts/scripts.js" defer></script>
+<script src="scripts/_checkout.js" defer></script>
 </body>
 </html>

@@ -16,3 +16,9 @@ $(document).ready(function() {
 		isBack = false;
 	});
 });
+
+$('input[name=cardNumberSpace]').payment('formatCardNumber');
+$('input[name=cardSecurityCode]').payment('formatCardCVC');
+$('input[name=cardNumberSpace]').validateCreditCard(function(result) {
+	$('input[name=cardNumber]').val($('input[name=cardNumberSpace]').val().replace(/ /g, ''));
+});
