@@ -245,19 +245,19 @@
                             </div>
                         </div>
 
-                        <div class="wrap-cc ccjs-card ccjs-js-enabled">
+                        <div class="wrap-cc">
                             <div class="input-field cc-number">
                                 <label for="cardNumber" trans>Card Number</label>
-                                <input name="cardNumberSpace" class="ccjs-number col-lg-6" placeholder="•••• •••• •••• ••••">
+                                <input name="cardNumberSpace" class="col-lg-6" placeholder="•••• •••• •••• ••••">
                                 <input type="hidden" name="cardNumber">
                             </div>
                             <div class="input-field cc-cvv">
                                 <label for="cardSecurityCode" trans>Security Code</label>
-                                <input id="cardSecurityCode" name="cardSecurityCode" class="ccjs-csc" placeholder="•••">
+                                <input id="cardSecurityCode" name="cardSecurityCode" placeholder="•••">
                             </div>
                             <div class="input-field cc-exp">
-                                <label for="#" trans>Expiration</label>
-                                <select name="month" class="ccjs-month">
+                                <label for="#">Expiration</label>
+                                <select name="month">
                                     <option selected disabled trans>MM</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
@@ -275,7 +275,7 @@
 
                                 <span class="sep">/</span>
 
-                                <select name="year" class="ccjs-year">
+                                <select name="year">
                                     <option selected disabled trans>YY</option>
                                     <option value="16">16</option>
                                     <option value="17">17</option>
@@ -612,7 +612,7 @@
     window.localStorage.clear();
     delete window.myOrderID;
 </script>
-<script src="scripts/scripts.js" defer></script>
-<script src="scripts/_checkout.js" defer></script>
+<script src="scripts/min/scripts.js" defer></script>
+<script src="scripts/min/_checkout.js" defer></script>
 </body>
 </html>
