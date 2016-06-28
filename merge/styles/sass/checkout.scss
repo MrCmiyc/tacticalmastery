@@ -14,7 +14,7 @@
 @import "checkout/assets/_modal.scss";
 
 @import "assets/_loading-bar.scss";
-@import "checkout/assets/_creditcard.scss";
+@import "checkout/assets/_creditcardjs.scss";
 
 // ================================
 //              Styles
@@ -177,7 +177,7 @@ html, body {
 		// float: left;
 		width: 49%;
 		// &:nth-child(odd) { margin-right: 2%; }
-		
+
 		.wrap {
 			background: $white;
 			border-radius: 5px;
@@ -196,7 +196,7 @@ html, body {
 				.image {
 					flex-shrink: 0;
 					margin-right: 20px;
-				}	
+				}
 
 				.text {
 					text-align: left;
@@ -349,9 +349,9 @@ html, body {
 						}
 
 						td {
-							
+
 							border: 2px solid white;
-							
+
 							&.radio {
 								padding: 7px;
 								text-align: center;
