@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <div class="container">
                 <header class="logo-header">
-                    <img src="images/logo-prim.png" alt="Primitive Survivors">
+                    <img src="images/logo.svg" alt="Primitive Survivors" width="250" height="48">
                 </header>
 
                 <div class="top-banner">
@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                     <div class="bottom">
                         <div class="image">
-                            <img src="images/flashlight.png" alt="XT808 Tactical Flashlight">
+                            <img src="images/flashlight.png" alt="XT808 Tactical Flashlight" width="410" height="117">
                         </div>
 
                         <ul class="table">
@@ -55,7 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <div class="wrap">
                             <div class="discount-label2">
                                 <div class="image">
-                                    <img src="images/tag.png" alt="Tag">
+                                    <img src="images/tag.png" alt="Tag" width="107" height="83">
                                 </div>
 
                                 <div class="text">
@@ -146,7 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <div class="wrap">
                             <div class="image-prop">
                                 <div class="image">
-                                    <img src="images/img2.jpg" alt="">
+                                    <img src="images/img2.jpg" alt="" width="140" height="43">
                                 </div>
 
                                 <div class="text">
@@ -248,46 +248,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </div>
 
                         <div class="wrap-cc">
-                            <div class="input-field cc-number">
-                                <label for="cardNumber" trans>Card Number</label>
-                                <input name="cardNumberSpace" class="col-lg-6" placeholder="•••• •••• •••• ••••">
-                                <input type="hidden" name="cardNumber">
-                            </div>
-                            <div class="input-field cc-cvv">
-                                <label for="cardSecurityCode" trans>Security Code</label>
-                                <input id="cardSecurityCode" name="cardSecurityCode" placeholder="•••">
-                            </div>
-                            <div class="input-field cc-exp">
-                                <label for="#">Expiration</label>
-                                <select name="month">
-                                    <option selected disabled trans>MM</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
+                            <div class="ccjs-card">
+                                <label class="ccjs-number">
+                                    <span trans>Card Number</span>
+                                    <input name="cardNumber" class="ccjs-number col-lg-6" placeholder="•••• •••• •••• ••••">
+                                </label>
+                                <label class="ccjs-csc">
+                                    <span trans>Security Code</span>
+                                    <input name="cardSecurityCode" class="ccjs-csc" placeholder="•••">
+                                </label>
+                                <button type="button" class="ccjs-csc-help">?</button>
+                                <label class="ccjs-name">
+                                    <input type="hidden" class="ccjs-name" style="visibility: hidden">
+                                </label>
+                                <fieldset class="ccjs-expiration">
+                                    <legend trans>Expiration</legend>
+                                    <select name="month" class="ccjs-month">
+                                        <option selected disabled trans>MM</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
 
-                                <span class="sep">/</span>
+                                    <select name="year" class="ccjs-year">
+                                        <option selected disabled trans>YY</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                                </fieldset>
 
-                                <select name="year">
-                                    <option selected disabled trans>YY</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
+                                <select name="card-type" class="ccjs-hidden-card-type">
+                                    <option value="amex" class="ccjs-amex" trans>American Express</option>
+                                    <option value="discover" class="ccjs-discover" trans>Discover</option>
+                                    <option value="mastercard" class="ccjs-mastercard" trans>MasterCard</option>
+                                    <option value="visa" class="ccjs-visa" trans>Visa</option>
+                                    <option value="diners-club" class="ccjs-diners-club" trans>Diners Club</option>
+                                    <option value="jcb" class="ccjs-jcb" trans>JCB</option>
+                                    <!--<option value="laser" class="laser">Laser</option>-->
+                                    <!--<option value="maestro" class="maestro">Maestro</option>-->
+                                    <!--<option value="unionpay" class="unionpay">UnionPay</option>-->
+                                    <!--<option value="visa-electron" class="visa-electron">Visa Electron</option>-->
+                                    <!--<option value="dankort" class="dankort">Dankort</option>-->
                                 </select>
                             </div>
                         </div>
@@ -300,9 +317,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                         <div class="secure-badges">
                             <ul class="badges">
-                                <li><img src="images/img3.jpg" alt=""></li>
-                                <li><img src="images/img4.jpg" alt=""></li>
-                                <li><img src="images/img5.jpg" alt=""></li>
+                                <li><img src="images/img3.jpg" alt="" width="87" height="32"></li>
+                                <li><img src="images/img4.jpg" alt="" width="122" height="32"></li>
+                                <li><img src="images/img5.jpg" alt="" width="85" height="49"></li>
                             </ul>
 
                             <p><i class="fa fa-lock"></i> Secure 256-bit SSL Encryption</p>
@@ -606,9 +623,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js" defer></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js" defer></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
-<script type="text/javascript" src="js/jquery.creditCardValidator.js" defer></script>
-
-<link rel="stylesheet" type="text/css" href="plugins/validation/css/formValidation.css">
+<script type="text/javascript" src="js/creditcardjs-v0.10.13.min.js" defer></script>
 
 <script type="text/javascript">
     var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true, langFile : 'checkout'};
