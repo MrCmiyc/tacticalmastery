@@ -552,8 +552,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div> <!-- End: Hide elements overlaping page -->
 
-<div id="popErrors" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div id="popErrors" class="modal fade error-modal" role="dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <trans>There were errors.</trans>
@@ -566,7 +566,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </div>
 
-<div id="popModal" class="modal fade" role="dialog">
+<div id="popModal" class="modal fade error-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -607,6 +607,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js" defer></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
 <script type="text/javascript" src="js/jquery.creditCardValidator.js" defer></script>
+
+<link rel="stylesheet" type="text/css" href="plugins/validation/css/formValidation.css">
 
 <script type="text/javascript">
     var pageInfo = {type: 'orderform', autopopulate: true, hasorderid: true, helpaddress:true, langFile : 'checkout'};
