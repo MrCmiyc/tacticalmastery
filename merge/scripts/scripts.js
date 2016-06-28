@@ -705,11 +705,11 @@ $(document).ready(function ()
                             },
                             stringLength: {
                                 min: 3,
-                                max: 4,
+                                max: 3,
                                 message: 'Security code Invalid Length'
                             }
                         }
-                    }
+                    },
                 }
             }).on('status.field.fv', function (e, data) {
                 data.fv.disableSubmitButtons(false);

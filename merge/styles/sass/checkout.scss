@@ -14,6 +14,7 @@
 @import "checkout/assets/_modal.scss";
 
 @import "assets/_loading-bar.scss";
+@import "checkout/assets/_creditcard.scss";
 
 // ================================
 //              Styles
@@ -40,7 +41,7 @@ html, body {
 
 .logo-header {
 	text-align: center;
-	padding: 2x 0;
+	padding: 10px 0;
 
 	img {
 		max-width: 250px;
@@ -356,7 +357,6 @@ html, body {
 								text-align: center;
 
 								input {
-									appearance: none;
 									display: block;
 									width: 18px;
 									height: 18px;
@@ -368,25 +368,6 @@ html, body {
 									cursor: pointer;
 									transition: all ease-out 100ms;
 
-									&:after {
-										content: "";
-										position: absolute;
-										top: 0; left: 0;
-										width: 100%;
-										height: 100%;
-										@include background("../../images/checked.png", 80% auto, center);
-										opacity: 0;
-										transition: all ease-out 100ms;
-									}
-
-									&:checked {
-										background: #F51929;
-										border: 1px solid #F51929;
-
-										&:after {
-											opacity: 1;
-										}
-									}
 								}
 							}
 
@@ -545,7 +526,7 @@ html, body {
 			border-radius: 13px;
 			border: 1px solid #DBDBDB;
 			width: 100%;
-			max-width: 390px;
+			max-width: 422px;
 			padding: 35px 25px;
 			margin: 30px auto 10px auto;
 			display: flex;
@@ -807,4 +788,23 @@ html, body {
 
 #cardNumber {
   display: none;
+}
+
+.error-modal {
+	.modal-content {
+		padding: 30px;
+		box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.37);
+	}
+	.modal-header {
+		color: red;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	small.help-block {
+		display: block;
+	}
+	.modal-content .close {
+		top: -33px;
+		right: -28px;
+	}
 }
