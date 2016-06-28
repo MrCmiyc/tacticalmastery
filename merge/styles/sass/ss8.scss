@@ -350,3 +350,54 @@ html, body {
 		font-size: em(14);
 	}
 }
+
+.ss8-article .ss8_article__content .icon-title .icon {
+	text-align: center;
+}
+
+.sprite-icon {
+	display: inline-block;
+	background:url(../../images/ss8-about/sprite.png);
+	&--first {
+		background-position: 0px 0px;
+		width: 16px;
+		height: 21px;
+		position: relative;
+		top: 15px;
+	}
+	&--second {
+		background-position: 0px -31px;
+		width: 27px;
+		height: 23px;
+		position: relative;
+		top: 15px;
+	}
+	&--third {
+		background-position: 0px -64px;
+		width: 20px;
+		height: 33px;
+		position: relative;
+		top: 15px;
+	}
+	&--four {
+		background-position: 0px -107px;
+		width: 26px;
+		height: 30px;
+		position: relative;
+		top: 15px;
+	}
+	&--five {
+		background-position: 0px -147px;
+		width: 21px;
+		height: 21px;
+		position: relative;
+		top: 15px;
+	}
+	&--six {
+		background-position: 0px -178px;
+		width: 16px;
+		height: 28px;
+		position: relative;
+		top: 15px;
+	}
+}
