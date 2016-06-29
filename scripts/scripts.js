@@ -414,20 +414,35 @@ $(document).ready(function ()
         //anything we put here will end up in a page variable as well as ls
         window.trkStuff = new Array();
 
+        // These are tracking fields, anything you put on a page with a definition (pageInfo)
+        // will look for these fields and append them to forms (formLead) and fields (class ilink)
         var trackingFields = ['affId','s1','s2','s3']; //todo, should be "global" thing (class init)
 
         //trap the lander form and add affiliate info (otherwise we do not carry over to secure
         var iF = document.forms['formLead'];
-
-        $.each(trackingFields, function (index, f_name) {
+        //set up a query string for modding uris
+        var iQs = '';
+         $.each(trackingFields, function (index, f_name) {
             var ls_name = "f_" + f_name;
             var f_val = afGetGet(ls_name, f_name);
             if (f_val) {
                 trkStuff[f_name] = f_val;
+                //if there is a form on the page add a hidden field
                 if (iF != undefined) addHiddenField(iF, f_name, f_val);
+                //add this value to our query string as well
+                iQs += '&' + f_name + '=' + f_val;
             }
         });
 
+        //Were there query string vars or localstorage?
+        if (iQs != '')
+        //overwrite links with class to include our affiliate tracking fields
+            $('a.ilink').each( function(){
+                //todo: I really hate hard coding index here but I am sleepy
+                //lets add the current page as a param and appens our querystring
+                var goHere = '/index.html?ref=' + location.pathname.substring(1) + iQs;
+                $(this).attr('href', goHere);
+            });
         //Terms and privacy popups
         $('#terms').click(function (e)
         {
@@ -449,7 +464,6 @@ $(document).ready(function ()
         {
             bModal = true;
         });
-
 
         //check autopopulate
         if (pageInfo.autopopulate) {

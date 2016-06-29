@@ -26,6 +26,7 @@ $(document).ready(function() {
     });
 });
 
+
 window.onbeforeunload = function (e) {
     if (isBack == true) {
         return msgPrevent;
