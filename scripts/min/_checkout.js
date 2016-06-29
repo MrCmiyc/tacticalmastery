@@ -1,1 +1,0 @@
-function validate(){return isBack=!1,!0}var isBack=!0;window.onbeforeunload=function(a){if(1==isBack)return"Are you sure to leave?"},$(document).ready(function(){$("a.a-prevent-back").click(function(){isBack=!1})}),$("input[name=cardNumberSpace]").payment("formatCardNumber"),$("input[name=cardSecurityCode]").payment("formatCardCVC");
