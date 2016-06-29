@@ -1,20 +1,18 @@
-@import "checkout/assets/normalize";
+@import "checkout/assets/_normalize.scss";
 
 // ================================
 //              Includes
 // ================================
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300);
-
-@import "checkout/assets/variables";
-@import "checkout/assets/mixins";
-@import "checkout/assets/fixers";
+@import "checkout/assets/_variables.scss";
+@import "checkout/assets/_mixins.scss";
+@import "checkout/assets/_fixers.scss";
 // @import "assets/_font-awesome.scss";
-@import "checkout/assets/typography";
-@import "checkout/assets/modal";
+@import "checkout/assets/_typography.scss";
+@import "checkout/assets/_modal.scss";
 
-@import "assets/loading-bar";
-@import "checkout/assets/creditcardjs";
+@import "assets/_loading-bar.scss";
+@import "checkout/assets/_creditcardjs.scss";
 
 // ================================
 //              Styles
@@ -26,7 +24,7 @@ html, body {
 	width: 100%;
 	background: #F1F4F8;
 	color: $black;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', Arial, sans-serif;
 	font-weight: 300;
 	// letter-spacing: 0.05em;
 	font-size: #{$main-font-size}px;
