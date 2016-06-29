@@ -1,0 +1,385 @@
+@import "index/assets/normalize";
+
+
+// ================================
+//              Includes
+// ================================
+
+
+@import "index/assets/variables";
+@import "index/assets/mixins";
+@import "index/assets/fixers";
+@import "index/assets/modal";
+
+// ================================
+//              Styles
+// ================================
+
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	background: white;
+	color: $black;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-weight: 300;
+	font-size: #{$main-font-size}px;
+}
+
+.overhide {
+	width: 100%;
+	overflow: hidden;
+}
+
+.container {
+	max-width: 1170px;
+	width: 90%;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.landing-header {
+	background: $white;
+	border-bottom: 1px solid #E5E5E5;
+
+	.container {
+		padding: 15px 0;
+		text-align: center;
+
+		.logo {
+			display: inline-block;
+			margin-bottom: 5px;
+			max-width: 280px;
+		}
+
+		ul.information {
+			font-size: em(15);
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			color: gray;
+			a {
+				color: gray;
+				text-decoration: none;
+			}
+			font-weight: 400;
+
+			li {
+				display: inline-block;
+
+				&:not(:last-child):after {
+					content: "|";
+					margin-left: 7px;
+					margin-right: 2px;
+				}
+			}
+		}
+	}
+}
+
+.landing-main {
+	background-image: url('../../images/crossword.png');
+	padding: 20px 0;
+
+	.container {
+		max-width: 650px;
+
+		.title {
+			margin: 0 0 20px 0;
+			font-size: em(25);
+			line-height: 1.2em;
+			text-align: center;
+			text-transform: uppercase;
+
+			@media (max-width: $screen-xs-max) { font-size: em(20); }
+		}
+
+		.video-container {
+			width: 100%;
+			@include aspect-ratio(16,9);
+			background: #eee;
+			margin: 20px 0;
+
+			iframe, video {
+				position: absolute !important;
+				top: 0 !important;
+				left: 0 !important;
+				width: 100% !important;
+				height: 100% !important;
+			}
+		}
+
+		.cta-container {
+			
+
+			.message {
+				font-family: 'Gloria Hallelujah', cursive;
+				position: absolute;
+				left: calc(101% + 95px);
+				bottom: calc(50% + 60px);
+				font-size: em(21);
+				line-height: 1.2em;
+				transition: all ease-out 250ms;
+				max-width: 100px;
+			}
+
+			.cta {
+				background: #1FBA34;
+				color: $white;
+				display: block;
+				width: 100%;
+				border-radius: 5px;
+				text-align: center;
+				text-decoration: none;
+				padding: 11px 18px;
+				font-size: em(32);
+				font-weight: 400;
+				letter-spacing: 0.5px;
+
+				@media (max-width: $screen-xs-max) { font-size: em(25); padding: 12px; }
+
+				&:hover {
+					background: lighten(#1FBA34, 3%);
+				}
+
+				&:before {
+					content: "";
+					display: block;
+					width: 85px;
+					height: 90px;
+					background-image: url('../../images/arrow.png');
+					background-size: 100% 100%;
+					position: absolute;
+					right: 101%;
+					bottom: 50%;
+					transition: all ease-out 250ms;
+				}
+
+				&:after {
+					content: "";
+					display: block;
+					width: 85px;
+					height: 90px;
+					background-image: url('../../images/arrow.png');
+					transform: rotateY(180deg);
+					background-size: 100% 100%;
+					position: absolute;
+					left: 101%;
+					bottom: 50%;
+					transition: all ease-out 250ms;
+				}
+
+				&:hover {
+					&:before { right: 102%; }
+					&:after { left: 102%; }
+
+					& + .message {
+						left: calc(102% + 95px);
+					}
+				}
+			}
+
+			@media (max-width: 1050px) {
+				.message, .cta:after, .cta:before { display: none; }
+			}
+		}
+
+		.shipping-expire {
+			margin: 25px 0 0 0;
+
+			.text {
+				text-align: center;
+				color: #FF0000;
+				font-weight: 600;
+			}
+
+			.countdown {
+				// width: 100%;
+				max-width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+				font-size: em(27);
+				font-weight: 600;
+
+				@media (max-width: $screen-xs-max) { font-size: em(26); }
+
+				tr {
+					td {
+						text-align: center;
+
+						&.regular {
+							padding: 0 10px;
+						}
+
+						
+					}
+
+					&.names {
+						font-size: em(7.5);
+						font-weight: 700;
+						text-transform: uppercase;
+						td {
+							padding-top: 10px;
+						}
+					}
+				}
+			}
+
+
+
+
+
+
+
+		}
+	}
+}
+
+.landing-footer {
+	padding: 10px 0 25px 0;
+
+	.container {
+		.social-media {
+			text-align: center;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			li {
+				display: inline-block;
+
+				a {
+					@include social-media-colors;
+					display: block;
+					width: 40px;
+					height: 40px;
+					text-align: center;
+					line-height: 40px;
+					color: $white;
+					font-size: 26px;
+					top: 0px;
+					transition: all ease-out 200ms;
+
+					&:hover {
+						top: -3px;
+					}
+				}
+			}
+		}
+
+		.navigation {
+			list-style-type: none;
+			padding: 0;
+			margin: 10px 0 0 0;
+			text-align: center;
+
+			li {
+				display: inline-block;
+				font-size: em(12);
+
+				&:not(:last-child):after {
+					content: "|";
+					color: gray;
+					margin-left: 4px;
+				}
+
+				a {
+					
+					color: gray;
+					text-decoration: none;
+
+					&:hover {
+						color: $black;
+					}
+				}
+			}
+		}
+	}
+}
+
+.modal-window {
+	padding: 20px;
+	color: rgb(49, 49, 49);;
+	font-size: 16px;
+	line-height: 1.5em;
+
+	.modal-title {
+		margin: 0;
+	}
+
+	&.offer-off {
+		border: 4px solid black;
+		border-radius: 9px;
+
+		.title {
+			text-align: center;
+			font-size: em(27);
+			font-weight: normal;
+			padding: 0 20px;
+			line-height: 1.2em;
+			border-bottom: 1px solid #E5E5E5;
+			padding-bottom: 20px;
+			padding-top: 10px;
+
+		}
+
+		form {
+			padding: 10px 15px;
+
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			p.no-spam {
+				text-align: center;
+				display: block;
+				width: 100%;
+				color: gray;
+				margin-top: 10px;
+			}
+
+			.half-size {
+				width: calc(50% - 10px);
+			}
+
+			.full-size {
+				width: 100%;
+			}
+
+			input {
+				display: block;
+				margin-bottom: 15px;
+				border: 1px solid #CCCCCC;
+				border-radius: 4px;
+				padding: 12px 14px;
+				transition: all ease-out 300ms;
+
+				&:hover, &:focus {
+					border: 1px solid #69B0E7;
+				}
+			}
+
+			button, input[type="submit"] {
+				display: block;
+				width: 100%;
+				border: none;
+				background: #33D107;
+				color: $white;
+				font-size: em(25);
+				font-weight: bold;
+				padding: 20px;
+				border-radius: 4px;
+				transition: all ease-out 250ms;
+
+				i.fa {
+					margin-right: 12px;
+				}
+
+				&:hover {
+					background: darken(#33D107, 7.5%);
+				}
+			}
+
+		}
+	}
+}
