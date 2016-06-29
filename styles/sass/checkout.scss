@@ -1,4 +1,4 @@
-@import "checkout/assets/_normalize.scss";
+@import "checkout/assets/normalize";
 
 // ================================
 //              Includes
@@ -6,15 +6,15 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300);
 
-@import "checkout/assets/_variables.scss";
-@import "checkout/assets/_mixins.scss";
-@import "checkout/assets/_fixers.scss";
+@import "checkout/assets/variables";
+@import "checkout/assets/mixins";
+@import "checkout/assets/fixers";
 // @import "assets/_font-awesome.scss";
-@import "checkout/assets/_typography.scss";
-@import "checkout/assets/_modal.scss";
+@import "checkout/assets/typography";
+@import "checkout/assets/modal";
 
-@import "assets/_loading-bar.scss";
-@import "checkout/assets/_creditcardjs.scss";
+@import "assets/loading-bar";
+@import "checkout/assets/creditcardjs";
 
 // ================================
 //              Styles

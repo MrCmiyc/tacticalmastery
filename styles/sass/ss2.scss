@@ -1,4 +1,4 @@
-@import "ss/assets/_normalize.scss";
+@import "ss/assets/normalize";
 
 
 
@@ -15,13 +15,13 @@
 
 // @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
-@import "ss/assets/_variables.scss";
-@import "ss/assets/_mixins.scss";
-@import "ss/assets/_fixers.scss";
-@import "ss/assets/_font-awesome.scss";
-@import "ss/assets/_typography.scss";
-@import "ss/assets/_oswald.scss";
-@import "ss/assets/_modal.scss";
+@import "ss/assets/variables";
+@import "ss/assets/mixins";
+@import "ss/assets/fixers";
+@import "ss/assets/font-awesome";
+@import "ss/assets/typography";
+@import "ss/assets/oswald";
+@import "ss/assets/modal";
 
 // ================================
 //              Styles
