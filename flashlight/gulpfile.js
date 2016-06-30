@@ -107,7 +107,7 @@ gulp.task('critical', function (cb) {
     gulp.start('critical-index');
     gulp.start('critical-tm2');
     gulp.start('critical-tm8');
-    // gulp.start('critical-checkout');
+    gulp.start('critical-checkout');
     gulp.start('critical-recharge');
 });
 
@@ -147,17 +147,17 @@ gulp.task('critical-tm8', function (cb) {
     });
 });
 
-// gulp.task('critical-checkout', function (cb) {
-//     critical.generate({
-//         inline: true,
-//         base: '.',
-//         src: '_checkout.html',
-//         dest: 'checkout.html',
-//         width: 1400,
-//         height: 800,
-//         minify: true
-//     });
-// });
+gulp.task('critical-checkout', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_checkout.html',
+        dest: 'checkout.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
 
 gulp.task('critical-recharge', function (cb) {
     critical.generate({
