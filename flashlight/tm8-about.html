@@ -344,15 +344,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="scripts/min/modal.js"></script>
-        <script>
-            $('a.ilink').each( function(){
-                //todo: I really hate hard coding index here but I am sleepy
-                //lets add the current page as a param and appens our querystring
-                var goHere = 'https://secure.tacticalmastery.com/flashlight?ref=' + location.pathname.substring(1) + iQs;
-                $(this).attr('href', goHere);
-            });
-        </script>
-
 
     </body>
 </html>
