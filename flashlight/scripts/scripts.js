@@ -435,12 +435,12 @@ $(document).ready(function ()
         });
 
         //Were there query string vars or localstorage?
-        if (iQs != '')
+        //if (iQs != '')
         //overwrite links with class to include our affiliate tracking fields
             $('a.ilink').each( function(){
                 //todo: I really hate hard coding index here but I am sleepy
                 //lets add the current page as a param and appens our querystring
-                var goHere = '/index.html?ref=' + location.pathname.substring(1) + iQs;
+                var goHere = 'https://secure.tacticalmastery.com/?ref=' + location.pathname.substring(1) + iQs;
                 $(this).attr('href', goHere);
             });
         //Terms and privacy popups
