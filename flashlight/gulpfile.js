@@ -58,6 +58,12 @@ gulp.task("minifyScripts", function() {
         .pipe(browserSync.stream());
 });
 
+gulp.task('scriptsConcat', function() {
+    return gulp.src(['scripts/sc.js', 'scripts/_ch.js', 'scripts/lo.js'])
+        .pipe(concat('all-checkout.js'))
+        .pipe(gulp.dest('scripts/min'));
+});
+
 //////////////////////////////////////////////////
 
 gulp.task('compileCompass', function() {
