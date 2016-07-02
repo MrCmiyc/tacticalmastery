@@ -106,7 +106,7 @@ gulp.task('watchFiles', function() {
 
 //////////////////////////////////////////////////
 
-gulp.task("build", ['minifyScripts', 'compileCompass', 'critical']);
+gulp.task("build", ['minifyScripts', 'compileCompass', 'scriptsConcat', 'critical']);
 
 
 gulp.task('critical', function (cb) {
