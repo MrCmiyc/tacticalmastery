@@ -328,30 +328,6 @@ html, body {
 			&:first-child { margin-top: 0px; }
 			&:last-child { margin-top: 0px; }
 		}
-
-		.ss2-footer__navigation {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-			text-align: center;
-			font-size: em(18);
-
-			li {
-				display: inline-block;
-				font-size: em(15);
-				font-weight: 400;
-
-				a {
-					color: #377BB0;
-				}
-
-				&:not(:last-child):after {
-					content: "|";
-					font-weight: 600;
-					margin-left: 5px;
-				}	
-			}
-		}
 	}
 }
 

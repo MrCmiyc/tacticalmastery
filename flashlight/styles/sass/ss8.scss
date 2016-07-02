@@ -306,25 +306,6 @@ html, body {
 			}
 		}
 	}
-
-	.ss8-footer__navigation {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-		text-align: center;
-
-		li {
-			display: inline-block;
-			font-size: em(15);
-			font-weight: 400;
-
-			&:not(:last-child):after {
-				content: "|";
-				font-weight: 600;
-				margin-left: 5px;
-			}	
-		}
-	}
 }
 
 .ss8-disclaimer {
