@@ -111,10 +111,11 @@
                     </div>
                     <div>
                         <ul class="page_footer_navigation">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#privacy-policy">Privacy Policy</a></li>
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#terms-conditions">Terms & Conditions</a></li>
+                            <li><a href="javascript:void(0);" id="privacy">Privacy Policy</a></li>
+                            <li><a href="javascript:void(0);" id="terms">Terms & Conditions</a></li>
                             <li><a href="mailto:support@tumedia.net">Customer Care</a></li>
                         </ul>
+
                     </div>
                     <div class="text-center" style="margin-top: 20px;">
                         <img src="images/logo.svg" alt="Tactical Mastery" width="250" height="48">
@@ -124,7 +125,7 @@
         </div>
     </div>
 
-    <div id="popModal" class="modal fade" role="dialog">
+    <div id="popModal" class="modal fade error-modal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,19 +139,6 @@
 
         </div>
     </div>
-
-    <script>
-        var loadDeferredStyles = function() {
-            var addStylesNode = document.getElementById("deferred-styles");
-            var replacement = document.createElement("div");
-            replacement.innerHTML = addStylesNode.textContent;
-            document.body.appendChild(replacement);
-            addStylesNode.parentElement.removeChild(addStylesNode);
-        };
-        var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-        else window.addEventListener('load', loadDeferredStyles);
-    </script>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js" defer></script>

@@ -784,22 +784,3 @@ html, body {
 #cardNumber {
   display: none;
 }
-
-.error-modal {
-	.modal-content {
-		padding: 30px;
-		box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.37);
-	}
-	.modal-header {
-		color: red;
-		font-size: 20px;
-		margin-bottom: 10px;
-	}
-	small.help-block {
-		display: block;
-	}
-	.modal-content .close {
-		top: -33px;
-		right: -28px;
-	}
-}
