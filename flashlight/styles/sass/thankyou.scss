@@ -336,3 +336,63 @@ img {
     }
   }
 }
+
+/* thanks page */
+.thanksfield {
+  font-weight: bolder;
+}
+@media (min-width: 240px) {
+  .btn-chat-online {
+    position: absolute;
+    color: #FFF;
+    font-size: 24px;
+    top: 14px;
+    left: 79px;
+  }
+  .btn-support {
+    position: absolute;
+    color: #333;
+    font-size: 28px;
+    top: 130px;
+    left: 60px;
+    z-index: 10;
+  }
+}
+@media (min-width: 320px) {
+  .btn-chat-online {
+    font-size: 27px;
+    top: 13px;
+    left: 105px;
+  }
+}
+@media (min-width: 360px) {
+  .btn-chat-online {
+    left: 120px;
+  }
+}
+@media (min-width: 411px) {
+  .btn-chat-online {
+    left: 145px;
+  }
+}
+@media (min-width: 768px) {
+  .btn-chat-online {
+    left: 75px;
+    top: 13px;
+    font-size: 20px;
+  }
+}
+@media (min-width: 991px) {
+  .btn-chat-online {
+    left: 75px;
+    top: 13px;
+    font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .btn-chat-online {
+    left: 80px;
+    top: 14px;
+    font-size: 26px;
+  }
+}
