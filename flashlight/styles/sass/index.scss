@@ -56,7 +56,7 @@ html, body {
 			font-size: em(15);
 			list-style-type: none;
 			padding: 0;
-			margin: 0;
+			margin: 15px 0 0 0;
 			color: gray;
 			a {
 				color: gray;
@@ -66,6 +66,10 @@ html, body {
 
 			li {
 				display: inline-block;
+
+				.text-black {
+					color: #000;
+				}
 
 				&:not(:last-child):after {
 					content: "|";
