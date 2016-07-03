@@ -6,10 +6,10 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <title>Tactical Mastery Flashlights </title>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/hdlmp_1/custom.css">
-    <link rel="stylesheet" type="text/css" href="css/csss.css">
-    <link rel="stylesheet" type="text/css" href="css/loading-bar.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/tingle.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/lmp.css">
+    <link rel="stylesheet" type="text/css" href="styles/css/loading-bar.css">
     <link rel="stylesheet" type="text/css" href="styles/css/common.css">
 </head>
 <body>
@@ -135,8 +135,8 @@
             </div>
             <div>
                 <ul class="page_footer_navigation">
-                    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#privacy-policy">Privacy Policy</a></li>
-                    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#terms-conditions">Terms & Conditions</a></li>
+                    <li><a href="javascript:void(0);" id="privacy">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0);" id="terms">Terms & Conditions</a></li>
                     <li><a href="mailto:support@tumedia.net">Customer Care</a></li>
                 </ul>
             </div>
@@ -146,7 +146,7 @@
         <div class="spacer"></div>
     </div>
 </section><!--main section!-->
-<div id="popModal" class="modal fade" role="dialog">
+<div id="popModal" class="modal fade error-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,19 +178,6 @@
     </div>
 </div>
 
-<script>
-    var loadDeferredStyles = function() {
-        var addStylesNode = document.getElementById("deferred-styles");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement);
-        addStylesNode.parentElement.removeChild(addStylesNode);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-    else window.addEventListener('load', loadDeferredStyles);
-</script>
-
 <!--[if lt IE 9]>
 <script src="js/html5shiv.min.js" defer></script>
 <script src="js/respond.min.js" defer></script>
@@ -199,8 +186,8 @@
     var pageInfo = {type: 'upsell', upsellval:'hdlmp', autopopulate: false, hasorderid: true, helpaddress: false, langFile: 'hlmp'};
 </script>
 
-<script src="js/jquery-1.12.min.js" defer></script>
-<script src="js/bootstrap.min.js" defer></script>
+<script src="js/jquery-3.0.0.min.js" defer></script>
+<script src="js/tingle.min.js" defer></script>
 <script src="scripts/min/scripts.js" defer></script>
 <script src="scripts/min/_us_hlmp.js" defer></script>
 <script src="scripts/min/locale.js" defer></script>
