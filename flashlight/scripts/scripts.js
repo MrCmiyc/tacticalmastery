@@ -406,6 +406,26 @@ function populateThanksPage(orderInfos) {
 
 }
 
+function makePrettyModal(content,doFooter) {
+    doFooter = doFooter || false;
+    var modal = new tingle.modal({
+        footer: doFooter,
+        stickyFooter: false,
+//        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+  //          console.log('modal open');
+        },
+        onClose: function() {
+//            console.log('modal closed');
+        }
+    });
+
+    // set content
+    modal.setContent(content);
+    modal.open();
+
+    }
+
 $(document).ready(function ()
 {
     if (pageInfo != undefined) {
@@ -447,25 +467,24 @@ $(document).ready(function ()
         $('#terms').click(function (e)
         {
             bModal = false;
-            $("#popModalHead").html('Terms and Conditions');
-            $("#popModalBody").load('terms.html');
-            $("#popModal").modal();
+            $.get('terms.html', function(html) {
+                makePrettyModal(html);
+            });
         });
-
         $('#affiliate').click(function (e)
         {
             bModal = false;
-            $("#popModalHead").html('Affiliate');
-            $("#popModalBody").load('affiliate.html');
-            $("#popModal").modal();
+            $.get('affiliate.html', function(html) {
+                makePrettyModal(html);
+            });
         });
 
         $('#privacy').click(function (e)
         {
             bModal = false;
-            $("#popModalHead").html('Privacy Policy');
-            $("#popModalBody").load('privacy.html');
-            $("#popModal").modal();
+            $.get('privacy.html', function(html) {
+                makePrettyModal(html);
+            });
         });
 
         $('#popupTerms').on('hidden.bs.modal', function (e)
@@ -753,7 +772,7 @@ $(document).ready(function ()
                     data.fv.disableSubmitButtons(false);
                 }
             }).on('err.form.fv', function (e) {
-                $("#popErrors").modal();
+                makePrettyModal('<h2>There were errors</h2>'+$("#formerrors").html(),false);
                 e.preventDefault();
             }).on('success.form.fv', function (e) {
                 fakevar = SubmitSubmit('#frm_order');
