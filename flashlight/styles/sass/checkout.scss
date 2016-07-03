@@ -37,6 +37,22 @@ html, body {
 	margin-right: auto !important;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0 0 20px;
+  color: #2f2f2f;
+
+  span {
+    font-weight: 400;
+  }
+}
+
 .logo-header {
 	text-align: center;
 	padding: 10px 0;
@@ -1110,23 +1126,6 @@ ul.radios li span.price {
 
     .btn:hover {
         background: #fc9e41;
-    }
-
-    .secure {
-      display: block;
-      text-align: center;
-      color: #000;
-      position: relative;
-    }
-
-    .secure:before {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0 8px 0 0;
-        background: url(../../images/checkout_1/lock.jpg) no-repeat;
-        width: 15px;
-        height: 19px;
-        content: "";
     }
 }
 
