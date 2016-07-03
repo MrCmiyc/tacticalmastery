@@ -406,9 +406,10 @@ function populateThanksPage(orderInfos) {
 
 }
 
-function makePrettyModal(content) {
+function makePrettyModal(content,doFooter) {
+    doFooter = doFooter || false;
     var modal = new tingle.modal({
-        footer: true,
+        footer: doFooter,
         stickyFooter: false,
 //        cssClass: ['custom-class-1', 'custom-class-2'],
         onOpen: function() {
@@ -771,7 +772,7 @@ $(document).ready(function ()
                     data.fv.disableSubmitButtons(false);
                 }
             }).on('err.form.fv', function (e) {
-                $("#popErrors").modal();
+                makePrettyModal('<h2>There were errors</h2>'+$("#formerrors").html(),false);
                 e.preventDefault();
             }).on('success.form.fv', function (e) {
                 fakevar = SubmitSubmit('#frm_order');

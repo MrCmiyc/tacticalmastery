@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     maps = require('gulp-sourcemaps'),
     del = require('del'),
+    rename = require('gulp-rename'),
     compass = require('gulp-compass'),
     plumber = require('gulp-plumber'),
     livereload = require('gulp-livereload'),
@@ -32,6 +33,8 @@ gulp.task('browser-sync', function() {
         browserSync.reload();
     });
 });
+
+
 
 //////////////////////////////////////////////////
 
@@ -81,16 +84,27 @@ gulp.task('compileCompass', function() {
             config_file: './config.rb',
             css: 'styles/css',
             sass: 'styles/sass'
-        }))
-        .pipe(minifyCss())
+        })).pipe(minifyCss())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
-        }))
+        })).pipe(plumber.stop())
         .pipe(gulp.dest('styles/css'))
         .pipe(livereload())
         .pipe(browserSync.stream());
 });
+
+gulp.task("stripCommonCss", function() {
+
+        gulp.src('styles/css/common.css')
+        .pipe(uncss({
+            html: ['*.html'],
+            ignore: ['.tingle']
+        })).pipe(minifyCss())
+        .pipe(rename('common.tiny.css'))
+        .pipe(gulp.dest('styles/css'));
+});
+
 
 gulp.task("stripBootstrap", function() {
     gulp.src('css/bootstrap.css')
@@ -134,8 +148,7 @@ gulp.task('watchFiles', function() {
 gulp.task("build", function() {
     gulp.start('clean');
     gulp.start('compileCompass');
-    gulp.start('stripBootstrap');
-    gulp.start('stripJquery');
+    gulp.start('stripCommonCss');
     gulp.start('scriptsConcat');
     gulp.start('minifyScripts');
     gulp.start('critical');
@@ -145,7 +158,7 @@ gulp.task('critical', function (cb) {
     gulp.start('critical-index');
     gulp.start('critical-tm2');
     gulp.start('critical-tm8');
-    gulp.start('critical-checkout');
+    //gulp.start('critical-checkout');
     gulp.start('critical-recharge');
 });
 
