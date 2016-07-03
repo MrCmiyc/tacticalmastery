@@ -452,6 +452,14 @@ $(document).ready(function ()
             $("#popModal").modal();
         });
 
+        $('#affiliate').click(function (e)
+        {
+            bModal = false;
+            $("#popModalHead").html('Affiliate');
+            $("#popModalBody").load('affiliate.html');
+            $("#popModal").modal();
+        });
+
         $('#privacy').click(function (e)
         {
             bModal = false;

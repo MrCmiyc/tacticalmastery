@@ -106,8 +106,14 @@ gulp.task('watchFiles', function() {
 
 //////////////////////////////////////////////////
 
-gulp.task("build", ['minifyScripts', 'compileCompass', 'critical']);
-
+//gulp.task("build", ['clean', 'minifyScripts', 'compileCompass', 'scriptsConcat', 'critical']);
+gulp.task("build", function() {
+    gulp.start('clean');
+    gulp.start('compileCompass');
+    gulp.start('minifyScripts');
+    gulp.start('scriptsConcat');
+    gulp.start('critical');
+});
 
 gulp.task('critical', function (cb) {
     gulp.start('critical-index');
@@ -182,8 +188,7 @@ gulp.task('critical-recharge', function (cb) {
 gulp.task('serve', ['watchFiles']);
 
 //////////////////////////////////////////////////
-
-gulp.task("default", ["clean"], function() {
+gulp.task("default", function() {
     gulp.start('build');
     gulp.start('serve');
 });
