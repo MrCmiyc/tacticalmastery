@@ -21,7 +21,8 @@ function args(elem) {
     return newAttrs;
 }
 
-function api(endpoint, data, element) {
+function api(endpoint, data, element)
+{
     var url = 'https://api.tacticalmastery.com';
     var jqxhr = $.ajax(
             {
@@ -406,25 +407,6 @@ function populateThanksPage(orderInfos) {
 
 }
 
-function makePrettyModal(content) {
-    var modal = new tingle.modal({
-        footer: true,
-        stickyFooter: false,
-//        cssClass: ['custom-class-1', 'custom-class-2'],
-        onOpen: function() {
-  //          console.log('modal open');
-        },
-        onClose: function() {
-//            console.log('modal closed');
-        }
-    });
-
-    // set content
-    modal.setContent(content);
-    modal.open();
-
-    }
-
 $(document).ready(function ()
 {
     if (pageInfo != undefined) {
@@ -433,63 +415,50 @@ $(document).ready(function ()
         //anything we put here will end up in a page variable as well as ls
         window.trkStuff = new Array();
 
-        // These are tracking fields, anything you put on a page with a definition (pageInfo)
-        // will look for these fields and append them to forms (formLead) and fields (class ilink)
         var trackingFields = ['affId','s1','s2','s3']; //todo, should be "global" thing (class init)
 
         //trap the lander form and add affiliate info (otherwise we do not carry over to secure
         var iF = document.forms['formLead'];
-        //set up a query string for modding uris
-        var iQs = '';
-         $.each(trackingFields, function (index, f_name) {
+
+        $.each(trackingFields, function (index, f_name) {
             var ls_name = "f_" + f_name;
             var f_val = afGetGet(ls_name, f_name);
             if (f_val) {
                 trkStuff[f_name] = f_val;
-                //if there is a form on the page add a hidden field
                 if (iF != undefined) addHiddenField(iF, f_name, f_val);
-                //add this value to our query string as well
-                iQs += '&' + f_name + '=' + f_val;
             }
         });
 
-        //Were there query string vars or localstorage?
-        //if (iQs != '')
-        //overwrite links with class to include our affiliate tracking fields
-            $('a.ilink').each( function(){
-                //todo: I really hate hard coding index here but I am sleepy
-                //lets add the current page as a param and appens our querystring
-                var goHere = 'https://tacticalmastery.com/flashlight/index.html?ref=' + location.pathname.substring(1) + iQs;
-                $(this).attr('href', goHere);
-            });
         //Terms and privacy popups
         $('#terms').click(function (e)
         {
             bModal = false;
-            $.get('terms.html', function(html) {
-                makePrettyModal(html);
-            });
+            $("#popModalHead").html('Terms and Conditions');
+            $("#popModalBody").load('terms.html');
+            $("#popModal").modal();
         });
+
         $('#affiliate').click(function (e)
         {
             bModal = false;
-            $.get('affiliate.html', function(html) {
-                makePrettyModal(html);
-            });
+            $("#popModalHead").html('Affiliate');
+            $("#popModalBody").load('affiliate.html');
+            $("#popModal").modal();
         });
 
         $('#privacy').click(function (e)
         {
             bModal = false;
-            $.get('privacy.html', function(html) {
-                makePrettyModal(html);
-            });
+            $("#popModalHead").html('Privacy Policy');
+            $("#popModalBody").load('privacy.html');
+            $("#popModal").modal();
         });
 
         $('#popupTerms').on('hidden.bs.modal', function (e)
         {
             bModal = true;
         });
+
 
         //check autopopulate
         if (pageInfo.autopopulate) {
@@ -749,19 +718,6 @@ $(document).ready(function ()
                                 message: 'Security code Invalid Length'
                             }
                         }
-                    },
-                    cardNumberSpace: {
-                        row: '.field',
-                        validators: {
-                            notEmpty: {
-                                message: 'Please enter a valid card number'
-                            },
-                            stringLength: {
-                                min: 13,
-                                max: 16,
-                                message: 'Card number Invalid Length'
-                            }
-                        }
                     }
                 }
             }).on('status.field.fv', function (e, data) {
@@ -800,7 +756,66 @@ $(document).ready(function ()
             });
 
         }
+
     }
+
 
 });
 
+
+
+
+var isBack = true;
+
+window.onbeforeunload = function (e) {
+	if (isBack == true) {
+		return "Are you sure to leave?";
+	}
+};
+
+function validate() {
+	isBack = false;
+	return true;
+}
+
+$(document).ready(function() {
+	$("a.a-prevent-back").click(function() {
+		isBack = false;
+	});
+});
+
+$(document).ready(function() {
+    var locale = window.navigator.userLanguage || window.navigator.language;
+    locale = locale.substring(0, 2);
+    if (locale != 'es') {
+        locale = 'en';
+    }
+    if (locale != 'en') {
+        $.getJSON("locale/" + locale + "/" + pageInfo.langFile + ".json", function (json) {
+            $.each($("[trans]"), function (index, item) {
+                var trans = $(item).text();
+                if (json[trans] != undefined) {
+                    $(item).text(json[trans]);
+                }
+            });
+
+            $.each($("[placeholder]"), function (index, item) {
+                var trans = $(item).attr('placeholder');
+                if (json[trans] != undefined) {
+                    $(item).attr('placeholder', json[trans]);
+                }
+            });
+
+            $.each($("trans"), function (index, item) {
+                var trans = $(item).text();
+                if (json[trans] != undefined) {
+                    $(item).text(json[trans]);
+                }
+            });
+
+            if (pageInfo.langFile == 'recharge') {
+                $("button#upsellNo").text(json['no_thanks_i_will_just_use_some']);
+            }
+        });
+    }
+});

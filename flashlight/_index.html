@@ -7,6 +7,7 @@
         <title>Tactical Mastery Flashlights </title>
         <link rel="icon" type="image/png" href="images/favicon.png">
         <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/tingle.css">
         <link rel="stylesheet" type="text/css" href="styles/css/common.css">
         <link rel="stylesheet" type="text/css" href="styles/css/index.css">
     </head>
@@ -50,37 +51,7 @@
                             </div>
 
                             <div class="cta-container">
-
-                                <!-- offer off -->
-                                <div class="modal fade" id="offer-off" tabindex="-1" role="dialog" aria-labelledby="offer-off">
-                                    <div class="modal-dialog mini-modal-760" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
-
-                                            <div class="modal-window offer-off">
-                                                <p class="title">Enter Your Name and Telephone number To INSTANTLY Receive 75% Off The XT808 Flashlight!</p>
-
-                                                <form action="checkout.html" method="GET" id="js-form-lead" name="formLead">
-
-                                                    <input type="text" class="form-control half-size" id="js-text-first-name" name="firstName" placeholder="Enter Your First Name">
-                                                    <input type="text" class="form-control half-size" id="js-text-last-name" name="lastName" placeholder="Your Last Name">
-
-                                                    <input type="tel" class="form-control full-size" id="js-text-phone-number" name="phoneNumber" placeholder="Your Phone Number">
-
-                                                    <button type="submit" id="js-btn-confirm" class="btn btn-block btn-submit kform_submitBtn" onclick="return validate();">
-                                                        <i class="fa fa-check"></i><span trans>YES! Instantly Apply My 75% Discount</span>
-                                                    </button>
-
-                                                    <p class="no-spam">* we will not spam, rent, or sell your information... *</p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- offer off -->
-                                
-
-                                <a href="#" class="cta" data-toggle="modal-api" data-target="#offer-off">YES! I WANT 75% OFF</a>
+                                <a href="#" id="modFormBtn" class="cta" data-toggle="modal-api" data-target="#offer-off">YES! I WANT 75% OFF</a>
 
                                 <div class="message">Today Only!</div>
                                 
@@ -115,44 +86,44 @@
                         </div>
                     </div>
 
-                    <footer class="landing-footer">
-                        <div class="container">
-                            <ul class="social-media">
-                                <li><a href="https://www.facebook.com/Tactical-Mastery-1018184401551899/"><img src="images/sns/facebook.png"></a></li>
-                                <li><a href="https://twitter.com/tacticalmastery"><img src="images/sns/twitter.png"></a></li>
-                                <li><a href="https://www.instagram.com/tacticalmastery/"><img src="images/sns/instagram.png"></a></li>
-                            </ul>
+                <footer class="landing-footer">
+                    <div class="container">
+                        <ul class="social-media">
+                            <li><a href="https://www.facebook.com/Tactical-Mastery-1018184401551899/"><img src="images/sns/facebook.png"></a></li>
+                            <li><a href="https://twitter.com/tacticalmastery"><img src="images/sns/twitter.png"></a></li>
+                            <li><a href="https://www.instagram.com/tacticalmastery/"><img src="images/sns/instagram.png"></a></li>
+                        </ul>
 
-                            <div id="popModal" class="modal fade error-modal" role="dialog">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div id="popModalHead"></div>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div id="popModalBody"></div>
-                                        </div>
+                        <div id="popModal" class="modal fade error-modal" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div id="popModalHead"></div>
+                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="popModalBody"></div>
                                     </div>
                                 </div>
                             </div>
-
-                            <h3 style="text-align: center;">
-                                Tactical Mastery
-                            </h3>
-
-                            <ul class="navigation">
-                                    <li>4931 SW 76th Ave. #364  Portland, OR. 97225 |
-                                    <a href="tel:8884123081">(888) 412-3081</a></li>
-                            </ul>
-                            <ul class="page_footer_navigation">
-                                <li><a href="javascript:void(0);" id="privacy">Privacy Policy</a></li>
-                                <li><a href="javascript:void(0);" id="terms">Terms & Conditions</a></li>
-                                <li><a href="javascript:void(0);" id="affiliate">Affiliate</a></li>
-                                <li><a href="mailto:support@tumedia.net">Customer Care</a></li>
-                            </ul>
                         </div>
-                    </footer>
+
+                        <h3 style="text-align: center;">
+                            Tactical Mastery
+                        </h3>
+
+                        <ul class="navigation">
+                                <li>4931 SW 76th Ave. #364  Portland, OR. 97225 |
+                                <a href="tel:8884123081">(888) 412-3081</a></li>
+                        </ul>
+                        <ul class="page_footer_navigation">
+                            <li><a href="javascript:void(0);" id="privacy">Privacy Policy</a></li>
+                            <li><a href="javascript:void(0);" id="terms">Terms & Conditions</a></li>
+                            <li><a href="javascript:void(0);" id="affiliate">Affiliate</a></li>
+                            <li><a href="mailto:support@tumedia.net">Customer Care</a></li>
+                        </ul>
+                    </div>
+                </footer>
 
                 <!-- End: Page Content -->
         
@@ -165,13 +136,10 @@
             delete window.myOrderID;
         </script>
 
-        <script src="js/jquery-3.0.0.slim.min.js" defer></script>
-        <script src="scripts/min/timer.js" defer></script>
-        <script src="scripts/min/modal.js" defer></script>
-
+        <script src="js/jquery-3.0.0.min.js" defer></script>
+        <script src="js/tingle.min.js" defer></script>
         <!-- block:js -->
-        <script src="scripts/min/scripts.js" defer></script>
-        <script src="scripts/min/_index.js" defer></script>
+        <script src="scripts/min/all-index.js" defer></script>
         <!-- blockEnd -->
 
     </body>
