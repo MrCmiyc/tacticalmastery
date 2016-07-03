@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect-php'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
+    uncss = require('gulp-uncss'),
     rename = require('gulp-rename'),
     sass = require('gulp-ruby-sass'),
     maps = require('gulp-sourcemaps'),
@@ -49,6 +50,7 @@ gulp.task('browser-sync', function() {
 
 //////////////////////////////////////////////////
 
+
 gulp.task("minifyScripts", function() {
     return gulp.src("scripts/*.js")
         .pipe(plumber())
@@ -84,6 +86,14 @@ gulp.task('compileCompass', function() {
         .pipe(browserSync.stream());
 });
 
+gulp.task("stripBootstrap", function() {
+    gulp.src('css/bootstrap.css')
+        .pipe(uncss({
+            html: ['*.html']
+        })).pipe(minifyCss())
+        .pipe(gulp.dest('styles/css'));
+});
+
 //////////////////////////////////////////////////
 
 gulp.task('clean', function() {
@@ -110,6 +120,7 @@ gulp.task('watchFiles', function() {
 gulp.task("build", function() {
     gulp.start('clean');
     gulp.start('compileCompass');
+    gulp.start('stripBootstrap');
     gulp.start('minifyScripts');
     gulp.start('scriptsConcat');
     gulp.start('critical');
