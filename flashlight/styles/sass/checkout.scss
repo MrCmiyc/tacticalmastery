@@ -803,3 +803,95 @@ html, body {
 		right: -28px;
 	}
 }
+
+.m-b-5{
+  margin-bottom: 5px
+}
+
+.t-d-l-t{
+  text-decoration: line-through
+}
+
+.p-l-3{
+  padding-left: 3px
+}
+
+.p-0{
+  padding: 0
+}
+
+.m-t-3{
+  margin-top: 3px
+}
+
+.m-t-20{
+  margin-top: 20px
+}
+
+.iframe-googletagmanager {
+  display:none;visibility:hidden
+}
+
+.checkout-trust {
+  width: 366px;
+  height: 49px;
+  background: transparent url("../../images/checkout-trust.png") no-repeat scroll center center;
+  margin: 0px auto 10px;
+}
+
+.mainform {
+  #checkoutSubmit{background: #fa4}
+  #checkoutSubmit.btn:hover,
+  #checkoutSubmit.btn:focus{background: #fc9e41}
+
+  .btn {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 25px;
+      color: #fff;
+      min-height: 65px;
+      padding: 20px 15px;
+      background: #1bbf00;
+      border-radius: 5px;
+      border: 0;
+      outline: none;
+      white-space: normal;
+      margin: 0 0 22px;
+    }
+
+    @media (min-width: 768px) {
+      .btn {
+          font-size: 18px;
+          min-height: 70px;
+          padding: 24px 15px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+      .btn {
+        font-size: 20px;
+      }
+    }
+
+    .btn:hover {
+        background: #32ce18;
+    }
+
+    .secure {
+      display: block;
+      text-align: center;
+      color: #000;
+      position: relative;
+    }
+
+    .secure:before {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 0 0;
+        background: url(../../images/checkout_1/lock.jpg) no-repeat;
+        width: 15px;
+        height: 19px;
+        content: "";
+    }
+}
