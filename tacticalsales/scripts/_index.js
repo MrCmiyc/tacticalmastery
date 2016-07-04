@@ -37,8 +37,6 @@ $(document).ready(function() {
         console.log("cluck");
         modalForm.open();
     });
-
-
 });
 
 window.onbeforeunload = function (e) {
@@ -47,3 +45,8 @@ window.onbeforeunload = function (e) {
 function validate() {
     return true;
 }
+
+history.pushState(null, null, location.href);
+window.onpopstate = function(event) {
+    history.go(1);
+};
