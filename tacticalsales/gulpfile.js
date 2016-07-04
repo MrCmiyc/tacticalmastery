@@ -145,8 +145,10 @@ gulp.task('watchFiles', function() {
 //////////////////////////////////////////////////
 gulp.task("build", function() {
     gulp.start('clean');
+    gulp.start('stripBootstrap');
     gulp.start('compileCompass');
     gulp.start('stripCommonCss');
+    gulp.start('stripJquery');
     gulp.start('scriptsConcat');
     gulp.start('minifyScripts');
     gulp.start('critical');
