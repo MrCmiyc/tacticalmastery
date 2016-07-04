@@ -40,7 +40,6 @@ html, body {
 
 .landing-header {
 	background: $white;
-	border-bottom: 1px solid #E5E5E5;
 
 	.container {
 		padding: 15px 0;
@@ -53,13 +52,13 @@ html, body {
 		}
 
 		ul.information {
-			font-size: em(15);
+			font-size: em(16);
 			list-style-type: none;
 			padding: 0;
 			margin: 15px 0 0 0;
-			color: gray;
+			color: #000;
 			a {
-				color: gray;
+				color: #000;
 				text-decoration: none;
 			}
 			font-weight: 400;
@@ -274,10 +273,11 @@ html, body {
 			padding: 0;
 			margin: 10px 0 0 0;
 			text-align: center;
+            color: #000;
 
 			li {
 				display: inline-block;
-				font-size: em(12);
+				font-size: em(14);
 
 				&:not(:last-child):after {
 					content: "|";
@@ -287,7 +287,7 @@ html, body {
 
 				a {
 					
-					color: gray;
+					color: #000;
 					text-decoration: none;
 
 					&:hover {
