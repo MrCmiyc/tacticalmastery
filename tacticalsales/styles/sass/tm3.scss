@@ -262,9 +262,9 @@ img {
     width: 52%;
     float: right;
 
-    margin-top: 0px;
+    margin-top: 0;
 
-    > *:first-child { margin-top: 0px; }
+    > *:first-child { margin-top: 0;}
 
     @media (max-width: $screen-xs-max) {
       width: 100%;
@@ -303,7 +303,7 @@ img {
           @include social-media-colors;
           color: $white;
 
-          top: 0px;
+          top: 0;
           transition: all ease-out 300ms;
 
           &:hover {
