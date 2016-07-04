@@ -249,6 +249,7 @@ html, body {
 
 			li {
 				display: inline-block;
+                padding: 0 5px;
 
 				a {
 					display: block;
@@ -265,6 +266,18 @@ html, body {
 						top: -3px;
 					}
 				}
+
+                a.icon-facebook {
+                    background: url("../../images/sns/social.png") no-repeat;
+                }
+
+                a.icon-twitter {
+                    background: url("../../images/sns/social.png") no-repeat;
+                }
+
+                a.icon-instagram {
+                    background: url("../../images/sns/social.png") no-repeat;
+                }
 			}
 		}
 
