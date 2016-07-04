@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
 
     var modalForm = new tingle.modal();
-    var signupform = '<div class="offer-off"><p class="title">Enter Your Name and Telephone number To INSTANTLY Receive 75% Off The XT808 Flashlight!</p>'
+    var signupform = '<div class="offer-off"><p class="title">Enter Your Name and Telephone number To INSTANTLY Receive 75% Off The Tactical Mastery Flashlight!</p>'
         + '<form action="checkout.html" method="GET" id="js-form-lead" name="formLead">'
         + '<input type="text" class="form-control half-size" id="js-text-first-name" name="firstName" placeholder="Enter Your First Name">'
         + '<input type="text" class="form-control half-size" id="js-text-last-name" name="lastName" placeholder="Your Last Name">'
