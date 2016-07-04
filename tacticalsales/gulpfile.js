@@ -123,7 +123,7 @@ gulp.task("stripJquery", function() {
 //////////////////////////////////////////////////
 
 gulp.task('clean', function() {
-    del(['dist', 'styles/css', 'scripts/min', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
+    del(['dist', 'styles/css', 'scripts/min/*', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
 });
 
 //////////////////////////////////////////////////
@@ -142,12 +142,10 @@ gulp.task('watchFiles', function() {
 });
 
 //////////////////////////////////////////////////
-
-//gulp.task("build", ['clean', 'minifyScripts', 'compileCompass', 'scriptsConcat', 'critical']);
 gulp.task("build", function() {
     gulp.start('clean');
+    gulp.start('stripBootstrap');
     gulp.start('compileCompass');
-    gulp.start('stripCommonCss');
     gulp.start('scriptsConcat');
     gulp.start('minifyScripts');
     gulp.start('critical');
