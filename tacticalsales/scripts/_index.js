@@ -1,19 +1,19 @@
 var bModal = true;
 $(document).ready(function() {
-    $(document).mousemove(function(e) {
-        if (e.pageY <= 5 && bModal) {
-            $("div#js-div-popup").modal();
-        }
-    });
-
-    $('div#js-div-popup').on('shown.bs.modal', function () {
-        $("input#js-text-first-name").focus();
-    });
-
-    $('div#js-div-popup').on('hidden.bs.modal', function() {
-        $("input#js-text-first-name, input#js-text-last-name, input#js-text-phone-number").val('');
-        $("div#js-div-notification").hide();
-    });
+    //$(document).mousemove(function(e) {
+    //    if (e.pageY <= 5 && bModal) {
+    //        $("div#js-div-popup").modal();
+    //    }
+    //});
+    //
+    //$('div#js-div-popup').on('shown.bs.modal', function () {
+    //    $("input#js-text-first-name").focus();
+    //});
+    //
+    //$('div#js-div-popup').on('hidden.bs.modal', function() {
+    //    $("input#js-text-first-name, input#js-text-last-name, input#js-text-phone-number").val('');
+    //    $("div#js-div-notification").hide();
+    //});
 
     $("input#js-text-phone-number").keyup(function(e) {
         $("div#js-div-notification").fadeIn();
@@ -45,6 +45,11 @@ window.onbeforeunload = function (e) {
 function validate() {
     return true;
 }
+
+//function disableBack() { window.history.forward() }
+//
+//window.onload = disableBack();
+//window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
 
 history.pushState(null, null, location.href);
 window.onpopstate = function(event) {
