@@ -461,6 +461,30 @@ function makePrettyModal(content) {
 
     }
 
+function termsModal(e)
+{
+    bModal = false;
+    $.get('terms.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+function affiliateModal(e)
+{
+    bModal = false;
+    $.get('affiliate.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+
+function privacyModal(e)
+{
+    bModal = false;
+    $.get('privacy.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+
+
 $(document).ready(function ()
 {
     if (pageInfo != undefined) {
@@ -499,28 +523,6 @@ $(document).ready(function ()
                 $(this).attr('href', goHere);
             });
         //Terms and privacy popups
-        $('#terms').click(function (e)
-        {
-            bModal = false;
-            $.get('terms.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
-        $('#affiliate').click(function (e)
-        {
-            bModal = false;
-            $.get('affiliate.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
-
-        $('#privacy').click(function (e)
-        {
-            bModal = false;
-            $.get('privacy.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
 
         $('#popupTerms').on('hidden.bs.modal', function (e)
         {
@@ -845,11 +847,6 @@ var isBack = true;
 var bModal = true;
 var msgPrevent = "Are you sure to leave?";
 $(document).ready(function() {
-    $(document).mousemove(function(e) {
-        if (e.pageY <= 5 && bModal) {
-            $("div#js-div-popup").modal();
-        }
-    });
 
     $('div#js-div-popup').on('shown.bs.modal', function () {
         $("input#js-text-first-name").focus();
