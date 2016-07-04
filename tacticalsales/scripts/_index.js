@@ -1,6 +1,4 @@
-var isBack = true;
 var bModal = true;
-var msgPrevent = "Are you sure to leave?";
 $(document).ready(function() {
     $(document).mousemove(function(e) {
         if (e.pageY <= 5 && bModal) {
@@ -20,11 +18,6 @@ $(document).ready(function() {
     $("input#js-text-phone-number").keyup(function(e) {
         $("div#js-div-notification").fadeIn();
     });
-
-    $("a.a-prevent-back").click(function() {
-        isBack = false;
-    });
-
 
     var modalForm = new tingle.modal();
     var signupform = '<div class="offer-off"><p class="title">Enter Your Name and Telephone number To INSTANTLY Receive 75% Off The XT808 Flashlight!</p>'
@@ -49,14 +42,8 @@ $(document).ready(function() {
 });
 
 window.onbeforeunload = function (e) {
-    if (isBack == true) {
-        return msgPrevent;
-    }
-
-
 };
 
 function validate() {
-    isBack = false;
     return true;
 }
