@@ -4,8 +4,8 @@
 @import "ss/assets/_variables.scss";
 @import "ss/assets/_mixins.scss";
 @import "ss/assets/_fixers.scss";
-@import "tm3/assets/_opensans.scss";
-//@import "ss/assets/_font-awesome.scss";
+//@import "tm3/assets/_opensans.scss";
+@import "ss/assets/_font-awesome.scss";
 @import "ss/assets/_modal.scss";
 
 // ================================
@@ -380,7 +380,7 @@ img {
         display: inline-block;
 
         &:not(:last-child):after {
-          content: "-";
+          content: "|";
           margin-left: 7px;
           margin-right: 3px;
         }
