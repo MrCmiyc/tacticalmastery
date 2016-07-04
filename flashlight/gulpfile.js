@@ -6,10 +6,12 @@ var gulp = require('gulp'),
     connect = require('gulp-connect-php'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
+    uncss = require('gulp-uncss'),
     rename = require('gulp-rename'),
     sass = require('gulp-ruby-sass'),
     maps = require('gulp-sourcemaps'),
     del = require('del'),
+    rename = require('gulp-rename'),
     compass = require('gulp-compass'),
     plumber = require('gulp-plumber'),
     livereload = require('gulp-livereload'),
@@ -32,6 +34,8 @@ gulp.task('browser-sync', function() {
     });
 });
 
+
+
 //////////////////////////////////////////////////
 
 // gulp.task('compileJade', function() {
@@ -49,6 +53,7 @@ gulp.task('browser-sync', function() {
 
 //////////////////////////////////////////////////
 
+
 gulp.task("minifyScripts", function() {
     return gulp.src("scripts/*.js")
         .pipe(plumber())
@@ -59,8 +64,14 @@ gulp.task("minifyScripts", function() {
 });
 
 gulp.task('scriptsConcat', function() {
-    return gulp.src(['scripts/sc.js', 'scripts/_ch.js', 'scripts/lo.js'])
+    gulp.src(['scripts/sc.js', 'scripts/_ch.js', 'scripts/lo.js'])
         .pipe(concat('all-checkout.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('scripts/min'));
+
+    gulp.src(['scripts/timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
+        .pipe(concat('all-index.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('scripts/min'));
 });
 
@@ -73,15 +84,41 @@ gulp.task('compileCompass', function() {
             config_file: './config.rb',
             css: 'styles/css',
             sass: 'styles/sass'
-        }))
-        .pipe(minifyCss())
+        })).pipe(minifyCss())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
-        }))
+        })).pipe(plumber.stop())
         .pipe(gulp.dest('styles/css'))
         .pipe(livereload())
         .pipe(browserSync.stream());
+});
+
+gulp.task("stripCommonCss", function() {
+
+        gulp.src('styles/css/common.css')
+        .pipe(uncss({
+            html: ['*.html'],
+            ignore: ['.tingle']
+        })).pipe(minifyCss())
+        .pipe(rename('common.tiny.css'))
+        .pipe(gulp.dest('styles/css'));
+});
+
+
+gulp.task("stripBootstrap", function() {
+    gulp.src('css/bootstrap.css')
+        .pipe(uncss({
+            html: ['*.html']
+        })).pipe(minifyCss())
+        .pipe(gulp.dest('styles/css'));
+});
+gulp.task("stripJquery", function() {
+    gulp.src('css/jquery.modal.css')
+        .pipe(uncss({
+            html: ['*.html']
+        })).pipe(minifyCss())
+        .pipe(gulp.dest('styles/css'));
 });
 
 //////////////////////////////////////////////////
@@ -100,8 +137,9 @@ gulp.task('watchFiles', function() {
 
     gulp.watch('styles/sass/**/*.scss', ['compileCompass', 'critical']);
     gulp.watch('scripts/*.js', ['minifyScripts']);
+    gulp.watch('_*.html', ['critical']);
     // gulp.watch('*.jade', ['compileJade']);
-    gulp.watch("*.html").on('change', browserSync.reload);
+    //gulp.watch("*.html").on('change', browserSync.reload);
 });
 
 //////////////////////////////////////////////////
@@ -110,8 +148,9 @@ gulp.task('watchFiles', function() {
 gulp.task("build", function() {
     gulp.start('clean');
     gulp.start('compileCompass');
-    gulp.start('minifyScripts');
+    gulp.start('stripCommonCss');
     gulp.start('scriptsConcat');
+    gulp.start('minifyScripts');
     gulp.start('critical');
 });
 
@@ -119,7 +158,7 @@ gulp.task('critical', function (cb) {
     gulp.start('critical-index');
     gulp.start('critical-tm2');
     gulp.start('critical-tm8');
-    gulp.start('critical-checkout');
+    //gulp.start('critical-checkout');
     gulp.start('critical-recharge');
 });
 
@@ -128,6 +167,7 @@ gulp.task('critical-index', function (cb) {
         inline: true,
         base: '.',
         src: '_index.html',
+        css: ['styles/css/common.css','styles/css/index.css'],
         dest: 'index.html',
         width: 1400,
         height: 800,
