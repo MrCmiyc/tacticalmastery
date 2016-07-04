@@ -426,6 +426,30 @@ function makePrettyModal(content,doFooter) {
 
     }
 
+//Terms and privacy popups
+function termsModal(e)
+{
+    bModal = false;
+    $.get('terms.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+function affiliateModal(e)
+{
+    bModal = false;
+    $.get('affiliate.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+
+function privacyModal(e)
+{
+    bModal = false;
+    $.get('privacy.html', function(html) {
+        makePrettyModal(html);
+    });
+};
+
 $(document).ready(function ()
 {
     if (pageInfo != undefined) {
@@ -463,29 +487,6 @@ $(document).ready(function ()
                 var goHere = 'https://tacticalmastery.com/flashlight/index.html?ref=' + location.pathname.substring(1) + iQs;
                 $(this).attr('href', goHere);
             });
-        //Terms and privacy popups
-        $('#terms').click(function (e)
-        {
-            bModal = false;
-            $.get('terms.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
-        $('#affiliate').click(function (e)
-        {
-            bModal = false;
-            $.get('affiliate.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
-
-        $('#privacy').click(function (e)
-        {
-            bModal = false;
-            $.get('privacy.html', function(html) {
-                makePrettyModal(html);
-            });
-        });
 
         $('#popupTerms').on('hidden.bs.modal', function (e)
         {
