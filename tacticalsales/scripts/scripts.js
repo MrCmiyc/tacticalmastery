@@ -168,9 +168,7 @@ function SubmitSubmit(this_form) {
     var currentYear = d.getFullYear().toString().substr(2, 2), currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
     if (!((currentYear < year) || (currentYear == year) && (currentMonth <= month))) {
         $("div#js-div-loading-bar").fadeOut();
-        $("#popModalHead").html('Problem with your order');
-        $("#popModalBody").html('Invalid Expiration Date');
-        $("#popModal").modal();
+        makePrettyModal('<h2>Problem with your order</h2><p>Invalid Expiration Date</p>')
         return;
     }
     var apiFields = [];
@@ -267,14 +265,14 @@ function SubmitSubmit(this_form) {
                 break;
             case 'ERROR':
                 if (json.message) {
-                    $("#popModalHead").html('Problem with your order');
+                    var errHead = 'Problem with your order';
                     if (json.message.trim() != 'Invalid Credit Card Number') {
                         json.message = 'Eek! Something went dark with your order and it was not processed. ' +
                             'Call our support team to shed some light and get your order processed right away! ' +
                             '- <a href="tel:+18444478240">(844) 447-8240</a>';
                     }
-                    $("#popModalBody").html('<span style="color:red;font-size:24px">' + json.message + '</span>');
-                    $("#popModal").modal();
+                    var errBody = '<span style="color:red;font-size:24px">' + json.message + '</span>';
+                    makePrettyModal('<h3>'+errHead+'</h3>'+errBody);
                 }
                 break;
             default:
@@ -342,14 +340,10 @@ function doUpsellYes(upsellID, productId) {
                                 }
                             }
                         }
-                        $("#popModalHead").html('Problem with your Addon');
-                        $("#popModalBody").html(messageOut);
-                        $("#popModal").modal();
+                        makePrettyModal('<h2>Problem with your Addon</h2><p>'+messageOut+'</p>')
                     }
                 } else {
-                    $("#popModalHead").html('Problem with your Addon');
-                    $("#popModalBody").html('An unknown error occured, try again or call our customer service');
-                    $("#popModal").modal();
+                    makePrettyModal('<h2>Problem with your Addon</h2><p>An unknown error occured, try again or call our customer service</p>')
                 }
                 $("div#js-div-loading-bar").fadeOut();
             });
