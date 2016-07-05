@@ -57,7 +57,9 @@ gulp.task("minifyScripts", function() {
     return gulp.src("scripts/*.js")
         .pipe(plumber())
         .pipe(uglify())
-        .pipe(gulp.dest('scripts/min'));
+        .pipe(gulp.dest('scripts/min'))
+        .pipe(livereload())
+        .pipe(browserSync.stream());
 });
 
 gulp.task('scriptsConcat', function() {
@@ -93,7 +95,7 @@ gulp.task('compileCompass', function() {
 
 gulp.task("stripCommonCss", function() {
 
-        gulp.src('styles/css/common.css')
+    gulp.src('styles/css/common.css')
         .pipe(uncss({
             html: ['*.html'],
             ignore: ['.tingle']
