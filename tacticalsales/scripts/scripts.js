@@ -299,7 +299,7 @@ function SubmitSubmit(this_form) {
 }
 
 function doUpsellYes(upsellID, productId) {
-    $("div#js-div-loading-bar").show(); 
+    $("div#js-div-loading-bar").show();
     if (window.myOrderID) {
         var paramString = 'orderId=' + window.myOrderID + '&productQty=1';
         var nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
