@@ -1,12 +1,5 @@
 var bModal = true;
 $(document).ready(function() {
-    $('div#js-div-popup').on('shown.bs.modal', function () {
-        $("input#js-text-first-name").focus();
-    });
-
-    $('div#js-div-popup').on('hidden.bs.modal', function() {
-        $("input#js-text-first-name, input#js-text-last-name, input#js-text-phone-number").val('');
-    });
 
     var modalForm = new tingle.modal();
     var signupform = '<div class="offer-off"><p class="title">Enter Your Name and Telephone number To INSTANTLY Receive 75% Off The Tactical Mastery Flashlight!</p>'
@@ -20,18 +13,16 @@ $(document).ready(function() {
         + '<p class="no-spam">* we will not spam, rent, or sell your information... *</p>'
         + '</form></div>';
     modalForm.setContent(signupform);
-
-    function modFormBtnClick(e)
-    {
+    console.log("moo");
+    window.modFormBtnClick = function (e) {
         console.log("cluck");
         modalForm.open();
-    };
-
-
+    }
 });
 
+
 window.onbeforeunload = function (e) {
-};
+}
 
 function validate() {
     return true;
@@ -45,4 +36,4 @@ function validate() {
 history.pushState(null, null, location.href);
 window.onpopstate = function(event) {
     history.go(1);
-};
+}
