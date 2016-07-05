@@ -13,9 +13,7 @@ $(document).ready(function() {
         + '<p class="no-spam">* we will not spam, rent, or sell your information... *</p>'
         + '</form></div>';
     modalForm.setContent(signupform);
-    console.log("moo");
     window.modFormBtnClick = function (e) {
-        console.log("cluck");
         modalForm.open();
     }
 });
