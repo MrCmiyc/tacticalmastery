@@ -42,15 +42,36 @@ img {
   height: auto;
 }
 
+h1, h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 39px;
+  line-height: 42px;
+}
+
 h2 {
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 18px;
+  line-height: 28px;
   margin: 0 0 20px;
   color: #2f2f2f;
 
   span {
     font-weight: 400;
   }
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 20px;
+    line-height: 27px
+  }
+
+  @media (min-width: $screen-lg-min) {
+    font-size: 24px;
+    line-height: 29px
+  }
+
+
 }
 
 .logo-header {
@@ -708,6 +729,16 @@ h2 {
 		//margin: 0;
 		font-size: em(14);
 	}
+
+    p.address-list {
+      font-size: 16px;
+
+      a {
+        color: #00f;
+        text-decoration: underline;
+      }
+    }
+
 }
 
 .modal-window {
@@ -847,7 +878,7 @@ div.radio-holder {
 
 .radios li label {
   position: relative;
-  padding: 0 52px 14px 21px;
+//  padding: 0 52px 14px 21px;
 }
 
 div.radio-holder {
@@ -931,7 +962,7 @@ ul.radios li span.price {
         padding: 45px 20px 20px
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: $screen-md-min) {
         margin: 0
     }
 
@@ -1012,7 +1043,7 @@ ul.radios li span.price {
       padding: 15px 0 0
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: $screen-md-min) {
       .offer .text {
         padding: 0
       }
@@ -1143,13 +1174,13 @@ footer {
     position: relative;
     margin-bottom: 20px;
 
-    :before {
-      display: inline-block;
-      vertical-align: top;
-      margin: 0 8px 0 0;
-      background: url("../../images/lock.jpg") no-repeat;
-      width: 15px;
-      height: 19px;
+    &:before {
+      display:inline-block;
+      vertical-align:top;
+      margin:0 8px 0 0;
+      background:url(../../images/lock.jpg) no-repeat;
+      width:15px;
+      height:19px;
       content: "";
     }
   }
@@ -1157,9 +1188,177 @@ footer {
 
 .scissor-description, .scissor-title {
   font-size: 12px;
+
+  @media (min-width: 240px) {
+    font-size: 12px
+  }
 }
 
 .scissor-title {
   font-size: 15px;
+
+  @media (min-width: 480px) {
+    font-size: 15px;
+  }
 }
 
+.heading-bar {
+//  @extednd % clearfix;
+  background: #444;
+  padding: 18px 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .3);
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 25px;
+    text-shadow: 1px 0 2px #000;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 25px;
+    line-height: 30px
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding: 18px 10px 22px;
+
+    h1 {
+      font-size: 30px;
+      line-height: 35px;
+    }
+
+    h2 span {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1221px) {
+    h1 {
+      font-size: 39px;
+      line-height: 42px
+    }
+  }
+
+}
+
+.package-image {
+  width: 35%;
+  margin-left: 4%;
+  margin-top: 25px;
+
+  @media (min-width: 1170px) {
+    margin-top: 40px
+  }
+}
+
+.package-area {
+  margin-left: 3%;
+  margin-right: 2%;
+  width: 56%;
+  margin-top: 3px
+}
+
+.package-item {
+  background: #fc9e41;
+  color: #000;
+  border-radius: 50px;
+  margin-top: 2px;
+  line-height: 16px;
+
+  @media (min-width: 240px) {
+    font-size: 7px;
+    margin-top: 2px
+  }
+
+  @media (min-width: 360px) {
+    font-size: 8px;
+  }
+
+  @media (min-width: 411px) {
+    font-size: 9px;
+  }
+
+  @media (min-width: 480px) {
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px
+  }
+
+  @media (min-width: 800px) {
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px
+  }
+
+  @media (min-width: 1000px) {
+      font-size: 18px;
+      padding-top: 7px;
+      padding-bottom: 7px
+  }
+
+  @media (min-width: 1170px) {
+    font-size: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px
+  }
+}
+
+.package-item-half-left {
+  width: 50%
+}
+
+.package-item-half-right {
+  width: 49%;
+  margin-left: 1%
+}
+
+.package-item-whole {
+  width: 100%
+}
+
+.ccjs-card {
+  z-index: 100;
+  margin: 1em auto 2em;
+}
+
+.ccjs-csc-diagram {
+
+  @media (min-width: 240px) {
+    left: 30px !important;
+    top: 118px !important
+  }
+
+  @media (min-width: 360px) {
+    left: 70px !important
+  }
+
+  @media (min-width: 375px) {
+    left: 85px !important
+  }
+
+  @media (min-width: 411px) {
+    left: 120px !important
+  }
+
+  @media (min-width: 435px) {
+    left: 145px !important
+  }
+
+  @media (min-width: 480px) {
+    left: 75px !important
+  }
+}
+
+.bannerarea {
+  background: #FFFFFF;
+  margin-bottom: 20px;
+
+  @media (min-width: $screen-sm-min) {
+    .info li.half {
+      width: calc(50% - 2px)
+    }
+  }
+}
