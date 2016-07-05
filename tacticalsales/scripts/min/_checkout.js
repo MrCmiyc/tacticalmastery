@@ -1,0 +1,1 @@
+function validate(){return!0}window.onbeforeunload=function(n){},$(document).ready(function(){});
