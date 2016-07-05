@@ -281,6 +281,14 @@ html, body {
 			}
 		}
 
+         p.address-list {
+           list-style-type: none;
+           padding: 0;
+           margin: 16px 0;
+           text-align: center;
+           color: #000;
+         }
+
 		.navigation {
 			list-style-type: none;
 			padding: 0;
@@ -294,7 +302,7 @@ html, body {
 
 				&:not(:last-child):after {
 					content: "|";
-					color: gray;
+                    color: #ccc;
 					margin-left: 4px;
 				}
 
