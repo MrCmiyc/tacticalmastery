@@ -449,6 +449,13 @@ function privacyModal(e)
         makePrettyModal(html);
     });
 };
+function custcareModal(e)
+{
+    bModal = false;
+    $.get('customercare.html', function(html) {
+        makePrettyModal(html);
+    });
+};
 
 $(document).ready(function ()
 {
