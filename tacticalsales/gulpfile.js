@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
 // jade = require('gulp-jade'),
-//    connect = require('gulp-connect-php'),
+    connect = require('gulp-connect-php'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     uncss = require('gulp-uncss'),
@@ -13,25 +13,25 @@ var gulp = require('gulp'),
     del = require('del'),
     compass = require('gulp-compass'),
     plumber = require('gulp-plumber'),
-//    livereload = require('gulp-livereload'),
-//    browserSync = require('browser-sync'),
+    livereload = require('gulp-livereload'),
+    browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer'),
     critical = require('critical'),
     path = require('path');
 
 //////////////////////////////////////////////////
 
-//gulp.task('browser-sync', function() {
-//    connect.server({}, function (){
-//        browserSync({
-//            proxy: 'localhost:8000'
-//        });
-//    });
-//
-//    gulp.watch('**/*.php').on('change', function () {
-//        browserSync.reload();
-//    });
-//});
+gulp.task('browser-sync', function() {
+    connect.server({}, function (){
+        browserSync({
+            proxy: 'localhost:8000'
+        });
+    });
+
+    gulp.watch('**/*.php').on('change', function () {
+        browserSync.reload();
+    });
+});
 
 
 
@@ -57,7 +57,9 @@ gulp.task("minifyScripts", function() {
     return gulp.src("scripts/*.js")
         .pipe(plumber())
         .pipe(uglify())
-        .pipe(gulp.dest('scripts/min'));
+        .pipe(gulp.dest('scripts/min'))
+        .pipe(livereload())
+        .pipe(browserSync.stream());
 });
 
 gulp.task('scriptsConcat', function() {
@@ -93,7 +95,7 @@ gulp.task('compileCompass', function() {
 
 gulp.task("stripCommonCss", function() {
 
-        gulp.src('styles/css/common.css')
+    gulp.src('styles/css/common.css')
         .pipe(uncss({
             html: ['*.html'],
             ignore: ['.tingle']
@@ -128,9 +130,9 @@ gulp.task('clean', function() {
 
 gulp.task('watchFiles', function() {
 
-    //var server = livereload();
+    var server = livereload();
 
-    //gulp.start('browser-sync');
+    gulp.start('browser-sync');
 
     gulp.watch('styles/sass/**/*.scss', ['compileCompass', 'critical']);
     gulp.watch('scripts/*.js', ['minifyScripts','scriptsConcat','critical']);
