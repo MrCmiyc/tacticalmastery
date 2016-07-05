@@ -488,10 +488,10 @@ $(document).ready(function ()
                 $(this).attr('href', goHere);
             });
 
-        $('#popupTerms').on('hidden.bs.modal', function (e)
-        {
-            bModal = true;
-        });
+        //$('#popupTerms').on('hidden.bs.modal', function (e)
+        //{
+        //    bModal = true;
+        //});
 
         //check autopopulate
         if (pageInfo.autopopulate) {
