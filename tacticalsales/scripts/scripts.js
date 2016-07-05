@@ -263,7 +263,7 @@ function SubmitSubmit(this_form) {
                     window.myOrderID = json.message.orderId;
                     afSetSet("orderId", myOrderID);
                 }
-                document.location = '/us_recharge.html?orderId=' + window.myOrderID;
+                document.location = '/tacticalsales/us_recharge.html?orderId=' + window.myOrderID;
                 break;
             case 'ERROR':
                 if (json.message) {
@@ -299,18 +299,18 @@ function SubmitSubmit(this_form) {
 }
 
 function doUpsellYes(upsellID, productId) {
-    $("div#js-div-loading-bar").show();
+    $("div#js-div-loading-bar").show(); 
     if (window.myOrderID) {
         var paramString = 'orderId=' + window.myOrderID + '&productQty=1';
-        var nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
+        var nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
         switch (upsellID) {
             case 'hdlmp':
                 productId = $('#lampId').val() || '31';
-                nextPage = '/thankyou.html?orderId=' + window.myOrderID;
+                nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
                 productId = productId || '12';
-                nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
+                nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
                 break;
             default:
                 break;
@@ -362,10 +362,10 @@ function doUpsellYes(upsellID, productId) {
 }
 function doUpsellNo(upsellID) {
     $("div#js-div-loading-bar").show();
-    var nextPage = '/thankyou.html?orderId=' + window.myOrderID;
+    var nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
     switch (upsellID) {
         case 'recharge':
-            nextPage = '/us_hlmp.html?orderId=' + window.myOrderID;
+            nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
             break;
         default:
     }
