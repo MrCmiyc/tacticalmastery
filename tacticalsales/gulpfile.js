@@ -138,7 +138,7 @@ gulp.task('watchFiles', function() {
     gulp.watch('scripts/*.js', ['minifyScripts','scriptsConcat','critical']);
     gulp.watch('_*.html', ['critical']);
     // gulp.watch('*.jade', ['compileJade']);
-    //gulp.watch("*.html").on('change', browserSync.reload);
+    gulp.watch("*.html").on('change', browserSync.reload);
 });
 
 //////////////////////////////////////////////////
