@@ -56,4 +56,4 @@ fabric.properties
 
 node_modules/
 .sass-cache/
-tacticalsales/scripts/min/*
+scripts/min/*
