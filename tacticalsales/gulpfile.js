@@ -63,7 +63,7 @@ gulp.task("minifyScripts", function() {
 });
 
 gulp.task('scriptsConcat', function() {
-    gulp.src(['scripts/_timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
+    gulp.src(['scripts/timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
         .pipe(concat('all-index.js'))
         .pipe(uglify())
         .pipe(gulp.dest('scripts/min'));

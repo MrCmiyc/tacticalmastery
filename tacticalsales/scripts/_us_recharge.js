@@ -15,6 +15,11 @@ $(document).ready(function () {
     $("a.a-prevent-back").click(function () {
         isBack = false;
     });
+    var activeOrder = afGetGet('orderId', 'orderId');
+    if (activeOrder === "" || activeOrder === null) {
+        isBack = false;
+        document.location = '/tacticalsales';
+    }
 
     setUpsellProduct(null);
 });
