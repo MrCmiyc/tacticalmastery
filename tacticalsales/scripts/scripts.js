@@ -304,7 +304,7 @@ function doUpsellYes(upsellID, productId) {
         switch (upsellID) {
             case 'hdlmp':
                 productId = $('#lampId').val() || '31';
-                nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
+                nextPage = '/tacticalsales/receipt.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
                 productId = productId || '12';
@@ -356,7 +356,7 @@ function doUpsellYes(upsellID, productId) {
 }
 function doUpsellNo(upsellID) {
     $("div#js-div-loading-bar").show();
-    var nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
+    var nextPage = '/tacticalsales/receipt.html?orderId=' + window.myOrderID;
     switch (upsellID) {
         case 'recharge':
             nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
@@ -372,13 +372,17 @@ function populateThanksPage(orderInfos) {
     if ($.type(orderInfos) === "array")
         orderInfos = orderInfos[0];
     //console.log(orderInfos);
-    $('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price']);
+    //$('#totalBilled').html(orderInfos['currencySymbol'] + ' ' + orderInfos['price']);
     $('#orderNumber').html(orderInfos['orderId']);
-    $('#totItems').html("Order Summary");
+    //$('#totItems').html("Order Summary");
     //now loop and add the products
     $.each(orderInfos.items, function (i, val) {
-        $('#orderDet tr:last').after('<tr><td>' + val.name + '</td><td class="text-right">' + val.price + '</td></tr>');
+        $('#orderDet tr:last').after('<tr class="item"><td><p>' + val.name + '</p></td><td>' + val.price + '</td></tr>');
     });
+    //now add the total
+    $('#orderDet tr:last').after('<tr class="footer"><td></td><td><b>Total:</b> <span>'+orderInfos['currencySymbol'] + ' ' + orderInfos['price']+'</span></td></tr>');
+
+
     // The "appears on statement as" only appears in the transacion api
     // TODO: The query to the order status can mosetly be completely replaced by this query but no time atm.
     // TODO: it's dumb to dump an api query here. This whole thing should be refactored to something like grabfields('thanksinfo', orderid)
@@ -571,7 +575,7 @@ $(document).ready(function ()
                                 }
                                 if (doThatPop) {
                                     isBack = false;
-                                    setTimeout("location.href = '/thankyou.html';",1500);
+                                    setTimeout("location.href = '/receipt.html';",1500);
                                     //$("#popModalHead").html('Previous order detected!');
                                     //var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
                                     //    'You may either view your reciept page or start a new order<br> ' +
@@ -635,7 +639,7 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                regexp: /^[a-zA-Z0-9_\-'"/\\ ]+$/,
                                 message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
@@ -652,7 +656,7 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                regexp: /^[a-zA-Z0-9_\-'"/\\ ]+$/,
                                 message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
