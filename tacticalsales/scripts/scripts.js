@@ -635,7 +635,7 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                regexp: /^[a-zA-Z0-9_\-'"/\\ ]+$/,
                                 message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
@@ -652,7 +652,7 @@ $(document).ready(function ()
                                 message: 'The name must be more than 3 and less than 30 characters long'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_\-]+$/,
+                                regexp: /^[a-zA-Z0-9_\-'"/\\ ]+$/,
                                 message: 'Names can only consist of alphabetical, number, underscore and hyphen'
                             }
                         }
