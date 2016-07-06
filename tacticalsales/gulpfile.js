@@ -142,12 +142,12 @@ gulp.task("build", function() {
 
 gulp.task('critical', function (cb) {
     gulp.start('critical-index');
-    gulp.start('critical-tm2');
-    gulp.start('critical-tm2-about');
+    //gulp.start('critical-tm2');
+    //gulp.start('critical-tm2-about');
     gulp.start('critical-tm3');
-    gulp.start('critical-tm8');
-    gulp.start('critical-tm8-about');
-    gulp.start('critical-thankyou');
+    //gulp.start('critical-tm8');
+    //gulp.start('critical-tm8-about');
+    //gulp.start('critical-thankyou');
     gulp.start('critical-checkout');
     gulp.start('critical-recharge');
     gulp.start('critical-hlmp');
