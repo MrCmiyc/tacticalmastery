@@ -150,10 +150,14 @@ gulp.task("build", function() {
 gulp.task('critical', function (cb) {
     gulp.start('critical-index');
     gulp.start('critical-tm2');
+    gulp.start('critical-tm2-about');
     gulp.start('critical-tm3');
     gulp.start('critical-tm8');
+    gulp.start('critical-tm8-about');
+    gulp.start('critical-thankyou');
     gulp.start('critical-checkout');
     gulp.start('critical-recharge');
+    gulp.start('critical-hlmp');
 });
 
 gulp.task('critical-index', function (cb) {
@@ -181,12 +185,36 @@ gulp.task('critical-tm2', function (cb) {
     });
 });
 
+gulp.task('critical-tm2-about', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_tm2-about.html',
+        dest: 'tm2-about.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
+
 gulp.task('critical-tm8', function (cb) {
     critical.generate({
         inline: true,
         base: '.',
         src: '_tm8.html',
         dest: 'tm8.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
+
+gulp.task('critical-tm8-about', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_tm8-about.html',
+        dest: 'tm8-about.html',
         width: 1400,
         height: 800,
         minify: true
@@ -217,12 +245,36 @@ gulp.task('critical-checkout', function (cb) {
     });
 });
 
+gulp.task('critical-thankyou', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_thankyou.html',
+        dest: 'thankyou.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
+
 gulp.task('critical-recharge', function (cb) {
     critical.generate({
         inline: true,
         base: '.',
         src: '_us_recharge.html',
         dest: 'us_recharge.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
+
+gulp.task('critical-hlmp', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_us_hlmp.html',
+        dest: 'us_hlmp.html',
         width: 1400,
         height: 800,
         minify: true
