@@ -153,6 +153,7 @@ gulp.task('critical', function (cb) {
     gulp.start('critical-tm8');
     gulp.start('critical-checkout');
     gulp.start('critical-recharge');
+    gulp.start('critical-receipt');
 });
 
 gulp.task('critical-index', function (cb) {
@@ -162,6 +163,19 @@ gulp.task('critical-index', function (cb) {
         src: '_index.html',
         css: ['styles/css/common.css','styles/css/index.css'],
         dest: 'index.html',
+        width: 1400,
+        height: 800,
+        minify: true
+    });
+});
+
+gulp.task('critical-receipt', function (cb) {
+    critical.generate({
+        inline: true,
+        base: '.',
+        src: '_receipt.html',
+        css: ['styles/css/common.css','styles/css/receipt.css'],
+        dest: 'receipt.html',
         width: 1400,
         height: 800,
         minify: true
