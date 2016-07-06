@@ -447,6 +447,13 @@ function privacyModal(e)
         makePrettyModal(html);
     });
 };
+function pressModal(e)
+{
+    bModal = false;
+    $.get('press.html', function(html) {
+        makePrettyModal(html);
+    });
+};
 function custcareModal(e)
 {
     bModal = false;
