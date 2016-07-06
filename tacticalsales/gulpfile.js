@@ -108,13 +108,6 @@ gulp.task("stripBootstrap", function() {
         })).pipe(minifyCss())
         .pipe(gulp.dest('styles/css'));
 });
-gulp.task("stripJquery", function() {
-    gulp.src('css/jquery.modal.css')
-        .pipe(uncss({
-            html: ['*.html']
-        })).pipe(minifyCss())
-        .pipe(gulp.dest('styles/css'));
-});
 
 //////////////////////////////////////////////////
 
