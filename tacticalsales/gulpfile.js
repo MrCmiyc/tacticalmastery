@@ -63,11 +63,6 @@ gulp.task("minifyScripts", function() {
 });
 
 gulp.task('scriptsConcat', function() {
-    gulp.src(['scripts/sc.js', 'scripts/_ch.js', 'scripts/lo.js'])
-        .pipe(concat('all-checkout.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('scripts/min'));
-
     gulp.src(['scripts/_timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
         .pipe(concat('all-index.js'))
         .pipe(uglify())
