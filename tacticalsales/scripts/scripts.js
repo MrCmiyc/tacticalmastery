@@ -446,7 +446,8 @@ function privacyModal(e)
     $.get('privacy.html', function(html) {
         makePrettyModal(html);
     });
-};
+}
+
 function pressModal(e)
 {
     bModal = false;
@@ -454,6 +455,7 @@ function pressModal(e)
         makePrettyModal(html);
     });
 };
+
 function custcareModal(e)
 {
     bModal = false;
