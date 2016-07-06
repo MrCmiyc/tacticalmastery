@@ -304,7 +304,7 @@ function doUpsellYes(upsellID, productId) {
         switch (upsellID) {
             case 'hdlmp':
                 productId = $('#lampId').val() || '31';
-                nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
+                nextPage = '/tacticalsales/receipt.html?orderId=' + window.myOrderID;
                 break;
             case 'recharge':
                 productId = productId || '12';
@@ -356,7 +356,7 @@ function doUpsellYes(upsellID, productId) {
 }
 function doUpsellNo(upsellID) {
     $("div#js-div-loading-bar").show();
-    var nextPage = '/tacticalsales/thankyou.html?orderId=' + window.myOrderID;
+    var nextPage = '/tacticalsales/receipt.html?orderId=' + window.myOrderID;
     switch (upsellID) {
         case 'recharge':
             nextPage = '/tacticalsales/us_hlmp.html?orderId=' + window.myOrderID;
@@ -575,7 +575,7 @@ $(document).ready(function ()
                                 }
                                 if (doThatPop) {
                                     isBack = false;
-                                    setTimeout("location.href = '/thankyou.html';",1500);
+                                    setTimeout("location.href = '/receipt.html';",1500);
                                     //$("#popModalHead").html('Previous order detected!');
                                     //var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
                                     //    'You may either view your reciept page or start a new order<br> ' +
