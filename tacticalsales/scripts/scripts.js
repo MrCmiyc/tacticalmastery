@@ -485,7 +485,7 @@ $(document).ready(function ()
             $('a.ilink').each( function(){
                 //todo: I really hate hard coding index here but I am sleepy
                 //lets add the current page as a param and appens our querystring
-                var goHere = 'https://tacticalmastery.com/flashlight/index.html?ref=' + location.pathname.substring(1) + iQs;
+                var goHere = 'https://tacticalmastery.com/index.html?ref=' + location.pathname.substring(1) + iQs;
                 $(this).attr('href', goHere);
             });
 
