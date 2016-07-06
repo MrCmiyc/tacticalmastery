@@ -582,7 +582,7 @@ $(document).ready(function ()
                                 }
                                 if (doThatPop) {
                                     isBack = false;
-                                    setTimeout("location.href = '/receipt.html';",1500);
+                                    setTimeout("location.href = '/tacticalsales/receipt.html';",1500);
                                     //$("#popModalHead").html('Previous order detected!');
                                     //var myMessage = 'Hey! It looks like you have already completed an order with us!<br> ' +
                                     //    'You may either view your reciept page or start a new order<br> ' +
