@@ -18,6 +18,6 @@ $(document).ready(function() {
 	var activeOrder = afGetGet('orderId', 'orderId');
 	if (activeOrder === "" || activeOrder === null) {
 		isBack = false;
-		document.location = '/';
+		document.location = '/tacticalsales';
 	}
 });
