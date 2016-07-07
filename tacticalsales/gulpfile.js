@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    usemin = require('gulp-usemin'),
     concat = require('gulp-concat'),
 // jade = require('gulp-jade'),
     connect = require('gulp-connect-php'),
