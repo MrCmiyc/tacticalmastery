@@ -150,7 +150,7 @@ gulp.task("build", ['clean'], function(callback) {
 });
 
 gulp.task('critical', function (callback) {
-    if (true) {
+    if (false) {
         return runSequence('critical-index',
             //'critical-tm2',
             //'critical-tm2-about',
