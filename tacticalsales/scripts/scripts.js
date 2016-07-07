@@ -168,7 +168,7 @@ function SubmitSubmit(this_form) {
     var currentYear = d.getFullYear().toString().substr(2, 2), currentMonth = ("0" + (d.getMonth() + 1)).slice(-2);
     if (!((currentYear < year) || (currentYear == year) && (currentMonth <= month))) {
         $("div#js-div-loading-bar").fadeOut();
-        makePrettyModal('<h2>Problem with your order</h2><p>Invalid Expiration Date</p>')
+        makePrettyModal('<h2>Problem with your order</h2><p>Invalid Expiration Date</p>', true)
         return;
     }
     var apiFields = [];
@@ -272,7 +272,7 @@ function SubmitSubmit(this_form) {
                             '- <a href="tel:+18444478240">(844) 447-8240</a>';
                     }
                     var errBody = '<span style="color:red;font-size:24px">' + json.message + '</span>';
-                    makePrettyModal('<h3>'+errHead+'</h3>'+errBody);
+                    makePrettyModal('<h3>'+errHead+'</h3>'+errBody, true);
                 }
                 break;
             default:
@@ -340,10 +340,10 @@ function doUpsellYes(upsellID, productId) {
                                 }
                             }
                         }
-                        makePrettyModal('<h2>Problem with your Addon</h2><p>'+messageOut+'</p>')
+                        makePrettyModal('<h2>Problem with your Addon</h2><p>'+messageOut+'</p>', true)
                     }
                 } else {
-                    makePrettyModal('<h2>Problem with your Addon</h2><p>An unknown error occured, try again or call our customer service</p>')
+                    makePrettyModal('<h2>Problem with your Addon</h2><p>An unknown error occured, try again or call our customer service</p>', true)
                 }
                 $("div#js-div-loading-bar").fadeOut();
             });
@@ -408,7 +408,7 @@ function makePrettyModal(content,doFooter) {
     doFooter = doFooter || false;
     var modal = new tingle.modal({
         footer: doFooter,
-        stickyFooter: false,
+        stickyFooter: true,
 //        cssClass: ['custom-class-1', 'custom-class-2'],
         onOpen: function() {
   //          console.log('modal open');
@@ -420,22 +420,32 @@ function makePrettyModal(content,doFooter) {
 
     // set content
     modal.setContent(content);
+
+// add a button
+    if (doFooter) {
+        modal.addFooterBtn('Close', 'tingle-btn tingle-btn--primary tingle-btn--pull-right', function() {
+            // here goes some logic
+            modal.close();
+        });
+    }
+
+// open modal
     modal.open();
 
-    }
+}
 
 //Terms and privacy popups
 function termsModal(e)
 {
     bModal = false;
     $.get('terms.html', function(html) {
-        makePrettyModal(html);
+        makePrettyModal(html, true);
     });
 };
-function affiliateModal(e)
+function partnerModal(e)
 {
     bModal = false;
-    $.get('affiliate.html', function(html) {
+    $.get('partner.html', function(html) {
         makePrettyModal(html);
     });
 };
@@ -444,21 +454,23 @@ function privacyModal(e)
 {
     bModal = false;
     $.get('privacy.html', function(html) {
-        makePrettyModal(html);
+        makePrettyModal(html, true);
     });
-};
+}
+
 function pressModal(e)
 {
     bModal = false;
     $.get('press.html', function(html) {
-        makePrettyModal(html);
+        makePrettyModal(html, true);
     });
 };
+
 function custcareModal(e)
 {
     bModal = false;
     $.get('customercare.html', function(html) {
-        makePrettyModal(html);
+        makePrettyModal(html, true);
     });
 };
 
@@ -785,7 +797,7 @@ $(document).ready(function ()
                     data.fv.disableSubmitButtons(false);
                 }
             }).on('err.form.fv', function (e) {
-                makePrettyModal('<h2>There were errors</h2>'+$("#formerrors").html(),false);
+                makePrettyModal('<h2>There were errors</h2>'+$("#formerrors").html(),true);
                 e.preventDefault();
             }).on('success.form.fv', function (e) {
                 fakevar = SubmitSubmit('#frm_order');
