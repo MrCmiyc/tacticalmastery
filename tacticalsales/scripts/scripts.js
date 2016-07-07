@@ -442,10 +442,10 @@ function termsModal(e)
         makePrettyModal(html, true);
     });
 };
-function affiliateModal(e)
+function partnerModal(e)
 {
     bModal = false;
-    $.get('affiliate.html', function(html) {
+    $.get('partner.html', function(html) {
         makePrettyModal(html);
     });
 };
