@@ -37,7 +37,9 @@
     "gulp-sourcemaps": "^1.2.4",
     "gulp-uglify": "^1.5.4",
     "gulp-uncss": "^1.0.5",
-    "gulp-usemin": "^0.3.23"
+    "gulp-usemin": "^0.3.23",
+    "lodash._getnative": "^3.9.1",
+    "run-sequence": "^1.2.2"
   },
   "dependencies": {
     "gulp-install": "^0.6.0"
