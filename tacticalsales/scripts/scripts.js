@@ -408,7 +408,7 @@ function makePrettyModal(content,doFooter) {
     doFooter = doFooter || false;
     var modal = new tingle.modal({
         footer: doFooter,
-        stickyFooter: false,
+        stickyFooter: true,
 //        cssClass: ['custom-class-1', 'custom-class-2'],
         onOpen: function() {
   //          console.log('modal open');
