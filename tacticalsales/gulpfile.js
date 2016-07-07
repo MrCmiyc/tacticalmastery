@@ -113,7 +113,7 @@ gulp.task("stripBootstrap", function() {
 //////////////////////////////////////////////////
 
 gulp.task('clean', function() {
-    return del(['dist', 'styles/css', 'scripts/min/*', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
+    del(['dist', 'styles/css', 'scripts/min/*', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
 });
 
 //////////////////////////////////////////////////
@@ -134,7 +134,7 @@ gulp.task('watchFiles', function() {
 //////////////////////////////////////////////////
 gulp.task("build", ['clean'], function(callback) {
     if (true) {
-        return runSequence('stripBootstrap',
+        runSequence('stripBootstrap',
             'compileCompass',
             'scriptsConcat',
             'minifyScripts',
@@ -316,7 +316,6 @@ gulp.task('serve', ['watchFiles']);
 
 //////////////////////////////////////////////////
 gulp.task("default", function(callback) {
-    return runSequence('build',
-        'serve',
-        callback);
+    gulp.start('build');
+    gulp.start('serve');
 });
