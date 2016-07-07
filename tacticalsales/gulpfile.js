@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    usemin = require('gulp-usemin'),
     concat = require('gulp-concat'),
 // jade = require('gulp-jade'),
     connect = require('gulp-connect-php'),
@@ -17,7 +18,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer'),
     critical = require('critical'),
-    path = require('path');
+    path = require('path'),
+    runSequence = require('run-sequence');
 
 //////////////////////////////////////////////////
 
@@ -63,7 +65,7 @@ gulp.task("minifyScripts", function() {
 });
 
 gulp.task('scriptsConcat', function() {
-    gulp.src(['scripts/timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
+    return gulp.src(['scripts/timer.js', 'scripts/scripts.js', 'scripts/_index.js'])
         .pipe(concat('all-index.js'))
         .pipe(uglify())
         .pipe(gulp.dest('scripts/min'));
@@ -72,7 +74,7 @@ gulp.task('scriptsConcat', function() {
 //////////////////////////////////////////////////
 
 gulp.task('compileCompass', function() {
-    gulp.src('./styles/sass/*.scss')
+    return gulp.src('./styles/sass/*.scss')
         .pipe(plumber())
         .pipe(compass({
             config_file: './config.rb',
@@ -90,7 +92,7 @@ gulp.task('compileCompass', function() {
 
 gulp.task("stripCommonCss", function() {
 
-    gulp.src('styles/css/common.css')
+    return gulp.src('styles/css/common.css')
         .pipe(uncss({
             html: ['*.html'],
             ignore: ['.tingle']
@@ -101,7 +103,7 @@ gulp.task("stripCommonCss", function() {
 
 
 gulp.task("stripBootstrap", function() {
-    gulp.src('css/bootstrap.css')
+    return gulp.src('css/bootstrap.css')
         .pipe(uncss({
             html: ['*.html']
         })).pipe(minifyCss())
@@ -111,7 +113,7 @@ gulp.task("stripBootstrap", function() {
 //////////////////////////////////////////////////
 
 gulp.task('clean', function() {
-    del(['dist', 'styles/css', 'scripts/min/*', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
+    return del(['dist', 'styles/css', 'scripts/min/*', 'scripts/all_scripts.js', 'scripts/all_scripts.js.map']);
 });
 
 //////////////////////////////////////////////////
@@ -130,31 +132,54 @@ gulp.task('watchFiles', function() {
 });
 
 //////////////////////////////////////////////////
-gulp.task("build", function() {
-    gulp.start('clean');
-    gulp.start('stripBootstrap');
-    gulp.start('compileCompass');
-    gulp.start('scriptsConcat');
-    gulp.start('minifyScripts');
-    gulp.start('critical');
+gulp.task("build", ['clean'], function(callback) {
+    if (true) {
+        return runSequence('stripBootstrap',
+            'compileCompass',
+            'scriptsConcat',
+            'minifyScripts',
+            'critical',
+            callback);
+    } else {
+        gulp.start('stripBootstrap');
+        gulp.start('compileCompass');
+        gulp.start('scriptsConcat');
+        gulp.start('minifyScripts');
+        gulp.start('critical');
+    }
 });
 
-gulp.task('critical', function (cb) {
-    gulp.start('critical-index');
-    //gulp.start('critical-tm2');
-    //gulp.start('critical-tm2-about');
-    gulp.start('critical-tm3');
-    //gulp.start('critical-tm8');
-    //gulp.start('critical-tm8-about');
-    //gulp.start('critical-thankyou');
-    gulp.start('critical-checkout');
-    gulp.start('critical-recharge');
-    gulp.start('critical-hlmp');
-    gulp.start('critical-receipt');
+gulp.task('critical', function (callback) {
+    if (true) {
+        return runSequence('critical-index',
+            //'critical-tm2',
+            //'critical-tm2-about',
+            'critical-tm3',
+            //'critical-tm8',
+            //'critical-tm8-about',
+            //'critical-thankyou',
+            'critical-checkout',
+            'critical-recharge',
+            'critical-hlmp',
+            'critical-receipt',
+            callback);
+    } else {
+        gulp.start('critical-index');
+        //gulp.start('critical-tm2');
+        //gulp.start('critical-tm2-about');
+        gulp.start('critical-tm3');
+        //gulp.start('critical-tm8');
+        //gulp.start('critical-tm8-about');
+        //gulp.start('critical-thankyou');
+        gulp.start('critical-checkout');
+        gulp.start('critical-recharge');
+        gulp.start('critical-hlmp');
+        gulp.start('critical-receipt');
+    }
 });
 
 gulp.task('critical-index', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_index.html',
@@ -166,7 +191,7 @@ gulp.task('critical-index', function (cb) {
 });
 
 gulp.task('critical-receipt', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_receipt.html',
@@ -178,7 +203,7 @@ gulp.task('critical-receipt', function (cb) {
 });
 
 gulp.task('critical-tm2', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_tm2.html',
@@ -190,7 +215,7 @@ gulp.task('critical-tm2', function (cb) {
 });
 
 gulp.task('critical-tm2-about', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_tm2-about.html',
@@ -202,7 +227,7 @@ gulp.task('critical-tm2-about', function (cb) {
 });
 
 gulp.task('critical-tm8', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_tm8.html',
@@ -214,7 +239,7 @@ gulp.task('critical-tm8', function (cb) {
 });
 
 gulp.task('critical-tm8-about', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_tm8-about.html',
@@ -226,7 +251,7 @@ gulp.task('critical-tm8-about', function (cb) {
 });
 
 gulp.task('critical-tm3', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_tm3.html',
@@ -238,7 +263,7 @@ gulp.task('critical-tm3', function (cb) {
 });
 
 gulp.task('critical-checkout', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_checkout.html',
@@ -250,7 +275,7 @@ gulp.task('critical-checkout', function (cb) {
 });
 
 gulp.task('critical-thankyou', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_thankyou.html',
@@ -262,7 +287,7 @@ gulp.task('critical-thankyou', function (cb) {
 });
 
 gulp.task('critical-recharge', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_us_recharge.html',
@@ -274,7 +299,7 @@ gulp.task('critical-recharge', function (cb) {
 });
 
 gulp.task('critical-hlmp', function (cb) {
-    critical.generate({
+    return critical.generate({
         inline: true,
         base: '.',
         src: '_us_hlmp.html',
@@ -290,7 +315,8 @@ gulp.task('critical-hlmp', function (cb) {
 gulp.task('serve', ['watchFiles']);
 
 //////////////////////////////////////////////////
-gulp.task("default", function() {
-    gulp.start('build');
-    gulp.start('serve');
+gulp.task("default", function(callback) {
+    return runSequence('build',
+        'serve',
+        callback);
 });
