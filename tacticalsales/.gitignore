@@ -57,3 +57,17 @@ fabric.properties
 node_modules/
 .sass-cache/
 scripts/min/*
+styles/css/*
+
+# result html files
+checkout.html
+index.html
+tm2.html
+tm2-about.html
+tm3.html
+tm8.html
+tm8-about.html
+thankyou.html
+us_recharge.html
+us_hlmp.html
+receipt.html
