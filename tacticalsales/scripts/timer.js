@@ -1,6 +1,23 @@
-var sec   = 00;   // set the seconds
-var min   = 00;   // set the minutes
-var hours = 48;   // set the hours
+//default values
+//var sec   = 0;   // set the seconds
+//var min   = 0;   // set the minutes
+//var hours = 48;   // set the hours
+//var days  = 0;    // set the days
+
+
+var timeStop = Date.UTC('2016',6,11);
+
+var now = new Date();
+var timeNow = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
+var sec = Math.floor((timeStop - (timeNow))/1000);
+var min = Math.floor(sec/60);
+var hours = Math.floor(min/60);
+var days = Math.floor(hours/24);
+
+hours = hours-(days*24);
+min = min-(days*24*60)-(hours*60);
+sec = sec-(days*24*60*60)-(hours*60*60)-(min*60);
 
 function countDown() {
   sec--;
@@ -10,6 +27,13 @@ function countDown() {
     if (min == -01) {
       min = 59;
       hours--;
+      if (hours == -01) {
+        hours = 24;
+        days--;
+        if (days < 0) {
+          days = 0;
+        }
+      }
     }
   } else {
    min = min;
@@ -18,9 +42,11 @@ if (sec<=9) { sec = "0" + sec; }
   cdminutesvar = (min<=9 ? "0" + min : min);
   cdsecondsvar = sec;
   cdhoursvar   = (hours<=9 ? "0" + hours : hours);
-if (document.getElementById) { cdminutes.innerHTML = cdminutesvar; cdseconds.innerHTML = cdsecondsvar; cdhours.innerHTML = cdhoursvar;}
+  cddaysvar   = (days<=9 ? "0" + days : days);
+
+  if (document.getElementById) { cdminutes.innerHTML = cdminutesvar; cdseconds.innerHTML = cdsecondsvar; cdhours.innerHTML = cdhoursvar; cddays.innerHTML = cddaysvar;}
   SD=window.setTimeout("countDown();", 1000);
-if (min == '00' && sec == '00' && hours == '00') { sec = "00"; window.clearTimeout(SD); }
+if (min == '00' && sec == '00' && hours == '00' && days == '00') { sec = "00"; window.clearTimeout(SD); }
 }
 
 function addLoadEvent(func) {
